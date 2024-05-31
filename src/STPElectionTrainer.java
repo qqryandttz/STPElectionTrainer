@@ -16,7 +16,7 @@ class STPElectionTrainer{
 }
 
 
-class 界面逻辑{
+class 界面执行{
 
     
 }
@@ -147,9 +147,11 @@ class 主页 extends JPanel{
 class 窗口 extends JFrame{
 
     JMenuBar 菜单栏;
-    JMenu 菜单;
+    JMenu 主页菜单,操作界面菜单;
     JMenuItem 音量控制,关于;
     JMenuItem 返回主页,帮助;
+    Font 菜单字体;
+    Color 菜单字体颜色;
     
     public 窗口(String 窗口名字){
 
@@ -160,27 +162,49 @@ class 窗口 extends JFrame{
         this.getContentPane().setBackground(Color.BLACK);
         this.setResizable(false); 
 
+        初始化菜单信息();
+        主页添加菜单();
+
+        setVisible(true);
+    }
+
+    void 初始化菜单信息(){
+
+        菜单栏 = new JMenuBar();
+        主页菜单 = new JMenu("菜单");
+        操作界面菜单 = new JMenu("菜单");
+        菜单字体 = new Font("黑体", Font.BOLD, 22);  
+        菜单字体颜色 = new Color(0x00,0x14,0x2f);
+
+        setJMenuBar(菜单栏);
+    }
+
+    void 设置菜单项(JMenu 菜单,JMenuItem 菜单项,String 菜单名字){
+
+        菜单项 = new JMenuItem(菜单名字);
+        菜单项.setFont(菜单字体);
+        菜单.add(菜单项);
     }
 
     void 主页添加菜单(){
 
-        音量控制 = new JMenuItem("音量控制");
-        关于 = new JMenuItem("关于");
+        设置菜单项(主页菜单,音量控制,"音量控制");
+        设置菜单项(主页菜单,关于, "关于");
     }
 
-    void 剧情页面添加菜单(){
+    void 操作界面添加菜单(){
 
-        返回主页 = new JMenuItem("返回主页");
-        帮助 = new JMenuItem("帮助");
+        设置菜单项(操作界面菜单,返回主页,"返回主页");
+        设置菜单项(操作界面菜单,帮助, "帮助");
     }
 
-    void 重置菜单(){
-        setJMenuBar(null);
+    void 取消菜单(JMenu 菜单){
+        菜单栏.remove(菜单);
     }
 
-    void 重置菜单(音乐播放 背景音乐){
+    void 取消菜单(JMenu 菜单,音乐播放 背景音乐){
         背景音乐.停止();
-        setJMenuBar(null);
+        菜单栏.remove(菜单);
     }
 
 }
