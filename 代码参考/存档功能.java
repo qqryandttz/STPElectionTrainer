@@ -1,3 +1,4 @@
+package 代码参考;
 //完蛋,不会做,先放着有机会写
 
 public class 存档功能 {
