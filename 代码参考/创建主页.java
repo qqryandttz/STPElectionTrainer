@@ -27,7 +27,7 @@ class 创建主页 extends JPanel{
         添加标题和副标题();
 
         星空面板 = new 星空面板();
-        LP布局.add(星空面板, new Integer(JLayeredPane.DEFAULT_LAYER));
+        LP布局.add(星空面板, JLayeredPane.DEFAULT_LAYER);
         星空面板.setBounds(0,0,1700,800);
 
         添加开始继续选项按钮();
@@ -41,7 +41,7 @@ class 创建主页 extends JPanel{
         标题 = new JLabel("The Slumber Interval");
         标题字体 = new Font("黑体", Font.ITALIC, 120);  
         标题.setFont(标题字体);  
-        LP布局.add(标题, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(标题, JLayeredPane.DEFAULT_LAYER + 1);
         标题.setBounds(155,75,1500,225);
         标题字体颜色 = new Color(0x66, 0xfa, 0xf1);  
         标题.setForeground(标题字体颜色);
@@ -49,7 +49,7 @@ class 创建主页 extends JPanel{
         副标题 = new JLabel("<html>Happy birthday!  I hope your dreams are filled with candies and laughter. When you wake up, maybe we can go explore the wider world together.</html>");
         副标题字体 = new Font("黑体", Font.CENTER_BASELINE, 24);  
         副标题.setFont(副标题字体);  
-        LP布局.add(副标题, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(副标题, JLayeredPane.DEFAULT_LAYER + 1);
         副标题.setBounds(355,322,787,187);
         副标题字体颜色 = new Color(0xc5, 0xc6, 0xc7); 
         副标题.setForeground(副标题字体颜色);
@@ -104,9 +104,9 @@ class 创建主页 extends JPanel{
         按钮触发字体颜色 = new Color(0x66, 0xfa, 0xf1);
 
        
-        LP布局.add(开始按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1)); 
-        LP布局.add(继续按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));  
-        LP布局.add(选项按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1)); 
+        LP布局.add(开始按钮, JLayeredPane.DEFAULT_LAYER + 1); 
+        LP布局.add(继续按钮, JLayeredPane.DEFAULT_LAYER + 1);  
+        LP布局.add(选项按钮, JLayeredPane.DEFAULT_LAYER + 1); 
         开始按钮.setBounds(225,675,300,75);
         继续按钮.setBounds(638,675,300,75);
         选项按钮.setBounds(1050,675,300,75);
