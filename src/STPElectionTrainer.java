@@ -1,5 +1,11 @@
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -18,7 +24,38 @@ class STPElectionTrainer{
 
 class 界面执行{
 
+    CardLayout CL布局;
+    窗口 窗口;
+    主页 主页;
+    操作界面 操作界面;
+    音乐播放 音效播放,背景音乐播放;
     
+    界面执行(){
+
+        CL布局 = new CardLayout();
+        窗口 = new 窗口("STPElectionTrainer");
+        主页 = new 主页();
+        操作界面 = new 操作界面();
+
+        背景音乐播放 = new 音乐播放(".\\resources\\经年如夏.mp3");
+        背景音乐播放.播放循环音乐();
+
+        窗口.getContentPane().setLayout(CL布局);
+        窗口.getContentPane().add(主页, "主页");
+        窗口.getContentPane().add(操作界面, "操作界面");
+        CL布局.show(窗口.getContentPane(), "主页");
+
+    }
+
+    void 切换到主页(){
+
+    }
+
+    void 切换到操作界面(){
+
+    }
+
+
 }
 
 
@@ -33,6 +70,7 @@ class 主页 extends JPanel{
     Font 标题字体,按钮字体,按钮触发字体;
     Color 标题字体颜色,按钮字体颜色,按钮背景颜色;
     Color 按钮触发字体颜色, 按钮触发背景颜色;
+    音乐播放 触碰按钮音效播放, 按下按钮音效播放;
 
     主页(){
 
@@ -43,6 +81,9 @@ class 主页 extends JPanel{
         添加标题();
         添加按钮();
         添加图形按钮();
+
+        添加按钮监视器();
+        添加图形按钮监视器();
     }
 
     void 添加星空面板(){
@@ -69,13 +110,6 @@ class 主页 extends JPanel{
         LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 1); 
         按钮.setBounds(225,按钮位置,300,75);
 
-        按钮边框 = new LineBorder(标题字体颜色, 2); 
-        按钮字体 = new Font("黑体", Font.BOLD, 30);
-        按钮触发字体 = new Font("黑体", Font.PLAIN, 27);
-        按钮背景颜色 = new Color(0x01,0x42,0x54);
-        按钮字体颜色 = new Color(0x1a, 0xbc, 0xbd);  
-        按钮触发字体颜色 = new Color(0x66, 0xfa, 0xf1);
-
     }
 
     void 添加按钮(){
@@ -83,6 +117,16 @@ class 主页 extends JPanel{
         初始化按钮(基础知识按钮,"基础知识",1);
         初始化按钮(选举规则按钮,"选举规则",1);
         初始化按钮(操作指南按钮,"操作指南",1); 
+
+        按钮边框 = new LineBorder(标题字体颜色, 2); 
+        按钮字体 = new Font("黑体", Font.BOLD, 30);
+        按钮触发字体 = new Font("黑体", Font.PLAIN, 27);
+        按钮背景颜色 = new Color(0x01,0x42,0x54);
+        按钮字体颜色 = new Color(0x1a, 0xbc, 0xbd);  
+        按钮触发字体颜色 = new Color(0x66, 0xfa, 0xf1);
+        触碰按钮音效播放 = new 音乐播放("resources\\触碰按钮声.mp3");
+        按下按钮音效播放 = new 音乐播放("resources\\按下按钮声.mp3");
+
         
         基础知识按钮.setBorder(按钮边框);
         选举规则按钮.setBorder(按钮边框);
@@ -108,13 +152,6 @@ class 主页 extends JPanel{
         LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 1); 
         按钮.setBounds(225,按钮位置,300,75);
 
-        按钮边框 = new LineBorder(标题字体颜色, 2); 
-        按钮字体 = new Font("黑体", Font.BOLD, 30);
-        按钮触发字体 = new Font("黑体", Font.PLAIN, 27);
-        按钮背景颜色 = new Color(0x01,0x42,0x54);
-        按钮字体颜色 = new Color(0x1a, 0xbc, 0xbd);  
-        按钮触发字体颜色 = new Color(0x66, 0xfa, 0xf1);
-
     }
 
     void 添加图形按钮(){
@@ -122,6 +159,13 @@ class 主页 extends JPanel{
         初始化按钮(示例1按钮,"示例1",1);
         初始化按钮(示例2按钮,"示例2",1);
         初始化按钮(示例3按钮,"示例3",1); 
+
+        按钮边框 = new LineBorder(标题字体颜色, 2); 
+        按钮字体 = new Font("黑体", Font.BOLD, 30);
+        按钮触发字体 = new Font("黑体", Font.PLAIN, 27);
+        按钮背景颜色 = new Color(0x01,0x42,0x54);
+        按钮字体颜色 = new Color(0x1a, 0xbc, 0xbd);  
+        按钮触发字体颜色 = new Color(0x66, 0xfa, 0xf1);
         
         示例1按钮.setBorder(按钮边框);
         示例2按钮.setBorder(按钮边框);
@@ -137,11 +181,46 @@ class 主页 extends JPanel{
         
         示例1按钮.setForeground(按钮字体颜色);
         示例2按钮.setForeground(按钮字体颜色);
-        示例3按钮.setForeground(按钮字体颜色);
-        
+        示例3按钮.setForeground(按钮字体颜色); 
     }
 
-    
+    void 添加按钮监视器(){
+
+        基础知识按钮.addActionListener(new ActionListener() {  
+            @Override  
+            public void actionPerformed(ActionEvent e) {
+
+                按下按钮音效播放.播放音效();
+            }  
+        }); 
+
+        基础知识按钮.addMouseListener(new MouseAdapter() {
+            
+            @Override
+            public void mouseEntered(MouseEvent e){
+
+                触碰按钮音效播放.播放音效();
+                基础知识按钮.setFont(按钮触发字体);
+                基础知识按钮.setForeground(按钮触发字体颜色);
+                基础知识按钮.setBounds(237,677,270,70);
+                基础知识按钮.setBorderPainted(true);
+            }
+
+            @Override  
+            public void mouseExited(MouseEvent e) {  
+                基础知识按钮.setFont(按钮字体);
+                基础知识按钮.setForeground(按钮字体颜色);
+                基础知识按钮.setBounds(225,675,300,75);
+                基础知识按钮.setBorderPainted(false);
+            }  
+        });
+
+    }
+  
+    void 添加图形按钮监视器(){
+
+    }
+
 }
 
 class 窗口 extends JFrame{
@@ -209,6 +288,8 @@ class 窗口 extends JFrame{
 
 }
 
-class 操作界面{
+
+class 操作界面 extends JPanel{
 
 }
+
