@@ -6,6 +6,7 @@ class STPElectionTrainer{
     public static void main(String[] args) {
 
         界面执行 界面执行 = new 界面执行();
+        界面执行.开始界面执行();
         
     }
 }
@@ -20,7 +21,7 @@ class 界面执行{
     JMenuItem[] 菜单项; 
     音乐播放 音效播放,背景音乐播放;
     
-    界面执行(){
+    void 开始界面执行(){
 
         CL布局 = new CardLayout();
         初始化菜单();
@@ -51,10 +52,12 @@ class 界面执行{
 
     void 切换到主页(){
 
+        CL布局.show(窗口.getContentPane(), "主页");
     }
 
     void 切换到操作界面(){
 
+        CL布局.show(窗口.getContentPane(), "操作页面");
     }
 
 

@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,6 +35,9 @@ class 主页 extends JPanel{
 
         添加按钮监视器();
         添加图形按钮监视器();
+
+        this.setLayout(new BorderLayout());
+        this.add(LP布局, BorderLayout.CENTER);
     }
 
     void 添加星空面板(){
@@ -51,22 +55,32 @@ class 主页 extends JPanel{
         标题.setFont(标题字体);  
         标题字体颜色 = new Color(0x66, 0xfa, 0xf1);  
         标题.setForeground(标题字体颜色);
-        LP布局.add(标题, JLayeredPane.DEFAULT_LAYER + 1);
+        LP布局.add(标题, JLayeredPane.DEFAULT_LAYER + 2);
     }
 
-    void 初始化按钮(圆角按钮 按钮,String 按钮名字,int 按钮位置){
+    圆角按钮 初始化按钮(String 按钮名字,int 按钮位置){
 
-        按钮 = new 圆角按钮(按钮名字, 30);
-        LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 1); 
+        圆角按钮 按钮 = new 圆角按钮(按钮名字, 30);
+        LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 2); 
         按钮.setBounds(225,按钮位置,370,75);
+        return 按钮;
+
+    }
+
+    圆角按钮 初始化图形按钮(String 按钮名字, int 按钮位置) {
+
+        圆角按钮 按钮 = new 圆角按钮(按钮名字, 30);
+        LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 2);
+        按钮.setBounds(1012, 按钮位置, 412, 225);
+        return 按钮;
 
     }
 
     void 添加按钮(){
 
-        初始化按钮(基础知识按钮,"基础知识",412);
-        初始化按钮(选举规则按钮,"选举规则",465);
-        初始化按钮(操作指南按钮,"操作指南",517); 
+        基础知识按钮 = 初始化按钮("基础知识", 412);
+        选举规则按钮 = 初始化按钮("选举规则", 465);
+        操作指南按钮 = 初始化按钮("操作指南", 517);
 
         按钮边框 = new LineBorder(标题字体颜色, 2); 
         按钮字体 = new Font("黑体", Font.BOLD, 30);
@@ -96,19 +110,12 @@ class 主页 extends JPanel{
         
     }
 
-    void 初始化图形按钮(圆角按钮 按钮,String 按钮名字,int 按钮位置){
-
-        按钮 = new 圆角按钮(按钮名字, 30);
-        LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 1); 
-        按钮.setBounds(1012,按钮位置,412,225);
-
-    }
 
     void 添加图形按钮(){
 
-        初始化按钮(示例1按钮,"示例1",75);
-        初始化按钮(示例2按钮,"示例2",352);
-        初始化按钮(示例3按钮,"示例3",630); 
+        示例1按钮 = 初始化图形按钮("示例1",75);
+        示例2按钮 = 初始化图形按钮("示例2",352);
+        示例3按钮 = 初始化图形按钮("示例3",630); 
 
         按钮边框 = new LineBorder(标题字体颜色, 2); 
         按钮字体 = new Font("黑体", Font.BOLD, 30);
