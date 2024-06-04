@@ -41,3 +41,11 @@ public class SquarePanel extends JPanel {
         frame.setVisible(true);  
     }  
 }
+
+/*
+ * if (someCondition) {
+ * menuItem.setEnabled(false); // 禁用菜单项
+ * } else {
+ * menuItem.setEnabled(true); // 启用菜单项
+ * }
+ */
