@@ -15,7 +15,7 @@ class 界面执行{
 
     CardLayout CL布局;
     窗口 窗口;
-    主页 主页;
+    homePage homePage;
     操作界面 操作界面;
     JMenuItem[] 菜单项; 
     playStatus 音效播放,背景音乐播放;
@@ -25,14 +25,14 @@ class 界面执行{
         CL布局 = new CardLayout();
         初始化菜单();
         窗口 = new 窗口("STPElectionTrainer",菜单项);
-        主页 = new 主页();
+        homePage = new homePage();
         操作界面 = new 操作界面();
 
         //背景音乐播放 = new 音乐播放(".\\resources\\_200音乐\\经年如夏.mp3");
         //背景音乐播放.播放循环音乐();
 
         窗口.getContentPane().setLayout(CL布局);
-        窗口.getContentPane().add(主页, "主页");
+        窗口.getContentPane().add(homePage, "主页");
         窗口.getContentPane().add(操作界面, "操作界面");
         CL布局.show(窗口.getContentPane(), "主页");
 

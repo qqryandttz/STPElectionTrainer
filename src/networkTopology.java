@@ -1,6 +1,6 @@
-class 网络拓扑{
+class networkTopology{
 
-    网络拓扑(int 拓扑类型){
+    networkTopology(int 拓扑类型){
 
         if(拓扑类型 == 1){
 
@@ -17,17 +17,17 @@ class 网络拓扑{
 
 }
 
-class 交换机{
+class Switch{
 
-    交换机(){
+    Switch(){
 
     }
 
 }
 
-class 接口{
+class Interface{
 
-    接口(){
+    Interface(){
 
     }
 

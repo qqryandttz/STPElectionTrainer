@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-class 主页 extends JPanel{
+class homePage extends JPanel{
 
     JLayeredPane LP布局;
     JLabel 标题,副标题;
@@ -29,7 +29,7 @@ class 主页 extends JPanel{
     打开文件 打开文件 = new 打开文件();
     playStatus 触碰按钮音效播放, 按下按钮音效播放;
 
-    主页(){
+    homePage(){
 
         LP布局 = new JLayeredPane();
         LP布局.setBounds(0, 0, 1600, 900);
