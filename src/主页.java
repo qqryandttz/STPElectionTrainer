@@ -17,7 +17,7 @@ class 主页 extends JPanel{
     JLayeredPane LP布局;
     JLabel 标题,副标题;
     starrySkyPanel starrySkyPanel;
-    对角线面板 对角线1, 对角线2;
+    diagonalPanel diagonal1, diagonal2;
     roundedButton 基础知识按钮,选举规则按钮,操作指南按钮;  
     示例1按钮 示例1;
     roundedButton 示例1按钮,示例2按钮,示例3按钮;
@@ -35,7 +35,7 @@ class 主页 extends JPanel{
         LP布局.setBounds(0, 0, 1600, 900);
 
         添加starrySkyPanel();
-        添加对角线();
+        添加diagonal();
         添加标题();
         添加按钮();
         添加图形按钮();
@@ -55,15 +55,15 @@ class 主页 extends JPanel{
         LP布局.add(starrySkyPanel, new Integer(JLayeredPane.DEFAULT_LAYER));
     }
 
-    void 添加对角线(){
+    void 添加diagonal(){
 
-        对角线1 = new 对角线面板();
-        对角线1.setBounds(40, 530, 350, 280);
-        LP布局.add(对角线1, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        diagonal1 = new diagonalPanel();
+        diagonal1.setBounds(40, 530, 350, 280);
+        LP布局.add(diagonal1, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         
-        对角线2 = new 对角线面板();
-        对角线2.setBounds(540, 430, 400, 320);
-        LP布局.add(对角线2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        diagonal2 = new diagonalPanel();
+        diagonal2.setBounds(540, 430, 400, 320);
+        LP布局.add(diagonal2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
     }
 
     void 添加标题(){

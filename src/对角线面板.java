@@ -1,11 +1,11 @@
 import javax.swing.*;  
 import java.awt.*;  
   
-public class 对角线面板 extends JPanel {  
+public class diagonalPanel extends JPanel {  
   
     private static final int LINE_WIDTH = 5;
 
-    public 对角线面板() {  
+    public diagonalPanel() {  
 
         setOpaque(false);  
         setBackground(new Color(0, 0, 0, 0)); 
