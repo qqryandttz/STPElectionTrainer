@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -20,6 +19,7 @@ class 主页 extends JPanel{
     星空面板 星空面板;
     对角线面板 对角线1,对角线2;
     圆角按钮 基础知识按钮,选举规则按钮,操作指南按钮;  
+    示例1按钮 示例1;
     圆角按钮 示例1按钮,示例2按钮,示例3按钮;
     LineBorder 图形按钮边框;
     Font 标题字体,副标题字体;
@@ -126,8 +126,9 @@ class 主页 extends JPanel{
 
     }
 
-
     void 添加图形按钮(){
+
+        示例1 = new 示例1按钮();
 
         示例1按钮 = new 圆角按钮("示例1", 30);
         示例2按钮 = new 圆角按钮("示例2", 30);
@@ -153,6 +154,7 @@ class 主页 extends JPanel{
         示例2按钮.setForeground(按钮字体颜色);
         示例3按钮.setForeground(按钮字体颜色); 
 
+        LP布局.add(示例1, new Integer(JLayeredPane.DEFAULT_LAYER));
         LP布局.add(示例1按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         LP布局.add(示例2按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         LP布局.add(示例3按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
@@ -259,6 +261,36 @@ class 主页 extends JPanel{
     }
   
     void 添加图形按钮监视器(){
+
+        示例1按钮.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                触碰按钮音效播放.播放音效();
+                LP布局.add(示例1, new Integer(JLayeredPane.DEFAULT_LAYER + 2));
+            }
+
+        });
+
+        示例1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                按下按钮音效播放.播放音效();
+            }
+            
+        });
+
+        示例1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+                LP布局.add(示例1, new Integer(JLayeredPane.DEFAULT_LAYER));
+            }
+        });
+
+        
 
     } 
 
