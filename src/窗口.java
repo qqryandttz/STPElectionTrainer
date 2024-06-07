@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
@@ -20,6 +21,7 @@ class 窗口 extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.BLACK);
+        setLayout(new BorderLayout());
         this.setResizable(false);
 
         setVisible(true);
@@ -33,6 +35,7 @@ class 窗口 extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.BLACK);
+        setLayout(new BorderLayout());
         this.setResizable(false); 
 
         初始化菜单信息();

@@ -8,7 +8,7 @@ class 界面逻辑{
     CardLayout CL布局;
     创建主页 主页;
     初始化剧情页面 剧情页面;
-    JPanel 按钮面板;
+    //JPanel 按钮面板;
     音乐播放 背景音乐播放;
     //存档功能 存档功能;
     boolean is存档 = false, is结束 = false;

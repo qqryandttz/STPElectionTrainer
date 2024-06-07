@@ -28,8 +28,8 @@ class 主页 extends JPanel{
         LP布局 = new JLayeredPane();
         LP布局.setBounds(0, 0, 1600, 900);
 
-        添加星空面板();
         添加标题();
+        添加星空面板();
         添加按钮();
         添加图形按钮();
 
@@ -43,8 +43,8 @@ class 主页 extends JPanel{
     void 添加星空面板(){
 
         星空面板 = new 星空面板();
-        LP布局.add(星空面板, JLayeredPane.DEFAULT_LAYER);
         星空面板.setBounds(0,0,1700,800);
+        LP布局.add(星空面板, JLayeredPane.DEFAULT_LAYER);
     }
 
     void 添加标题(){
@@ -53,24 +53,15 @@ class 主页 extends JPanel{
         标题.setBounds(75,75,712,225);
         标题字体 = new Font("黑体", Font.ITALIC, 120);  
         标题.setFont(标题字体);  
+        LP布局.add(标题, JLayeredPane.DEFAULT_LAYER + 2);
         标题字体颜色 = new Color(0x66, 0xfa, 0xf1);  
         标题.setForeground(标题字体颜色);
-        LP布局.add(标题, JLayeredPane.DEFAULT_LAYER + 2);
-    }
-
-    圆角按钮 初始化按钮(String 按钮名字,int 按钮位置){
-
-        圆角按钮 按钮 = new 圆角按钮(按钮名字, 30);
-        LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 2); 
-        按钮.setBounds(225,按钮位置,370,75);
-        return 按钮;
-
+        
     }
 
     圆角按钮 初始化图形按钮(String 按钮名字, int 按钮位置) {
 
         圆角按钮 按钮 = new 圆角按钮(按钮名字, 30);
-        LP布局.add(按钮, JLayeredPane.DEFAULT_LAYER + 2);
         按钮.setBounds(1012, 按钮位置, 412, 225);
         return 按钮;
 
@@ -78,9 +69,9 @@ class 主页 extends JPanel{
 
     void 添加按钮(){
 
-        基础知识按钮 = 初始化按钮("基础知识", 412);
-        选举规则按钮 = 初始化按钮("选举规则", 465);
-        操作指南按钮 = 初始化按钮("操作指南", 517);
+        圆角按钮 基础知识按钮 = new 圆角按钮("基础知识", 30);
+        圆角按钮 选举规则按钮 = new 圆角按钮("选举规则", 30);
+        圆角按钮 操作指南按钮 = new 圆角按钮("操作指南", 30);
 
         按钮边框 = new LineBorder(标题字体颜色, 2); 
         按钮字体 = new Font("黑体", Font.BOLD, 30);
@@ -107,15 +98,23 @@ class 主页 extends JPanel{
         基础知识按钮.setForeground(按钮字体颜色);
         选举规则按钮.setForeground(按钮字体颜色);
         操作指南按钮.setForeground(按钮字体颜色);
+
+        LP布局.add(基础知识按钮, JLayeredPane.DEFAULT_LAYER + 2);
+        LP布局.add(选举规则按钮, JLayeredPane.DEFAULT_LAYER + 2);
+        LP布局.add(操作指南按钮, JLayeredPane.DEFAULT_LAYER + 2);
+
+        基础知识按钮.setBounds(225, 412, 370, 75);
+        选举规则按钮.setBounds(225, 465, 370, 75);
+        操作指南按钮.setBounds(225, 517, 370, 75);
         
     }
 
 
     void 添加图形按钮(){
 
-        示例1按钮 = 初始化图形按钮("示例1",75);
-        示例2按钮 = 初始化图形按钮("示例2",352);
-        示例3按钮 = 初始化图形按钮("示例3",630); 
+        圆角按钮 示例1按钮 = new 圆角按钮("示例1", 30);
+        圆角按钮 示例2按钮 = new 圆角按钮("示例1", 30);
+        圆角按钮 示例3按钮 = new 圆角按钮("示例1", 30);
 
         按钮边框 = new LineBorder(标题字体颜色, 2); 
         按钮字体 = new Font("黑体", Font.BOLD, 30);
@@ -139,6 +138,17 @@ class 主页 extends JPanel{
         示例1按钮.setForeground(按钮字体颜色);
         示例2按钮.setForeground(按钮字体颜色);
         示例3按钮.setForeground(按钮字体颜色); 
+
+        LP布局.add(示例1按钮, JLayeredPane.DEFAULT_LAYER + 2);
+        LP布局.add(示例2按钮, JLayeredPane.DEFAULT_LAYER + 2);
+        LP布局.add(示例3按钮, JLayeredPane.DEFAULT_LAYER + 2);
+
+
+        
+        示例1按钮.setBounds(1012, 按钮位置, 412, 225);
+        示例2按钮.setBounds(1012, 按钮位置, 412, 225);
+        示例3按钮.setBounds(1012, 按钮位置, 412, 225);
+        
     }
 
     void 添加按钮监视器(){

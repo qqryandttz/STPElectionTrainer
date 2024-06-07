@@ -7,7 +7,6 @@ class STPElectionTrainer{
 
         界面执行 界面执行 = new 界面执行();
         界面执行.开始界面执行();
-        
     }
 }
 
