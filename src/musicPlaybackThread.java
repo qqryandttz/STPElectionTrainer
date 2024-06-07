@@ -5,13 +5,13 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
 
-public class 音乐播放线程 extends Thread { 
+public class musicPlaybackThread extends Thread { 
 
     AdvancedPlayer 音乐播放器;
     private volatile boolean is暂停 = false;
     
     
-    public 音乐播放线程(String 文件路径) {  
+    public musicPlaybackThread(String 文件路径) {  
         try {  
             音乐播放器 = new AdvancedPlayer(new FileInputStream(文件路径)); 
         } catch (JavaLayerException e) {  
@@ -54,27 +54,27 @@ public class 音乐播放线程 extends Thread {
 
 }
 
-class 音乐播放{
+class playStatus{
 
     String 文件路径;
-    音乐播放线程 循环音乐播放线程;
-    音乐播放线程 音效播放线程;
+    musicPlaybackThread 循环musicPlaybackThread;
+    musicPlaybackThread 音效播放线程;
     
-    public 音乐播放(String 文件路径) {  
+    public playStatus(String 文件路径) {  
         this.文件路径 = 文件路径;  
     }  
 
     void 播放音效(){
 
-        音效播放线程 = new 音乐播放线程(文件路径);
+        音效播放线程 = new musicPlaybackThread(文件路径);
         音效播放线程.start();
     }
 
     void 播放循环音乐(){
 
-        循环音乐播放线程 = new 音乐播放线程(文件路径);
-        循环音乐播放线程.start();
-        循环音乐播放线程.音乐播放器.setPlayBackListener(new PlaybackListener() {
+        循环musicPlaybackThread = new musicPlaybackThread(文件路径);
+        循环musicPlaybackThread.start();
+        循环musicPlaybackThread.音乐播放器.setPlayBackListener(new PlaybackListener() {
             @Override
             public void playbackFinished(PlaybackEvent event) {
             播放循环音乐();
@@ -83,7 +83,7 @@ class 音乐播放{
     }
 
     void 停止(){
-        循环音乐播放线程.音乐播放器.close();
+        循环musicPlaybackThread.音乐播放器.close();
     }
 
 }

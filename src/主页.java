@@ -16,26 +16,26 @@ class 主页 extends JPanel{
 
     JLayeredPane LP布局;
     JLabel 标题,副标题;
-    星空面板 星空面板;
-    对角线面板 对角线1,对角线2;
-    圆角按钮 基础知识按钮,选举规则按钮,操作指南按钮;  
+    starrySkyPanel starrySkyPanel;
+    对角线面板 对角线1, 对角线2;
+    roundedButton 基础知识按钮,选举规则按钮,操作指南按钮;  
     示例1按钮 示例1;
-    圆角按钮 示例1按钮,示例2按钮,示例3按钮;
+    roundedButton 示例1按钮,示例2按钮,示例3按钮;
     LineBorder 图形按钮边框;
     Font 标题字体,副标题字体;
     Font 按钮字体,按钮触发字体,图形按钮字体,图形按钮触发字体;
     Color 标题字体颜色,副标题字体颜色,按钮字体颜色,按钮背景颜色, 按钮边框颜色;
     Color 按钮触发字体颜色, 按钮触发背景颜色;
     打开文件 打开文件 = new 打开文件();
-    音乐播放 触碰按钮音效播放, 按下按钮音效播放;
+    playStatus 触碰按钮音效播放, 按下按钮音效播放;
 
     主页(){
 
         LP布局 = new JLayeredPane();
         LP布局.setBounds(0, 0, 1600, 900);
 
-        添加星空面板();
-        添加对角线面板();
+        添加starrySkyPanel();
+        添加对角线();
         添加标题();
         添加按钮();
         添加图形按钮();
@@ -48,14 +48,14 @@ class 主页 extends JPanel{
 
     }
 
-    void 添加星空面板(){
+    void 添加starrySkyPanel(){
 
-        星空面板 = new 星空面板();
-        星空面板.setBounds(0,0,1600,900);
-        LP布局.add(星空面板, new Integer(JLayeredPane.DEFAULT_LAYER));
+        starrySkyPanel = new starrySkyPanel();
+        starrySkyPanel.setBounds(0,0,1600,900);
+        LP布局.add(starrySkyPanel, new Integer(JLayeredPane.DEFAULT_LAYER));
     }
 
-    void 添加对角线面板(){
+    void 添加对角线(){
 
         对角线1 = new 对角线面板();
         对角线1.setBounds(40, 530, 350, 280);
@@ -89,9 +89,9 @@ class 主页 extends JPanel{
 
     void 添加按钮(){
 
-        基础知识按钮 = new 圆角按钮("基础知识", 50);
-        选举规则按钮 = new 圆角按钮("选举规则", 50);
-        操作指南按钮 = new 圆角按钮("操作指南", 50);
+        基础知识按钮 = new roundedButton("基础知识", 50);
+        选举规则按钮 = new roundedButton("选举规则", 50);
+        操作指南按钮 = new roundedButton("操作指南", 50);
 
         按钮边框颜色 = new Color(0x86, 0xc2, 0x32);
         按钮字体 = new Font("黑体", Font.BOLD, 30);
@@ -101,8 +101,8 @@ class 主页 extends JPanel{
         按钮字体颜色 = new Color(0x22, 0x26, 0x29); 
         按钮触发字体颜色 = new Color(0xee, 0xee, 0xee); 
         按钮触发背景颜色 = new Color(0x86, 0xc2, 0x32);
-        触碰按钮音效播放 = new 音乐播放("resources\\_200音乐\\触碰按钮声.mp3");
-        按下按钮音效播放 = new 音乐播放("resources\\_200音乐\\按下按钮声.mp3");
+        触碰按钮音效播放 = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
+        按下按钮音效播放 = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
         
         基础知识按钮.setFont(按钮字体);
         选举规则按钮.setFont(按钮字体);
@@ -130,9 +130,9 @@ class 主页 extends JPanel{
 
         示例1 = new 示例1按钮();
 
-        示例1按钮 = new 圆角按钮("示例1", 30);
-        示例2按钮 = new 圆角按钮("示例2", 30);
-        示例3按钮 = new 圆角按钮("示例3", 30);
+        示例1按钮 = new roundedButton("示例1", 30);
+        示例2按钮 = new roundedButton("示例2", 30);
+        示例3按钮 = new roundedButton("示例3", 30);
 
         图形按钮边框 = new LineBorder(标题字体颜色, 2); 
         图形按钮字体 = new Font("黑体", Font.BOLD, 37);
