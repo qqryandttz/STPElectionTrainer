@@ -1,0 +1,63 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CustomPanel",
+            "request": "launch",
+            "mainClass": "CustomPanel",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "打开记事本文件",
+            "request": "launch",
+            "mainClass": "打开记事本文件",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "对角线面板",
+            "request": "launch",
+            "mainClass": "对角线面板",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "TransparentDiagonalPanel",
+            "request": "launch",
+            "mainClass": "TransparentDiagonalPanel",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "STPElectionTrainer",
+            "request": "launch",
+            "mainClass": "STPElectionTrainer",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "SquarePanel",
+            "request": "launch",
+            "mainClass": "SquarePanel",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "TheSlumberInterval",
+            "request": "launch",
+            "mainClass": "代码参考.TheSlumberInterval",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        }
+    ]
+}
