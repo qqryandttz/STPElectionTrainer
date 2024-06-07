@@ -28,8 +28,8 @@ class 界面执行{
         主页 = new 主页();
         操作界面 = new 操作界面();
 
-        背景音乐播放 = new 音乐播放(".\\resources\\经年如夏.mp3");
-        背景音乐播放.播放循环音乐();
+        //背景音乐播放 = new 音乐播放(".\\resources\\_200音乐\\经年如夏.mp3");
+        //背景音乐播放.播放循环音乐();
 
         窗口.getContentPane().setLayout(CL布局);
         窗口.getContentPane().add(主页, "主页");

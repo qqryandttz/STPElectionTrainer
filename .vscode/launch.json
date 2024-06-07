@@ -6,17 +6,37 @@
     "configurations": [
         {
             "type": "java",
+            "name": "打开记事本文件",
+            "request": "launch",
+            "mainClass": "打开记事本文件",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "对角线面板",
+            "request": "launch",
+            "mainClass": "对角线面板",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "TransparentDiagonalPanel",
+            "request": "launch",
+            "mainClass": "TransparentDiagonalPanel",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
         },
         {
-          "type": "java",
-          "name": "STPElectionTrainer",
-          "request": "launch",
-          "mainClass": "STPElectionTrainer",
-          "projectName": "STPElectionTrainer_9bc5ed4",
-          "console": "externalTerminal"
+            "type": "java",
+            "name": "STPElectionTrainer",
+            "request": "launch",
+            "mainClass": "STPElectionTrainer",
+            "projectName": "STPElectionTrainer_9bc5ed4"
         },
         {
             "type": "java",

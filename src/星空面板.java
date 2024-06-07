@@ -15,7 +15,7 @@ public class 星空面板 extends JPanel {
   
     public 星空面板() {  
         setPreferredSize(new Dimension(面板宽度, 面板高度));  
-        setBackground(new Color(0x0b, 0x0c, 0x10));  
+        setBackground(new Color(0x22, 0x26, 0x29));  
   
         初始化星星();  
         new Timer(10, e -> { 
