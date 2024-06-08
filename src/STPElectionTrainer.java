@@ -16,9 +16,9 @@ class InterfaceExecution{
     CardLayout CL布局;
     myJFrame myJFrame;
     homePage homePage;
-    操作界面 操作界面;
+    OperationInterface OperationInterface;
     JMenuItem[] JMenuItem; 
-    playStatus 音效播放,背景音乐播放;
+    playStatus soundEffect,bgMusic;
     
     void 开始InterfaceExecution(){
 
@@ -26,14 +26,14 @@ class InterfaceExecution{
         初始化菜单();
         myJFrame = new myJFrame("STPElectionTrainer",JMenuItem);
         homePage = new homePage();
-        操作界面 = new 操作界面();
+        OperationInterface = new OperationInterface();
 
-        //背景音乐播放 = new 音乐播放(".\\resources\\_200音乐\\经年如夏.mp3");
-        //背景音乐播放.播放循环音乐();
+        //bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
+        //bgMusic.播放循环音乐();
 
         myJFrame.getContentPane().setLayout(CL布局);
         myJFrame.getContentPane().add(homePage, "主页");
-        myJFrame.getContentPane().add(操作界面, "操作界面");
+        myJFrame.getContentPane().add(OperationInterface, "操作界面");
         CL布局.show(myJFrame.getContentPane(), "主页");
 
     }
@@ -54,16 +54,16 @@ class InterfaceExecution{
         CL布局.show(myJFrame.getContentPane(), "主页");
     }
 
-    void 切换到操作界面(){
+    void 切换到OperationInterface(){
 
-        CL布局.show(myJFrame.getContentPane(), "操作页面");
+        CL布局.show(myJFrame.getContentPane(), "操作界面");
     }
 
 
 }
 
 
-class 操作界面 extends JPanel{
+class OperationInterface extends JPanel{
 
 }
 

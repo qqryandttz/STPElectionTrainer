@@ -18,7 +18,7 @@ class homePage extends JPanel{
     starrySkyPanel starrySkyPanel;
     diagonalPanel diagonal1, diagonal2;
     roundedButton 基础知识Button,选举规则Button,操作指南Button;  
-    btnExample1 btnExample1;
+    btnExample1 btnExample1, btnExample2, btnExample3;
     roundedButton Example1,Example2,Example3;
     //LineBorder graphButtonBorder;
     Font titleFont,subtitleFont;
@@ -100,8 +100,8 @@ class homePage extends JPanel{
         buttonFontColor = new Color(0x22, 0x26, 0x29); 
         btnActiveFontColor = new Color(0xee, 0xee, 0xee); 
         ButtonActiveBackColor = new Color(0x86, 0xc2, 0x32);
-        touchButtonSound = new playStatus("resources\\_200音乐\\触碰Button声.mp3");
-        pressButtonSound = new playStatus("resources\\_200音乐\\按下Button声.mp3");
+        touchButtonSound = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
+        pressButtonSound = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
         
         基础知识Button.setFont(buttonFont);
         选举规则Button.setFont(buttonFont);
@@ -128,6 +128,8 @@ class homePage extends JPanel{
     void ADDgraphButton(){
 
         btnExample1 = new btnExample1();
+        btnExample2 = new btnExample1();
+        btnExample3 = new btnExample1();
 
         Example1 = new roundedButton("示例1", 30);
         Example2 = new roundedButton("示例2", 30);
@@ -153,7 +155,6 @@ class homePage extends JPanel{
         Example2.setForeground(buttonFontColor);
         Example3.setForeground(buttonFontColor); 
 
-        LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER));
         LP布局.add(Example1, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         LP布局.add(Example2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         LP布局.add(Example3, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
@@ -161,6 +162,10 @@ class homePage extends JPanel{
         Example1.setBounds(1012, 35, 500, 250);
         Example2.setBounds(1012, 305, 500, 250);
         Example3.setBounds(1012, 580, 500, 250);
+
+        btnExample1.setBounds(1012, 35, 500, 250);
+        btnExample2.setBounds(1012, 305, 500, 250);
+        btnExample3.setBounds(1012, 580, 500, 250);
         
     }
 
@@ -267,7 +272,9 @@ class homePage extends JPanel{
             public void mouseEntered(MouseEvent e) {
 
                 touchButtonSound.播放音效();
-                LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER + 2));
+                LP布局.remove(Example1);
+                LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER+1));
+                resetPage();
             }
 
         });
@@ -285,12 +292,19 @@ class homePage extends JPanel{
             @Override
             public void mouseExited(MouseEvent e) {
 
-                LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER));
+                LP布局.remove(btnExample1);
+                LP布局.add(Example1, new Integer(JLayeredPane.DEFAULT_LAYER+1));
+                resetPage();
             }
         });
 
         
 
     } 
+
+    void resetPage() {
+        revalidate();
+        repaint();
+    }
 
 }
