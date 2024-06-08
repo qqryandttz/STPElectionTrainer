@@ -1,7 +1,7 @@
 import javax.swing.*;  
 import java.awt.*;  
   
-public class 示例1按钮 extends JButton {  
+public class btnExample1 extends JButton {  
   
     private static final int RECT_WIDTH = 300;  
     private static final int RECT_HEIGHT = 150;  
@@ -25,10 +25,10 @@ public class 示例1按钮 extends JButton {
         g2d.drawRect(x, y, RECT_WIDTH, RECT_HEIGHT);  
    
         g2d.setColor(new Color(0x86, 0xc2, 0x32));  
-        g2d.fillOval(x - 5, y - 5, 15, 15); // 左上角  
-        g2d.fillOval(x + RECT_WIDTH - 5, y - 5, 15, 15); // 右上角  
-        g2d.fillOval(x - 5, y + RECT_HEIGHT - 5, 15, 15); // 左下角  
-        g2d.fillOval(x + RECT_WIDTH - 5, y + RECT_HEIGHT - 5, 15, 15); // 右下角  
+        g2d.fillOval(x - 5, y - 5, 15, 15); // 左上  
+        g2d.fillOval(x + RECT_WIDTH - 5, y - 5, 15, 15); // 右上  
+        g2d.fillOval(x - 5, y + RECT_HEIGHT - 5, 15, 15); // 左下  
+        g2d.fillOval(x + RECT_WIDTH - 5, y + RECT_HEIGHT - 5, 15, 15); // 右下  
     }  
   
 }

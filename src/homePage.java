@@ -10,52 +10,51 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 class homePage extends JPanel{
 
     JLayeredPane LP布局;
-    JLabel 标题,副标题;
+    JLabel title,subtitle;
     starrySkyPanel starrySkyPanel;
     diagonalPanel diagonal1, diagonal2;
-    roundedButton 基础知识按钮,选举规则按钮,操作指南按钮;  
-    示例1按钮 示例1;
-    roundedButton 示例1按钮,示例2按钮,示例3按钮;
-    LineBorder 图形按钮边框;
-    Font 标题字体,副标题字体;
-    Font 按钮字体,按钮触发字体,图形按钮字体,图形按钮触发字体;
-    Color 标题字体颜色,副标题字体颜色,按钮字体颜色,按钮背景颜色, 按钮边框颜色;
-    Color 按钮触发字体颜色, 按钮触发背景颜色;
-    打开文件 打开文件 = new 打开文件();
-    playStatus 触碰按钮音效播放, 按下按钮音效播放;
+    roundedButton 基础知识Button,选举规则Button,操作指南Button;  
+    btnExample1 btnExample1;
+    roundedButton Example1,Example2,Example3;
+    //LineBorder graphButtonBorder;
+    Font titleFont,subtitleFont;
+    Font buttonFont,btnActiveFont,graphbuttonFont,graphbtnActiveFont;
+    Color titleFontColor,subtitleFontColor,buttonFontColor,ButtonBackColor, ButtonBorderColor;
+    Color btnActiveFontColor, ButtonActiveBackColor;
+    openfile openfile = new openfile();
+    playStatus touchButtonSound, pressButtonSound;
 
     homePage(){
 
         LP布局 = new JLayeredPane();
         LP布局.setBounds(0, 0, 1600, 900);
 
-        添加starrySkyPanel();
-        添加diagonal();
-        添加标题();
-        添加按钮();
-        添加图形按钮();
+        ADDstarrySkyPanel();
+        ADDdiagonal();
+        ADDtitle();
+        ADDButton();
+        ADDgraphButton();
 
-        添加按钮监视器();
-        添加图形按钮监视器();
+        ADDButtonListener();
+        ADDgraphButtonListener();
 
         this.setLayout(new BorderLayout());
         this.add(LP布局, BorderLayout.CENTER);
 
     }
 
-    void 添加starrySkyPanel(){
+    void ADDstarrySkyPanel(){
 
         starrySkyPanel = new starrySkyPanel();
         starrySkyPanel.setBounds(0,0,1600,900);
         LP布局.add(starrySkyPanel, new Integer(JLayeredPane.DEFAULT_LAYER));
     }
 
-    void 添加diagonal(){
+    void ADDdiagonal(){
 
         diagonal1 = new diagonalPanel();
         diagonal1.setBounds(40, 530, 350, 280);
@@ -66,227 +65,227 @@ class homePage extends JPanel{
         LP布局.add(diagonal2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
     }
 
-    void 添加标题(){
+    void ADDtitle(){
 
-        标题 = new JLabel("STP选举流程");
-        标题.setBounds(100,75,712,225);
-        标题字体 = new Font("黑体", Font.PLAIN , 120);  
-        标题.setFont(标题字体);  
-        LP布局.add(标题, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        标题字体颜色 = new Color(0xf5, 0xf5, 0xf5);  
-        标题.setForeground(标题字体颜色);
+        title = new JLabel("STP选举流程");
+        title.setBounds(100,75,712,225);
+        titleFont = new Font("黑体", Font.PLAIN , 120);  
+        title.setFont(titleFont);  
+        LP布局.add(title, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        titleFontColor = new Color(0xf5, 0xf5, 0xf5);  
+        title.setForeground(titleFontColor);
 
-        副标题 = new JLabel(
+        subtitle = new JLabel(
                 "<html>\t\t本教程旨在帮助网络工程学习者深入理解STP（生成树协议）的选举规则。为确保您能够顺利完成练习，我们建议您先熟悉计算机网络、STP协议和RS配置的基础知识。完成理论知识学习后，您可以从主页的三个拓扑图中选择一个开始练习。</html>");
-        副标题字体 = new Font("黑体", Font.PLAIN, 18);
-        副标题.setFont(副标题字体);
-        LP布局.add(副标题, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        副标题.setBounds(65, 220, 787, 187);
-        副标题字体颜色 = new Color(0x6b, 0x6e, 0x70);
-        副标题.setForeground(副标题字体颜色);
+        subtitleFont = new Font("黑体", Font.PLAIN, 18);
+        subtitle.setFont(subtitleFont);
+        LP布局.add(subtitle, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        subtitle.setBounds(65, 220, 787, 187);
+        subtitleFontColor = new Color(0x6b, 0x6e, 0x70);
+        subtitle.setForeground(subtitleFontColor);
         
     }
 
-    void 添加按钮(){
+    void ADDButton(){
 
-        基础知识按钮 = new roundedButton("基础知识", 50);
-        选举规则按钮 = new roundedButton("选举规则", 50);
-        操作指南按钮 = new roundedButton("操作指南", 50);
+        基础知识Button = new roundedButton("基础知识", 50);
+        选举规则Button = new roundedButton("选举规则", 50);
+        操作指南Button = new roundedButton("操作指南", 50);
 
-        按钮边框颜色 = new Color(0x86, 0xc2, 0x32);
-        按钮字体 = new Font("黑体", Font.BOLD, 30);
-        按钮触发字体 = new Font("黑体", Font.PLAIN, 27);
+        ButtonBorderColor = new Color(0x86, 0xc2, 0x32);
+        buttonFont = new Font("黑体", Font.BOLD, 30);
+        btnActiveFont = new Font("黑体", Font.PLAIN, 27);
         
-        按钮背景颜色 = new Color(0x61,0x89,0x2f);
-        按钮字体颜色 = new Color(0x22, 0x26, 0x29); 
-        按钮触发字体颜色 = new Color(0xee, 0xee, 0xee); 
-        按钮触发背景颜色 = new Color(0x86, 0xc2, 0x32);
-        触碰按钮音效播放 = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
-        按下按钮音效播放 = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
+        ButtonBackColor = new Color(0x61,0x89,0x2f);
+        buttonFontColor = new Color(0x22, 0x26, 0x29); 
+        btnActiveFontColor = new Color(0xee, 0xee, 0xee); 
+        ButtonActiveBackColor = new Color(0x86, 0xc2, 0x32);
+        touchButtonSound = new playStatus("resources\\_200音乐\\触碰Button声.mp3");
+        pressButtonSound = new playStatus("resources\\_200音乐\\按下Button声.mp3");
         
-        基础知识按钮.setFont(按钮字体);
-        选举规则按钮.setFont(按钮字体);
-        操作指南按钮.setFont(按钮字体);   
+        基础知识Button.setFont(buttonFont);
+        选举规则Button.setFont(buttonFont);
+        操作指南Button.setFont(buttonFont);   
         
-        基础知识按钮.setBackground(按钮背景颜色);
-        选举规则按钮.setBackground(按钮背景颜色);
-        操作指南按钮.setBackground(按钮背景颜色);
+        基础知识Button.setBackground(ButtonBackColor);
+        选举规则Button.setBackground(ButtonBackColor);
+        操作指南Button.setBackground(ButtonBackColor);
         
-        基础知识按钮.setForeground(按钮字体颜色);
-        选举规则按钮.setForeground(按钮字体颜色);
-        操作指南按钮.setForeground(按钮字体颜色);
+        基础知识Button.setForeground(buttonFontColor);
+        选举规则Button.setForeground(buttonFontColor);
+        操作指南Button.setForeground(buttonFontColor);
 
-        LP布局.add(基础知识按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        LP布局.add(选举规则按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        LP布局.add(操作指南按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(基础知识Button, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(选举规则Button, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(操作指南Button, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
 
-        基础知识按钮.setBounds(125, 432, 320, 80);
-        选举规则按钮.setBounds(290, 575, 320, 80);
-        操作指南按钮.setBounds(455, 717, 320, 80);
+        基础知识Button.setBounds(125, 432, 320, 80);
+        选举规则Button.setBounds(290, 575, 320, 80);
+        操作指南Button.setBounds(455, 717, 320, 80);
 
     }
 
-    void 添加图形按钮(){
+    void ADDgraphButton(){
 
-        示例1 = new 示例1按钮();
+        btnExample1 = new btnExample1();
 
-        示例1按钮 = new roundedButton("示例1", 30);
-        示例2按钮 = new roundedButton("示例2", 30);
-        示例3按钮 = new roundedButton("示例3", 30);
+        Example1 = new roundedButton("示例1", 30);
+        Example2 = new roundedButton("示例2", 30);
+        Example3 = new roundedButton("示例3", 30);
 
-        图形按钮边框 = new LineBorder(标题字体颜色, 2); 
-        图形按钮字体 = new Font("黑体", Font.BOLD, 37);
-        图形按钮触发字体 = new Font("黑体", Font.PLAIN, 27);
+        //graphButtonBorder = new LineBorder(titleFontColor, 2); 
+        graphbuttonFont = new Font("黑体", Font.BOLD, 37);
+        graphbtnActiveFont = new Font("黑体", Font.PLAIN, 27);
         
-        示例1按钮.setBorder(图形按钮边框);
-        示例2按钮.setBorder(图形按钮边框);
-        示例3按钮.setBorder(图形按钮边框);
+        //Example1.setBorder(graphButtonBorder);
+        //Example2.setBorder(graphButtonBorder);
+        //Example3.setBorder(graphButtonBorder);
         
-        示例1按钮.setFont(按钮字体);
-        示例2按钮.setFont(按钮字体);
-        示例3按钮.setFont(按钮字体);   
+        Example1.setFont(buttonFont);
+        Example2.setFont(buttonFont);
+        Example3.setFont(buttonFont);   
         
-        示例1按钮.setBackground(按钮背景颜色);
-        示例2按钮.setBackground(按钮背景颜色);
-        示例3按钮.setBackground(按钮背景颜色);
+        Example1.setBackground(ButtonBackColor);
+        Example2.setBackground(ButtonBackColor);
+        Example3.setBackground(ButtonBackColor);
         
-        示例1按钮.setForeground(按钮字体颜色);
-        示例2按钮.setForeground(按钮字体颜色);
-        示例3按钮.setForeground(按钮字体颜色); 
+        Example1.setForeground(buttonFontColor);
+        Example2.setForeground(buttonFontColor);
+        Example3.setForeground(buttonFontColor); 
 
-        LP布局.add(示例1, new Integer(JLayeredPane.DEFAULT_LAYER));
-        LP布局.add(示例1按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        LP布局.add(示例2按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        LP布局.add(示例3按钮, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER));
+        LP布局.add(Example1, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(Example2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        LP布局.add(Example3, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         
-        示例1按钮.setBounds(1012, 35, 500, 250);
-        示例2按钮.setBounds(1012, 305, 500, 250);
-        示例3按钮.setBounds(1012, 580, 500, 250);
+        Example1.setBounds(1012, 35, 500, 250);
+        Example2.setBounds(1012, 305, 500, 250);
+        Example3.setBounds(1012, 580, 500, 250);
         
     }
 
-    void 添加按钮监视器(){
+    void ADDButtonListener(){
 
-        基础知识按钮.addActionListener(new ActionListener() {  
+        基础知识Button.addActionListener(new ActionListener() {  
             @Override  
             public void actionPerformed(ActionEvent e) {
 
-                打开文件.输入文件地址("resources\\_100文档\\基础知识.txt");
-                按下按钮音效播放.播放音效();
+                openfile.inputFilePath("resources\\_100文档\\基础知识.txt");
+                pressButtonSound.播放音效();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
             }  
         }); 
 
-        基础知识按钮.addMouseListener(new MouseAdapter() {
+        基础知识Button.addMouseListener(new MouseAdapter() {
             
             @Override
             public void mouseEntered(MouseEvent e){
 
-                触碰按钮音效播放.播放音效();
-                基础知识按钮.setForeground(按钮触发字体颜色);
-                基础知识按钮.setBackground(按钮触发背景颜色);
+                touchButtonSound.播放音效();
+                基础知识Button.setForeground(btnActiveFontColor);
+                基础知识Button.setBackground(ButtonActiveBackColor);
             }
 
             @Override  
             public void mouseExited(MouseEvent e) {  
-                基础知识按钮.setFont(按钮字体);
-                基础知识按钮.setForeground(按钮字体颜色);
-                基础知识按钮.setBackground(按钮背景颜色);
+                基础知识Button.setFont(buttonFont);
+                基础知识Button.setForeground(buttonFontColor);
+                基础知识Button.setBackground(ButtonBackColor);
             }  
         });
 
 
         //
-        选举规则按钮.addActionListener(new ActionListener() {
+        选举规则Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                打开文件.输入文件地址("resources\\_100文档\\选举规则.txt");
-                按下按钮音效播放.播放音效();
+                openfile.inputFilePath("resources\\_100文档\\选举规则.txt");
+                pressButtonSound.播放音效();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
-        选举规则按钮.addMouseListener(new MouseAdapter() {
+        选举规则Button.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                触碰按钮音效播放.播放音效();
-                选举规则按钮.setForeground(按钮触发字体颜色);
-                选举规则按钮.setBackground(按钮触发背景颜色);
+                touchButtonSound.播放音效();
+                选举规则Button.setForeground(btnActiveFontColor);
+                选举规则Button.setBackground(ButtonActiveBackColor);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                选举规则按钮.setFont(按钮字体);
-                选举规则按钮.setForeground(按钮字体颜色);
-                选举规则按钮.setBackground(按钮背景颜色);
+                选举规则Button.setFont(buttonFont);
+                选举规则Button.setForeground(buttonFontColor);
+                选举规则Button.setBackground(ButtonBackColor);
             }
         });
 
 
         //
-        操作指南按钮.addActionListener(new ActionListener() {
+        操作指南Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                打开文件.输入文件地址("resources\\_100文档\\操作指南.txt");
-                按下按钮音效播放.播放音效();
+                openfile.inputFilePath("resources\\_100文档\\操作指南.txt");
+                pressButtonSound.播放音效();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
-        操作指南按钮.addMouseListener(new MouseAdapter() {
+        操作指南Button.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                触碰按钮音效播放.播放音效();
-                操作指南按钮.setForeground(按钮触发字体颜色);
-                操作指南按钮.setBackground(按钮触发背景颜色);
+                touchButtonSound.播放音效();
+                操作指南Button.setForeground(btnActiveFontColor);
+                操作指南Button.setBackground(ButtonActiveBackColor);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                操作指南按钮.setFont(按钮字体);
-                操作指南按钮.setForeground(按钮字体颜色);
-                操作指南按钮.setBackground(按钮背景颜色);
+                操作指南Button.setFont(buttonFont);
+                操作指南Button.setForeground(buttonFontColor);
+                操作指南Button.setBackground(ButtonBackColor);
             }
         });
 
     }
   
-    void 添加图形按钮监视器(){
+    void ADDgraphButtonListener(){
 
-        示例1按钮.addMouseListener(new MouseAdapter() {
+        Example1.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                触碰按钮音效播放.播放音效();
-                LP布局.add(示例1, new Integer(JLayeredPane.DEFAULT_LAYER + 2));
+                touchButtonSound.播放音效();
+                LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER + 2));
             }
 
         });
 
-        示例1.addActionListener(new ActionListener() {
+        btnExample1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                按下按钮音效播放.播放音效();
+                pressButtonSound.播放音效();
             }
             
         });
 
-        示例1.addMouseListener(new MouseAdapter() {
+        btnExample1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
 
-                LP布局.add(示例1, new Integer(JLayeredPane.DEFAULT_LAYER));
+                LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER));
             }
         });
 
