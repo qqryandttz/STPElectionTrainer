@@ -127,9 +127,9 @@ class homePage extends JPanel{
 
     void ADDgraphButton(){
 
-        btnExample1 = new btnExample1();
-        btnExample2 = new btnExample1();
-        btnExample3 = new btnExample1();
+        btnExample1 = new btnExample1(30);
+        btnExample2 = new btnExample1(30);
+        btnExample3 = new btnExample1(3044);
 
         Example1 = new roundedButton("示例1", 30);
         Example2 = new roundedButton("示例2", 30);
