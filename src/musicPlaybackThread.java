@@ -5,7 +5,7 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
 
-public class musicPlaybackThread extends Thread { 
+class musicPlaybackThread extends Thread { 
 
     AdvancedPlayer 音乐播放器;
     private volatile boolean is暂停 = false;

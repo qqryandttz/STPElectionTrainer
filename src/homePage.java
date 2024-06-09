@@ -18,7 +18,9 @@ class homePage extends JPanel{
     starrySkyPanel starrySkyPanel;
     diagonalPanel diagonal1, diagonal2;
     roundedButton 基础知识Button,选举规则Button,操作指南Button;  
-    btnExample1 btnExample1, btnExample2, btnExample3;
+    btnExample1 btnExample1;
+    btnExample2 btnExample2;
+    btnExample3 btnExample3;
     roundedButton Example1,Example2,Example3;
     //LineBorder graphButtonBorder;
     Font titleFont,subtitleFont;
@@ -128,8 +130,8 @@ class homePage extends JPanel{
     void ADDgraphButton(){
 
         btnExample1 = new btnExample1(30);
-        btnExample2 = new btnExample1(30);
-        btnExample3 = new btnExample1(3044);
+        btnExample2 = new btnExample2(30);
+        btnExample3 = new btnExample3(30);
 
         Example1 = new roundedButton("示例1", 30);
         Example2 = new roundedButton("示例2", 30);
@@ -266,6 +268,7 @@ class homePage extends JPanel{
   
     void ADDgraphButtonListener(){
 
+        //
         Example1.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -294,6 +297,75 @@ class homePage extends JPanel{
 
                 LP布局.remove(btnExample1);
                 LP布局.add(Example1, new Integer(JLayeredPane.DEFAULT_LAYER+1));
+                resetPage();
+            }
+        });
+
+
+        //
+        Example2.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                touchButtonSound.播放音效();
+                LP布局.remove(Example2);
+                LP布局.add(btnExample2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+                resetPage();
+            }
+
+        });
+
+        btnExample2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                pressButtonSound.播放音效();
+            }
+
+        });
+
+        btnExample2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+                LP布局.remove(btnExample2);
+                LP布局.add(Example2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+                resetPage();
+            }
+        });
+
+
+
+        //
+        Example3.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                touchButtonSound.播放音效();
+                LP布局.remove(Example3);
+                LP布局.add(btnExample3, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+                resetPage();
+            }
+
+        });
+
+        btnExample3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                pressButtonSound.播放音效();
+            }
+
+        });
+
+        btnExample3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+                LP布局.remove(btnExample3);
+                LP布局.add(Example3, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
                 resetPage();
             }
         });

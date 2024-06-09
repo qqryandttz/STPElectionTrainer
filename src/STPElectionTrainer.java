@@ -6,7 +6,7 @@ class STPElectionTrainer{
     public static void main(String[] args) {
 
         InterfaceExecution InterfaceExecution = new InterfaceExecution();
-        InterfaceExecution.开始InterfaceExecution();
+        InterfaceExecution.进行InterfaceExecution();
     }
 }
 
@@ -20,7 +20,7 @@ class InterfaceExecution{
     JMenuItem[] JMenuItem; 
     playStatus soundEffect,bgMusic;
     
-    void 开始InterfaceExecution(){
+    void 进行InterfaceExecution(){
 
         CL布局 = new CardLayout();
         初始化菜单();
