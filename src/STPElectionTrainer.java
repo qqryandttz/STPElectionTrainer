@@ -1,6 +1,5 @@
 import java.awt.CardLayout;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 
 class STPElectionTrainer{
     public static void main(String[] args) {
@@ -19,13 +18,14 @@ class InterfaceExecution{
     OperationInterface OperationInterface;
     JMenuItem[] JMenuItem; 
     playStatus soundEffect,bgMusic;
+    int isToggle = 0;  //0代表未进入过操作页面，1代表在主页，2代表在操作页面
     
     void 进行InterfaceExecution(){
 
         CL布局 = new CardLayout();
         initJMenu();
-        myJFrame = new myJFrame("STPElectionTrainer",JMenuItem);
-        homePage = new homePage();
+        myJFrame = new myJFrame(this,"STPElectionTrainer",JMenuItem);
+        homePage = new homePage(this);
         OperationInterface = new OperationInterface();
 
         //bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
@@ -40,12 +40,12 @@ class InterfaceExecution{
 
     void initJMenu(){
 
-    JMenuItem = new JMenuItem[5];
-    JMenuItem[0] = new JMenuItem("音量控制");  
-    JMenuItem[1] = new JMenuItem("操作指南");  
-    JMenuItem[2] = new JMenuItem("基础知识");  
-    JMenuItem[3] = new JMenuItem("选举规则");  
-    JMenuItem[4] = new JMenuItem("返回"); 
+        JMenuItem = new JMenuItem[5];
+        JMenuItem[0] = new JMenuItem("音量控制");  
+        JMenuItem[1] = new JMenuItem("操作指南");  
+        JMenuItem[2] = new JMenuItem("基础知识");  
+        JMenuItem[3] = new JMenuItem("选举规则");  
+        JMenuItem[4] = new JMenuItem("切换"); 
 
     }
 
@@ -54,7 +54,13 @@ class InterfaceExecution{
         CL布局.show(myJFrame.getContentPane(), "主页");
     }
 
-    void goToOperationInterface(){
+    void goToOperationInterface(int x){
+
+        CL布局.show(myJFrame.getContentPane(), "操作界面");
+        OperationInterface.ComponentsOI(x);
+    }
+
+    void goToOperationInterface() {
 
         CL布局.show(myJFrame.getContentPane(), "操作界面");
     }

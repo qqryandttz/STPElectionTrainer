@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 class homePage extends JPanel{
 
+    InterfaceExecution IE;
     JLayeredPane LP布局;
     JLabel title,subtitle;
     starrySkyPanel starrySkyPanel;
@@ -29,8 +30,9 @@ class homePage extends JPanel{
     openfile openfile = new openfile();
     playStatus touchButtonSound, pressButtonSound;
 
-    homePage(){
+    homePage(InterfaceExecution interfaceExecution){
 
+        IE = interfaceExecution;
         LP布局 = new JLayeredPane();
         LP布局.setBounds(0, 0, 1600, 900);
 
@@ -173,6 +175,7 @@ class homePage extends JPanel{
 
                 openfile.inputFilePath("resources\\_100文档\\基础知识.txt");
                 pressButtonSound.播放音效();
+                IE.isToggle = 2;
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
             }  
@@ -204,6 +207,7 @@ class homePage extends JPanel{
 
                 openfile.inputFilePath("resources\\_100文档\\选举规则.txt");
                 pressButtonSound.播放音效();
+                IE.isToggle = 2;
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -235,6 +239,7 @@ class homePage extends JPanel{
 
                 openfile.inputFilePath("resources\\_100文档\\操作指南.txt");
                 pressButtonSound.播放音效();
+                IE.isToggle = 2;
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -281,6 +286,8 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.播放音效();
+                IE.isToggle = 2;
+                IE.goToOperationInterface(1);
             }
             
         });
@@ -315,7 +322,10 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.播放音效();
+                IE.isToggle = 2;
+                IE.goToOperationInterface(2);
             }
+            
 
         });
 
@@ -350,7 +360,10 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.播放音效();
+                IE.isToggle = 2;
+                IE.goToOperationInterface(3);
             }
+            
 
         });
 
