@@ -26,7 +26,7 @@ class InterfaceExecution{
         initJMenu();
         myJFrame = new myJFrame(this,"STPElectionTrainer",JMenuItem);
         homePage = new homePage(this);
-        OperationInterface = new OperationInterface();
+        OperationInterface = new OperationInterface(this);
 
         //bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
         //bgMusic.播放循环音乐();

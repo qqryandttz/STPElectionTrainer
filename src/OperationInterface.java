@@ -3,14 +3,17 @@ import java.awt.*;
 
 class OperationInterface extends JPanel{
 
-    int Example;
+    InterfaceExecution IE = new InterfaceExecution();
+    int intExample;
     JLayeredPane LP布局;
     starrySkyPanel starrySkyPanel;
     Line aline;
+    PanelMain panelMain;
     
 
-    OperationInterface(){
+    OperationInterface(InterfaceExecution interfaceExecution){
 
+        IE = interfaceExecution;
         LP布局 = new JLayeredPane();
         LP布局.setBounds(0, 0, 1600, 900);
 
@@ -23,7 +26,7 @@ class OperationInterface extends JPanel{
 
     void ComponentsOI(int isExample){
 
-        Example = isExample;
+        intExample = isExample;
 
         createPanelMain();
         createPanelassume();
@@ -45,6 +48,15 @@ class OperationInterface extends JPanel{
     }
 
     void createPanelMain(){
+
+        panelMain = new PanelMain(IE);
+        if(intExample == 1){
+
+        }else if(intExample == 2){
+            
+        }else if(intExample == 3){
+            
+        }
 
     }
 
