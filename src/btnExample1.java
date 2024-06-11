@@ -1,6 +1,5 @@
 import javax.swing.*;  
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.awt.geom.RoundRectangle2D;  
   
 class btnExample1 extends JButton {  

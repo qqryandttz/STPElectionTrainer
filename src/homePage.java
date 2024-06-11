@@ -22,7 +22,6 @@ class homePage extends JPanel{
     btnExample2 btnExample2;
     btnExample3 btnExample3;
     roundedButton Example1,Example2,Example3;
-    //LineBorder graphButtonBorder;
     Font titleFont,subtitleFont;
     Font buttonFont,btnActiveFont,graphbuttonFont,graphbtnActiveFont;
     Color titleFontColor,subtitleFontColor,buttonFontColor,ButtonBackColor, ButtonBorderColor;
@@ -137,13 +136,8 @@ class homePage extends JPanel{
         Example2 = new roundedButton("示例2", 30);
         Example3 = new roundedButton("示例3", 30);
 
-        //graphButtonBorder = new LineBorder(titleFontColor, 2); 
         graphbuttonFont = new Font("黑体", Font.BOLD, 37);
         graphbtnActiveFont = new Font("黑体", Font.PLAIN, 27);
-        
-        //Example1.setBorder(graphButtonBorder);
-        //Example2.setBorder(graphButtonBorder);
-        //Example3.setBorder(graphButtonBorder);
         
         Example1.setFont(buttonFont);
         Example2.setFont(buttonFont);

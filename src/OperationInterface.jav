@@ -1,0 +1,3 @@
+class OperationInterface extends JPanel{
+
+}

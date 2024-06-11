@@ -23,7 +23,7 @@ class InterfaceExecution{
     void 进行InterfaceExecution(){
 
         CL布局 = new CardLayout();
-        初始化菜单();
+        initJMenu();
         myJFrame = new myJFrame("STPElectionTrainer",JMenuItem);
         homePage = new homePage();
         OperationInterface = new OperationInterface();
@@ -38,7 +38,7 @@ class InterfaceExecution{
 
     }
 
-    void 初始化菜单(){
+    void initJMenu(){
 
     JMenuItem = new JMenuItem[5];
     JMenuItem[0] = new JMenuItem("音量控制");  
@@ -49,12 +49,12 @@ class InterfaceExecution{
 
     }
 
-    void 切换到主页(){
+    void goToHomePage(){
 
         CL布局.show(myJFrame.getContentPane(), "主页");
     }
 
-    void 切换到OperationInterface(){
+    void goToOperationInterface(){
 
         CL布局.show(myJFrame.getContentPane(), "操作界面");
     }
@@ -62,9 +62,5 @@ class InterfaceExecution{
 
 }
 
-
-class OperationInterface extends JPanel{
-
-}
 
                     
