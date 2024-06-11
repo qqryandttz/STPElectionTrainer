@@ -40,10 +40,10 @@ class btnExample1 extends JButton {
         g2d.drawRect(x, y, RECT_WIDTH, RECT_HEIGHT);  
    
         g2d.setColor(new Color(0x47, 0x4b, 0x4f));  
-        g2d.fillOval(x - 5, y - 5, 15, 15);   
-        g2d.fillOval(x + RECT_WIDTH - 5, y - 5, 15, 15); // 右上  
-        g2d.fillOval(x - 5, y + RECT_HEIGHT - 5, 15, 15); // 左下  
-        g2d.fillOval(x + RECT_WIDTH - 5, y + RECT_HEIGHT - 5, 15, 15); // 右下  
+        g2d.fillOval(x - 10, y - 10, 20, 20);   
+        g2d.fillOval(x + RECT_WIDTH - 10, y - 10, 20, 20); // 右上  
+        g2d.fillOval(x - 10, y + RECT_HEIGHT - 10, 20, 20); // 左下  
+        g2d.fillOval(x + RECT_WIDTH - 10, y + RECT_HEIGHT - 10, 20, 20); // 右下  
     }  
   
 }
@@ -85,13 +85,18 @@ class btnExample2 extends JButton {
 
         g2d.setStroke(new BasicStroke(LINE_WIDTH));
         g.setColor(new Color(0xf5, 0xf5, 0xf5));
-        g2d.drawLine(x, y, x + 310, y + 300);
+        g2d.drawLine(x, y, x + 310, y + 155);
+        g2d.drawLine(x, y, x + 310, y);
+        g2d.drawLine(x, y, x , y + 155);
+        g2d.drawLine(x + 310, y, x, y + 155);
+        g2d.drawLine(x + 310, y, x + 310, y + 155);
+
 
         g2d.setColor(new Color(0x47, 0x4b, 0x4f));
-        g2d.fillOval(x - 5, y - 5, 15, 15); 
-        g2d.fillOval(x + RECT_WIDTH - 5, y - 5, 15, 15); // 右上
-        g2d.fillOval(x - 5, y + RECT_HEIGHT - 5, 15, 15); // 左下
-        g2d.fillOval(x + RECT_WIDTH - 5, y + RECT_HEIGHT - 5, 15, 15); // 右下
+        g2d.fillOval(x - 10, y - 10, 20, 20); 
+        g2d.fillOval(x + RECT_WIDTH - 10, y - 10, 20, 20); // 右上
+        g2d.fillOval(x - 10, y + RECT_HEIGHT - 10, 20, 20); // 左下
+        g2d.fillOval(x + RECT_WIDTH - 10, y + RECT_HEIGHT - 10, 20, 20); // 右下
     }
 
 }
@@ -132,13 +137,22 @@ class btnExample3 extends JButton {
 
         g2d.setStroke(new BasicStroke(LINE_WIDTH));
         g.setColor(new Color(0xf5, 0xf5, 0xf5));
-        g2d.drawRect(x, y, RECT_WIDTH, RECT_HEIGHT);
+        g2d.drawLine(x, y - 10, x + 310, y - 10);
+        g2d.drawLine(x, y - 10, x , y + 80);
+
+        g2d.drawLine(x, y+80, x+310, y + 80);
+        g2d.drawLine(x, y+80, x + 155, y + 170);
+
+        g2d.drawLine(x + 310, y + 80, x + 310, y - 10);
+        g2d.drawLine(x + 310, y + 80, x + 155, y + 170);
 
         g2d.setColor(new Color(0x47, 0x4b, 0x4f));
-        g2d.fillOval(x - 5, y - 5, 15, 15); // 左上
-        g2d.fillOval(x + RECT_WIDTH - 5, y - 5, 15, 15); // 右上
-        g2d.fillOval(x - 5, y + RECT_HEIGHT - 5, 15, 15); // 左下
-        g2d.fillOval(x + RECT_WIDTH - 5, y + RECT_HEIGHT - 5, 15, 15); // 右下
+        g2d.fillOval(x - 10, y - 20, 20, 20); // 左上
+        g2d.fillOval(x + RECT_WIDTH - 10, y - 20, 20, 20); // 右上
+
+        g2d.fillOval(x - 10, y + 80 - 10, 20, 20); // 左下
+        g2d.fillOval(x + RECT_WIDTH - 10, y + 80 - 10, 20, 20); // 右下
+        g2d.fillOval(x + (RECT_WIDTH - 10)/2 - 5, y + 160, 20, 20); // 下
     }
 
 }
