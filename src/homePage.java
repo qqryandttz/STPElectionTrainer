@@ -286,8 +286,32 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.播放音效();
-                IE.isToggle = 2;
-                IE.goToOperationInterface(1);
+                if(IE.isToggle == 1){
+
+
+                    int option = JOptionPane.showOptionDialog(
+                            null, 
+                            "<html><font face='黑体' size='5'>您确定要进入一个新的拓扑图吗？</font></html>",
+                            "提示",
+                            JOptionPane.YES_NO_OPTION, 
+                            JOptionPane.INFORMATION_MESSAGE, 
+                            null, 
+                            new String[] { "确定", "取消" }, 
+                            "确定"
+                    );
+
+                    if (option == JOptionPane.YES_OPTION) {
+                        
+                        IE.isToggle = 2;
+                        IE.goToOperationInterface(1);
+                    } else if (option == JOptionPane.NO_OPTION) {
+                       
+                    }
+
+                }else{
+                    IE.isToggle = 2;
+                    IE.goToOperationInterface(1);
+                }
             }
             
         });

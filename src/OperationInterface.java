@@ -3,12 +3,13 @@ import java.awt.*;
 
 class OperationInterface extends JPanel{
 
-    InterfaceExecution IE = new InterfaceExecution();
+    InterfaceExecution IE;
     int intExample;
     JLayeredPane LP布局;
     starrySkyPanel starrySkyPanel;
     Line aline;
     PanelMain panelMain;
+    PanelAssume panelAssume;
     
 
     OperationInterface(InterfaceExecution interfaceExecution){
@@ -19,7 +20,7 @@ class OperationInterface extends JPanel{
 
         ADDstarrySkyPanel();
         ADDaline();
-
+        
         this.setLayout(new BorderLayout());
         this.add(LP布局, BorderLayout.CENTER);
     }
@@ -28,8 +29,8 @@ class OperationInterface extends JPanel{
 
         intExample = isExample;
 
-        createPanelMain();
-        createPanelassume();
+        ADDPaneMain();
+        ADDPanelassume();
         creatPanelSwitch();
 
     }
@@ -47,21 +48,20 @@ class OperationInterface extends JPanel{
         LP布局.add(aline, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
     }
 
-    void createPanelMain(){
+    void ADDPaneMain(){
 
         panelMain = new PanelMain(IE);
-        if(intExample == 1){
-
-        }else if(intExample == 2){
-            
-        }else if(intExample == 3){
-            
-        }
+        panelMain.setBounds(50,40,750,375);
+        LP布局.add(panelMain, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
+        
 
     }
 
-    void createPanelassume(){
+    void ADDPanelassume(){
 
+        panelAssume = new PanelAssume(IE);
+        panelAssume.setBounds(938, 40, 600, 375);
+        LP布局.add(panelAssume, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
     }
 
     void creatPanelSwitch(){

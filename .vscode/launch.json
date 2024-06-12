@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "x",
+            "request": "launch",
+            "mainClass": "x",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "RadioButtonExample",
+            "request": "launch",
+            "mainClass": "RadioButtonExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "CustomPanel",
             "request": "launch",
             "mainClass": "CustomPanel",

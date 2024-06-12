@@ -126,6 +126,9 @@ class myJFrame extends JFrame{
 
                 } else if (IE.isToggle == 2) {
 
+                    JOptionPane.showMessageDialog(new Frame(),
+                            "<html><font face='黑体' size='5'>已为您存档，再次点击切换可返回拓扑图。</font></html>",
+                            "提示", JOptionPane.INFORMATION_MESSAGE);
                     IE.goToHomePage();
                     IE.isToggle = 1;
 

@@ -15,7 +15,7 @@ class InterfaceExecution{
     CardLayout CL布局;
     myJFrame myJFrame;
     homePage homePage;
-    OperationInterface OperationInterface;
+    OperationInterface OI;
     JMenuItem[] JMenuItem; 
     playStatus soundEffect,bgMusic;
     int isToggle = 0;  //0代表未进入过操作页面，1代表在主页，2代表在操作页面
@@ -26,14 +26,14 @@ class InterfaceExecution{
         initJMenu();
         myJFrame = new myJFrame(this,"STPElectionTrainer",JMenuItem);
         homePage = new homePage(this);
-        OperationInterface = new OperationInterface(this);
+        OI = new OperationInterface(this);
 
         //bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
         //bgMusic.播放循环音乐();
 
         myJFrame.getContentPane().setLayout(CL布局);
         myJFrame.getContentPane().add(homePage, "主页");
-        myJFrame.getContentPane().add(OperationInterface, "操作界面");
+        myJFrame.getContentPane().add(OI, "操作界面");
         CL布局.show(myJFrame.getContentPane(), "主页");
 
     }
@@ -57,7 +57,7 @@ class InterfaceExecution{
     void goToOperationInterface(int x){
 
         CL布局.show(myJFrame.getContentPane(), "操作界面");
-        OperationInterface.ComponentsOI(x);
+        OI.ComponentsOI(x);
     }
 
     void goToOperationInterface() {
