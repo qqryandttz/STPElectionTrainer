@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 
-class Panelassume extends JPanel {
+//推测面板
+
+class PanelAssume extends JPanel {
 
 }
 

@@ -116,7 +116,7 @@ class myJFrame extends JFrame{
 
                 if(IE.isToggle == 0){
 
-                    JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>请先进入一个拓扑图</font></html>",
+                    JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>请先进入一个拓扑图！</font></html>",
                             "提示", JOptionPane.INFORMATION_MESSAGE);
 
                 }else if(IE.isToggle == 1){
