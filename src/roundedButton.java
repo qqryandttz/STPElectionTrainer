@@ -11,6 +11,7 @@ class roundedButton extends JButton {
         this.圆角直径 = 圆角直径;  
         setContentAreaFilled(false); 
         setBorderPainted(false); 
+        setFocusable(false);
     }  
   
     @Override  

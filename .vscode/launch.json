@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TextFieldWithPlaceholderExample",
+            "request": "launch",
+            "mainClass": "TextFieldWithPlaceholderExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "TextFieldWithPlaceholder",
+            "request": "launch",
+            "mainClass": "TextFieldWithPlaceholder",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "CircularButtonExample",
+            "request": "launch",
+            "mainClass": "CircularButtonExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "x",
             "request": "launch",
             "mainClass": "x",

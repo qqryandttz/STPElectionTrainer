@@ -5,6 +5,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 //4交换机面板
 class PanelSwitchFour extends JPanel {
@@ -74,15 +75,26 @@ class PanelSwitchFive extends JPanel {
 
 class PanelSwitch extends JPanel {
 
+    JTextField name;
+
+    PanelSwitch(){
+
+        name = new JTextField();
+        add(name);
+
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
+
+        
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
         g2d.setColor(getBackground());
         g2d.fill(roundedRectangle);
-        setBackground(new Color(0x86, 0xc2, 0x32));
+        setBackground(new Color(0x61, 0x89, 0x2f));
 
     }
 
