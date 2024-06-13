@@ -28,7 +28,7 @@ class myJFrame extends JFrame{
         setSize(1600, 900);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.getContentPane().setBackground(Color.BLACK);
+        setBackground(Color.BLACK);
         setLayout(new BorderLayout());
         this.setResizable(false);
 

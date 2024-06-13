@@ -10,6 +10,7 @@ class OperationInterface extends JPanel{
     Line aline;
     PanelMain panelMain;
     PanelAssume panelAssume;
+    JPanel PanelSwitch;
     
 
     OperationInterface(InterfaceExecution interfaceExecution){
@@ -31,7 +32,7 @@ class OperationInterface extends JPanel{
 
         ADDPaneMain();
         ADDPanelassume();
-        creatPanelSwitch();
+        ADDPanelSwitch();
 
     }
 
@@ -51,7 +52,7 @@ class OperationInterface extends JPanel{
     void ADDPaneMain(){
 
         panelMain = new PanelMain(IE);
-        panelMain.setBounds(50,40,750,375);
+        panelMain.setBounds(60,40,750,375);
         LP布局.add(panelMain, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
         
 
@@ -60,11 +61,20 @@ class OperationInterface extends JPanel{
     void ADDPanelassume(){
 
         panelAssume = new PanelAssume(IE);
-        panelAssume.setBounds(938, 40, 600, 375);
+        panelAssume.setBounds(900, 40, 600, 375);
         LP布局.add(panelAssume, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
     }
 
-    void creatPanelSwitch(){
+    void ADDPanelSwitch(){
+
+        if(intExample == 1 || intExample == 2){
+            PanelSwitch = new PanelSwitchFour();
+
+        }else if(intExample == 3){
+            PanelSwitch = new PanelSwitchFive();
+        }
+        PanelSwitch.setBounds(0, 475, 1600, 412);
+        LP布局.add(PanelSwitch, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
 
     }
 

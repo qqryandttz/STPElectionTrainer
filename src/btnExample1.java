@@ -9,7 +9,7 @@ class btnExample1 extends JButton {
     private static final int LINE_WIDTH = 5;
     private int 圆角直径;
 
-    public btnExample1( int 圆角直径) {  
+    btnExample1( int 圆角直径) {  
         this.圆角直径 = 圆角直径;  
         setContentAreaFilled(false);
         setBorderPainted(false);
