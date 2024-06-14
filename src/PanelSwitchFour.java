@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -75,11 +77,16 @@ class PanelSwitchFive extends JPanel {
 
 class PanelSwitch extends JPanel {
 
-    JTextField name;
+    JTextField name, MAC, Pri;
+    JLabel namePromptWords, MACPromptWords, PriPromptWords;
+    JLabel intPIDPromptWords, intStatePromptWords;
 
     PanelSwitch(){
 
+        setLayout(null);
         name = new JTextField();
+        name.setBounds(20, 20, 300, 20);
+        name.setBackground(new Color(0x61, 0x89, 0x2f));
         add(name);
 
     }
