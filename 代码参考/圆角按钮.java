@@ -11,7 +11,7 @@ class 圆角按钮 extends JButton {
         super(文本);  
         this.圆角直径 = 圆角直径;  
         setContentAreaFilled(false); // 不绘制默认的背景  
-        //setBorderPainted(false); // 不绘制边框  
+        setBorderPainted(false); // 不绘制边框  
     }  
   
     @Override  

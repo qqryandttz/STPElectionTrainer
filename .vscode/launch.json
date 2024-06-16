@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "playStatus",
+            "request": "launch",
+            "mainClass": "playStatus",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "TextFieldWithPlaceholderExample",
+            "request": "launch",
+            "mainClass": "TextFieldWithPlaceholderExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "TextFieldWithPlaceholder",
+            "request": "launch",
+            "mainClass": "TextFieldWithPlaceholder",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "CircularButtonExample",
+            "request": "launch",
+            "mainClass": "CircularButtonExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "x",
+            "request": "launch",
+            "mainClass": "x",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "RadioButtonExample",
+            "request": "launch",
+            "mainClass": "RadioButtonExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "CustomPanel",
             "request": "launch",
             "mainClass": "CustomPanel",

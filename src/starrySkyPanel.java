@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random; 
    
-public class 星空面板 extends JPanel {  
+public class starrySkyPanel extends JPanel {  
   
     private static final int 面板宽度 = 1600;  
     private static final int 面板高度 = 900;  
@@ -13,7 +13,7 @@ public class 星空面板 extends JPanel {
     private Color[] 星星颜色 = new Color[星星最大数量];  
     private Random 随机数生成器 = new Random();  
   
-    public 星空面板() {  
+    public starrySkyPanel() {  
         setPreferredSize(new Dimension(面板宽度, 面板高度));  
         setBackground(new Color(0x22, 0x26, 0x29));  
   

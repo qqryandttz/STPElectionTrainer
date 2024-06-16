@@ -2,15 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-class 圆角按钮 extends JButton {  
+class roundedButton extends JButton {  
    
     private int 圆角直径;
   
-    public 圆角按钮(String 文本, int 圆角直径) {  
+    public roundedButton(String 文本, int 圆角直径) {  
         super(文本);  
         this.圆角直径 = 圆角直径;  
         setContentAreaFilled(false); 
         setBorderPainted(false); 
+        setFocusable(false);
     }  
   
     @Override  
