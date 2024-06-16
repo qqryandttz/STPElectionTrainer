@@ -174,7 +174,7 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 openfile.inputFilePath("resources\\_100文档\\基础知识.txt");
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 IE.isToggle = 2;
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
@@ -186,7 +186,7 @@ class homePage extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e){
 
-                touchButtonSound.播放音效();
+                touchButtonSound.playMusicOnce();
                 基础知识Button.setForeground(btnActiveFontColor);
                 基础知识Button.setBackground(ButtonActiveBackColor);
             }
@@ -206,7 +206,7 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 openfile.inputFilePath("resources\\_100文档\\选举规则.txt");
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 IE.isToggle = 2;
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
@@ -218,7 +218,7 @@ class homePage extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                touchButtonSound.播放音效();
+                touchButtonSound.playMusicOnce();
                 选举规则Button.setForeground(btnActiveFontColor);
                 选举规则Button.setBackground(ButtonActiveBackColor);
             }
@@ -238,7 +238,7 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 openfile.inputFilePath("resources\\_100文档\\操作指南.txt");
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 IE.isToggle = 2;
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
@@ -250,7 +250,7 @@ class homePage extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                touchButtonSound.播放音效();
+                touchButtonSound.playMusicOnce();
                 操作指南Button.setForeground(btnActiveFontColor);
                 操作指南Button.setBackground(ButtonActiveBackColor);
             }
@@ -273,7 +273,7 @@ class homePage extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                touchButtonSound.播放音效();
+                touchButtonSound.playMusicOnce();
                 LP布局.remove(Example1);
                 LP布局.add(btnExample1, new Integer(JLayeredPane.DEFAULT_LAYER+1));
                 resetPage();
@@ -285,7 +285,7 @@ class homePage extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 if(IE.isToggle == 1){
 
 
@@ -333,7 +333,7 @@ class homePage extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                touchButtonSound.播放音效();
+                touchButtonSound.playMusicOnce();
                 LP布局.remove(Example2);
                 LP布局.add(btnExample2, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
                 resetPage();
@@ -345,7 +345,7 @@ class homePage extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 IE.isToggle = 2;
                 IE.goToOperationInterface(2);
             }
@@ -371,7 +371,7 @@ class homePage extends JPanel{
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                touchButtonSound.播放音效();
+                touchButtonSound.playMusicOnce();
                 LP布局.remove(Example3);
                 LP布局.add(btnExample3, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
                 resetPage();
@@ -383,7 +383,7 @@ class homePage extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 IE.isToggle = 2;
                 IE.goToOperationInterface(3);
             }

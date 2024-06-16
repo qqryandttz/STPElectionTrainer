@@ -81,7 +81,7 @@ class myJFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 openfile.inputFilePath("resources\\_100文档\\基础知识.txt");
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);            }
         });
@@ -91,7 +91,7 @@ class myJFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 openfile.inputFilePath("resources\\_100文档\\选举规则.txt");
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
 
@@ -103,7 +103,7 @@ class myJFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 openfile.inputFilePath("resources\\_100文档\\操作指南.txt");
-                pressButtonSound.播放音效();
+                pressButtonSound.playMusicOnce();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
                         "提示", JOptionPane.INFORMATION_MESSAGE);
 

@@ -17,7 +17,7 @@ class InterfaceExecution{
     homePage homePage;
     OperationInterface OI;
     JMenuItem[] JMenuItem; 
-    playStatus soundEffect,bgMusic;
+    playStatus bgMusic;
     int isToggle = 0;  //0代表未进入过操作页面，1代表在主页，2代表在操作页面
     
     void 进行InterfaceExecution(){
@@ -28,8 +28,8 @@ class InterfaceExecution{
         homePage = new homePage(this);
         OI = new OperationInterface(this);
 
-        //bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
-        //bgMusic.播放循环音乐();
+        bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
+        bgMusic.playMusicOnLoop();
 
         myJFrame.getContentPane().setLayout(CL布局);
         myJFrame.getContentPane().add(homePage, "主页");

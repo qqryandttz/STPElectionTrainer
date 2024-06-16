@@ -11,7 +11,7 @@ class NetworkTopology{
             Switch switch12 = new Switch(12, "SW12", "54-89-98-1C-75-C0");
             Switch switch13 = new Switch(13, "SW13", "54-89-98-1C-75-C0");
             Switch switch14 = new Switch(14, "SW14", "54-89-98-1C-75-C0");
-            networkTopology [2][4]
+            networkTopology [2][4] ;
 
 
         }else if(isExample == 2){
