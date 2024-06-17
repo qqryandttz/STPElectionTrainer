@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Graph_2",
+            "request": "launch",
+            "mainClass": "Graph_2",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "playStatus",
             "request": "launch",
             "mainClass": "playStatus",

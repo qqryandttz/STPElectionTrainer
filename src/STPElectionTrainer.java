@@ -28,8 +28,8 @@ class InterfaceExecution{
         homePage = new homePage(this);
         OI = new OperationInterface(this);
 
-        bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
-        bgMusic.playMusicOnLoop();
+        //bgMusic = new playStatus(".\\resources\\_200音乐\\经年如夏.mp3");
+        //bgMusic.playMusicOnLoop();
 
         myJFrame.getContentPane().setLayout(CL布局);
         myJFrame.getContentPane().add(homePage, "主页");

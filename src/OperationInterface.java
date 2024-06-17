@@ -67,9 +67,11 @@ class OperationInterface extends JPanel{
 
     void ADDPanelSwitch(){
 
-        if(intExample == 1 || intExample == 2){
-            PanelSwitch = new PanelSwitchFour();
+        if(intExample == 1){
+            PanelSwitch = new PanelSwitchFour1();
 
+        } else if (intExample == 2) {
+            PanelSwitch = new PanelSwitchFour2();
         }else if(intExample == 3){
             PanelSwitch = new PanelSwitchFive();
         }
