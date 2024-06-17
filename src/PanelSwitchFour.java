@@ -84,12 +84,16 @@ class PanelSwitch extends JPanel {
     PanelSwitch(){
 
         setLayout(null);
+        ADDLabel;
+        ADDTextField();
         name = new JTextField();
         name.setBounds(20, 20, 300, 20);
         name.setBackground(new Color(0x61, 0x89, 0x2f));
         add(name);
 
     }
+
+    
 
     @Override
     protected void paintComponent(Graphics g) {
