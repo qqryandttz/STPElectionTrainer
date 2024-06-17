@@ -33,12 +33,12 @@ public class Graph_2 {
         vertexList.add(vertex);
     }
     public Graph_2(int n){
-//        初始化矩阵和vertexList
+                                //        初始化矩阵和vertexList
         edges = new int[n][n];
         vertexList = new ArrayList<String>(n);
         numOfEdges = 0;
     }
-    //    显示图对应的矩阵
+                                    //    显示图对应的矩阵
     public void showGraph(){
         for(int[]link:edges){
             System.out.println(Arrays.toString(link));

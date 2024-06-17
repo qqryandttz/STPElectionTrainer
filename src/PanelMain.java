@@ -67,6 +67,7 @@ class PanelMain extends JPanel{
         add(radioButton2);
         add(radioButton3);
         add(radioButton4);
+        radioButton1.setSelected(true);
 
     }
 

@@ -1,6 +1,7 @@
 class NetworkTopology{
 
     int[][] networkTopology;
+    int Example;
     private int inf = Integer.MAX_VALUE;
     Switch switch11, switch12, switch13, switch14;
     Switch switch21, switch22, switch23, switch24;
@@ -8,7 +9,8 @@ class NetworkTopology{
 
     NetworkTopology(int isExample){
 
-        if(isExample == 1){
+        Example = isExample;
+        if(Example == 1){
 
             switch11 = new Switch(11, "SW11", "54-89-98-1C-75-C0");
             switch12 = new Switch(12, "SW12", "54-89-98-1C-75-C1");
@@ -21,7 +23,7 @@ class NetworkTopology{
                 {inf,4,4,0}
             };
 
-        }else if(isExample == 2){
+        }else if(Example == 2){
 
             switch21 = new Switch(21, "SW21", "54-89-98-1C-75-C0");
             switch22 = new Switch(22, "SW22", "54-89-98-1C-75-C1");
@@ -35,7 +37,7 @@ class NetworkTopology{
             };
 
 
-        }else if(isExample == 3){
+        }else if(Example == 3){
 
             switch31 = new Switch(31, "SW31", "54-89-98-1C-75-C0");
             switch32 = new Switch(32, "SW32", "54-89-98-1C-75-C1");
@@ -65,6 +67,7 @@ class Switch{
     String mac;
     Long pri;
     int intNumber;
+    Interface Interface1, Interface2, Interface3, Interface4;
 
     Switch(int Code, String Name, String MAC){
 
@@ -75,31 +78,76 @@ class Switch{
 
         if(code == 11 || code == 12 || code == 13 || code == 14 || 
         code == 23 || code == 24 || code == 31 || code == 35){
-
             intNumber = 2;
-            Interface Interface1 = new Interface();
-            Interface Interface2 = new Interface();
-
         }else if(code == 21 || code == 22 || code == 33){
-
             intNumber = 3;
-            Interface Interface1 = new Interface();
-            Interface Interface2 = new Interface();
-            Interface Interface3 = new Interface();
-            
-
         }else if (code == 34) {
+            intNumber = 4; 
+        } else if (code == 32) {
+            intNumber = 1;
+        }
 
-            intNumber = 4;
-            Interface Interface1 = new Interface();
-            Interface Interface2 = new Interface();
-            Interface Interface3 = new Interface();
-            Interface Interface4 = new Interface();
+
+        if (code == 11) {
+            Interface1 = new Interface(1101);
+            Interface2 = new Interface(1102);
+
+        } else if (code == 12) {
+            Interface1 = new Interface(1201);
+            Interface2 = new Interface(1202);
+
+        } else if (code == 13) {
+            Interface1 = new Interface(1301);
+            Interface2 = new Interface(1302);
+
+        } else if (code == 14) {
+            Interface1 = new Interface(1401);
+            Interface2 = new Interface(1402);
+
+        } else if (code == 23) {
+            Interface1 = new Interface(2301);
+            Interface2 = new Interface(2302);
+
+        } else if (code == 24) {
+            Interface1 = new Interface(2401);
+            Interface2 = new Interface(2402);
+
+        } else if (code == 31) {
+            Interface1 = new Interface(3101);
+            Interface2 = new Interface(3102);
+
+        } else if (code == 35) {
+            Interface1 = new Interface(3501);
+            Interface2 = new Interface(3502);
+
+        } else if (code == 21) {
+
+            Interface1 = new Interface(2101);
+            Interface2 = new Interface(2102);
+            Interface3 = new Interface(2103);
+
+        } else if (code == 22) {
+
+            Interface1 = new Interface(2201);
+            Interface2 = new Interface(2202);
+            Interface3 = new Interface(2203);
+
+        } else if (code == 33) {
+
+            Interface1 = new Interface(3301);
+            Interface2 = new Interface(3302);
+            Interface3 = new Interface(3303);
+
+        } else if (code == 34) {
+
+            Interface1 = new Interface(3401);
+            Interface2 = new Interface(3402);
+            Interface3 = new Interface(3403);
+            Interface4 = new Interface(3404);
 
         } else if (code == 32) {
 
-            intNumber = 1;
-            Interface Interface1 = new Interface();
+            Interface1 = new Interface(3201);
         }
         
 
@@ -110,10 +158,15 @@ class Switch{
 class Interface{
 
     int code;
-    String name;
-    Boolean state;
+    int cost;
+    Boolean state = true;
+    Long pri;
 
-    Interface(){
+    Interface(int acode){
+
+        code = acode;
+        pri = 32768L;
+        cost = 4;
 
     }
 
