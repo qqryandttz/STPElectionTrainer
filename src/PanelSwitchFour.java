@@ -84,19 +84,29 @@ class PanelSwitch extends JPanel {
     PanelSwitch(){
 
         setLayout(null);
-        ADDLabel;
+        ADDLabel();
         ADDTextField();
-        name = new JTextField();
-        name.setBounds(20, 20, 300, 20);
-        name.setBackground(new Color(0x61, 0x89, 0x2f));
-        add(name);
 
     }
 
-    
+    void ADDLabel(){
 
-    @Override
-    protected void paintComponent(Graphics g) {
+        namePromptWords = new JLabel();
+        namePromptWords.setBounds( 20, 20, 300, 20);
+        namePromptWords.setBackground(new Color(0x61, 0x89, 0x2f));
+
+    }
+ 
+    void ADDTextField(){
+
+
+          name.setBounds( 20, 20, 300, 20);
+        name.setBackground(new Color(0x61, 0x89, 0x2f));
+     
+
+      }
+
+  protected void paintComponent(Graphics g) {
 
         
 
