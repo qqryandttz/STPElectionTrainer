@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -10,11 +11,13 @@ import javax.swing.JPanel;
 class PanelAssume extends JPanel {
 
     InterfaceExecution IE;
+    Color BackgroundColor;
 
     PanelAssume(InterfaceExecution interfaceExecution){
         IE = interfaceExecution;
         setLayout(null);
-        
+        BackgroundColor = new Color(0xd5, 0xd5, 0xd5);
+        setBackground(BackgroundColor);
     }
 
 

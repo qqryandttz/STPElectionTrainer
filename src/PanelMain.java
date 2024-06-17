@@ -15,11 +15,13 @@ class PanelMain extends JPanel{
     JPanel panelExample;
     JRadioButton radioButton1,radioButton2,radioButton3,radioButton4;
     ButtonGroup buttonGroup;
+    Color BackgroundColor;
 
     PanelMain(InterfaceExecution interfaceExecution){
         IE = interfaceExecution;
         setLayout(null);
-
+        BackgroundColor = new Color(0xd5,0xd5,0xd5);
+        setBackground(BackgroundColor);
 
         ADDpanelExample();
         ADDselectedMode();
@@ -46,6 +48,11 @@ class PanelMain extends JPanel{
         radioButton2 = new JRadioButton("<html><font face='黑体' size='6'>推测模式</font></html>");
         radioButton3 = new JRadioButton("<html><font face='黑体' size='6'>运行模式</font></html>");
         radioButton4 = new JRadioButton("<html><font face='黑体' size='6'>比较模式</font></html>");
+
+        radioButton1.setBackground(BackgroundColor);
+        radioButton2.setBackground(BackgroundColor);
+        radioButton3.setBackground(BackgroundColor);
+        radioButton4.setBackground(BackgroundColor);
 
         radioButton1.setBounds(550, 52, 187, 37);
         radioButton2.setBounds(550, 127, 187, 37);

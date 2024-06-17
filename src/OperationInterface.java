@@ -54,7 +54,6 @@ class OperationInterface extends JPanel{
         panelMain = new PanelMain(IE);
         panelMain.setBounds(60,40,750,375);
         LP布局.add(panelMain, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
-        
 
     }
 
