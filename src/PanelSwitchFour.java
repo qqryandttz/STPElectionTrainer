@@ -168,21 +168,21 @@ class PanelSwitch extends JPanel {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
-                    return new Dimension(300, 500);
+                    return new Dimension(300, 450);
                 }
             };
         }else if((intfNumber == 3 || intNumber == 4) && (anet.Example == 3)) {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
-                    return new Dimension(273, 500);
+                    return new Dimension(250, 450);
                 }
             };
         } else if ((intfNumber == 1 || intNumber == 2) && (anet.Example == 3)) {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
-                    return new Dimension(273, 300);
+                    return new Dimension(250, 300);
                 }
             };
         }
@@ -196,7 +196,7 @@ class PanelSwitch extends JPanel {
         if (anet.Example == 1 || anet.Example == 2) {
             scrollPane.setPreferredSize(new Dimension(337, 337));
         } else if (anet.Example == 3) {
-            scrollPane.setPreferredSize(new Dimension(262, 337));
+            scrollPane.setPreferredSize(new Dimension(270, 337));
         }
         
         add(scrollPane, BorderLayout.CENTER);
@@ -299,8 +299,8 @@ class PanelSwitch extends JPanel {
 
             onButton1 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
             offButton1 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-            FEButton1 = new JRadioButton("<html><font face='黑体' size='4'>FastEther</font></html>");
-            GEButton1 = new JRadioButton("<html><font face='黑体' size='4'>GigabitEther</font></html>");
+            FEButton1 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
+            GEButton1 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
 
             onButton1.setBackground(BackgroundWhiteColor);
             offButton1.setBackground(BackgroundWhiteColor);
@@ -366,8 +366,8 @@ class PanelSwitch extends JPanel {
 
                 onButton2 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
                 offButton2 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-                FEButton2 = new JRadioButton("<html><font face='黑体' size='4'>FastEther</font></html>");
-                GEButton2 = new JRadioButton("<html><font face='黑体' size='4'>GigabitEther</font></html>");
+                FEButton2 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
+                GEButton2 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
 
                 onButton2.setBackground(BackgroundWhiteColor);
                 offButton2.setBackground(BackgroundWhiteColor);
@@ -433,8 +433,8 @@ class PanelSwitch extends JPanel {
 
                     onButton3 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
                     offButton3 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-                    FEButton3 = new JRadioButton("<html><font face='黑体' size='4'>FastEther</font></html>");
-                    GEButton3 = new JRadioButton("<html><font face='黑体' size='4'>GigabitEther</font></html>");
+                    FEButton3 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
+                    GEButton3 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
 
                     onButton3.setBackground(BackgroundWhiteColor);
                     offButton3.setBackground(BackgroundWhiteColor);
@@ -500,8 +500,8 @@ class PanelSwitch extends JPanel {
 
                         onButton4 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
                         offButton4 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-                        FEButton4 = new JRadioButton("<html><font face='黑体' size='4'>FastEther</font></html>");
-                        GEButton4 = new JRadioButton("<html><font face='黑体' size='4'>GigabitEther</font></html>");
+                        FEButton4 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
+                        GEButton4 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
 
                         onButton4.setBackground(BackgroundWhiteColor);
                         offButton4.setBackground(BackgroundWhiteColor);

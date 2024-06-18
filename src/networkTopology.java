@@ -2,7 +2,7 @@ class NetworkTopology{
 
     int[][] networkTopology;
     int Example;
-    private int inf = Integer.MAX_VALUE;
+    private int INF = Integer.MAX_VALUE;
     Switch switch11, switch12, switch13, switch14;
     Switch switch21, switch22, switch23, switch24;
     Switch switch31, switch32, switch33, switch34, switch35;
@@ -17,10 +17,10 @@ class NetworkTopology{
             switch13 = new Switch(13, "SW1-3", "54-89-98-1C-75-C2");
             switch14 = new Switch(14, "SW1-4", "54-89-98-1C-75-C3");
             networkTopology = new int[][]{
-                {0,4,4,inf},
-                {4,0,inf,4},
-                {4,inf,0,4},
-                {inf,4,4,0}
+                {0,4,4,INF},
+                {4,0,INF,4},
+                {4,INF,0,4},
+                {INF,4,4,0}
             };
 
         }else if(Example == 2){
@@ -32,8 +32,8 @@ class NetworkTopology{
             networkTopology = new int[][] {
                     { 0, 4, 4, 4 },
                     { 4, 0, 4, 4 },
-                    { 4, 4, 0, inf },
-                    { 4, 4, inf, 0 }
+                    { 4, 4, 0, INF },
+                    { 4, 4, INF, 0 }
             };
 
 
@@ -45,11 +45,11 @@ class NetworkTopology{
             switch34 = new Switch(34, "SW3-4", "54-89-98-1C-75-C3");
             switch35 = new Switch(35, "SW3-5", "54-89-98-1C-75-C4");
             networkTopology = new int[][] {
-                    { 0, inf, 4, 4 ,inf},
-                    { inf, 0, inf, 4, inf },
-                    { 4, inf, 0, 4, 4 },
+                    { 0, INF, 4, 4 ,INF},
+                    { INF, 0, INF, 4, INF },
+                    { 4, INF, 0, 4, 4 },
                     { 4, 4, 4 ,0, 4},
-                    { inf, inf, 4, 4, 0 }
+                    { INF, INF, 4, 4, 0 }
             };
 
             
@@ -59,10 +59,16 @@ class NetworkTopology{
 
 }
 
+class Edge{
+
+}
+
 
 class Switch{
 
     int code;
+    Boolean visited;
+
     String name;
     String mac;
     Long pri;
@@ -72,6 +78,8 @@ class Switch{
     Switch(int Code, String Name, String MAC){
 
         code = Code;
+        visited = false;
+        
         name = Name;
         mac = MAC;
         pri = 32768L;
@@ -153,22 +161,21 @@ class Switch{
 
     }
 
-}
+    class Interface {
 
-class Interface{
+        int code;
+        int cost;
+        Boolean state = true;
+        Long pri;
+        String identity; // 可以为DR或BDR或
 
-    int code;
-    int cost;
-    Boolean state = true;
-    Long pri;
-    String identity; //可以为DR或BDR或
-
-    Interface(int acode){
-
-        code = acode;
-        pri = 32768L;
-        cost = 4;
+        Interface(int acode) {
+            code = acode;
+            pri = 32768L;
+            cost = 4;
+        }
 
     }
 
 }
+

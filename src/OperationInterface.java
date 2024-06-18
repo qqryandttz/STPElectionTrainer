@@ -31,9 +31,9 @@ class OperationInterface extends JPanel{
 
         intExample = isExample;
 
-        ADDPaneMain();
-        ADDPanelassume();
         ADDPanelSwitch();
+        ADDPaneMain();
+        ADDPanelassume();   
 
     }
 

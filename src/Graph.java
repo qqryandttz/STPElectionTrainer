@@ -1,4 +1,3 @@
-//图的顶点类型
 class Vertex {
     public char value; // 顶点值
     public boolean visited; // 顶点是否被访问过
@@ -88,69 +87,6 @@ public class Graph {
     }
 
 
-    // 深度优先搜索depthFirstSearch，有点类似于树的先序遍历
-    public void DFS() {
-        System.out.print(vertexList[0].value + " "); // 访问第一个顶点
-        vertexList[0].visited = true; // 表示第一个顶点已经访问过了
-        stack.push(0); // 将第一个顶点入栈
-        // 当栈中还有元素
-        while (!stack.isEmpty()) {
-            // 找到栈当前顶点邻接且未被访问的顶点
-            int v = getUnvisitedVertex(stack.peek());
-            // 如果当前顶点值为-1，则表示没有邻接且未被访问顶点，那么出栈顶点
-            if (v == -1) {
-                stack.pop();
-            } else { // 否则访问下一个邻接顶点
-                vertexList[v].visited = true;
-                System.out.print(vertexList[v].value + " ");
-                stack.push(v);
-            }
-        }
-
-        // 恢复visited为false，方便下次访问
-        for (int i = 0; i < vertexList.length; i++) {
-            vertexList[i].visited = false;
-        }
-
-    }
-
-    // 找到与某一顶点邻接且未被访问的顶点
-    public int getUnvisitedVertex(int v) {
-        for (int i = 0; i < mGraph.length; i++) {
-            // v顶点与i顶点相邻（邻接矩阵值为1）且未被访问 wasVisited==false
-            if (v != i && mGraph[v][i] < Integer.MAX_VALUE && vertexList[i].visited == false) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    // 广度优先搜索breadthFirstSearch，有点类似于树的层次遍历
-    public void BFS() {
-        System.out.print(vertexList[0].value + " "); // 访问第一个顶点
-        vertexList[0].visited = true; // 标志已经访问过了
-        queue.add(0); // 将第一个顶点入队
-        // 当队列不为空
-        while (!queue.isEmpty()) {
-            // 寻找当前顶点没有访问的邻接点
-            int v = getUnvisitedVertex(queue.peek());
-            if (v != -1) {
-                System.out.print(vertexList[v].value + " ");
-                vertexList[v].visited = true;
-                queue.add(v);
-            } else {
-                queue.remove();
-            }
-        }
-
-        // 恢复visited为false，方便下次访问
-        for (int i = 0; i < vertexList.length; i++) {
-            vertexList[i].visited = false;
-        }
-    }
-
-
-
     // Dijkstra解决单源最短路径问题
     // 它的主要特点是以起始点为中心向外层层扩展(广度优先搜索思想)，直到扩展到终点为止
     // s表示的是以第几个顶点为起点，从0开始
@@ -199,28 +135,66 @@ public class Graph {
 
     // 打印Dijkstra最短路径的结果
     public void printDijkstra(int s) {
-        // 利用栈后进先出的特性，将路径逆序
-        MyStack st = new MyStack(vertexList.length);
+    	//利用栈后进先出的特性，将路径逆序
+    	MyStack st=new MyStack(vertexList.length);
         System.out.printf("dijkstra(%c): \n", vertexList[s].value);
-        for (int i = 0; i < vertexList.length; i++) {
+        for (int i=0; i < vertexList.length; i++) {
             System.out.printf("  shortest(%c, %c)=%d 路径为：", vertexList[s].value, vertexList[i].value, distance[i]);
-            // 这里可以用一个栈来存储顶点，然后出栈就是顺序输出了，而不是反向输出
-            // 打印路径
-            st.push(i); // 终点
-            int tmp = path[i];
-            while (tmp != -1) {
-                st.push(tmp);
-                tmp = path[tmp];
+            //这里可以用一个栈来存储顶点，然后出栈就是顺序输出了，而不是反向输出
+            //打印路径
+            st.push(i);  //终点
+            int tmp=path[i];
+            while(tmp!=-1) {
+            	st.push(tmp);
+            	tmp=path[tmp];
             }
-            while (!st.isEmpty()) {
-                System.out.printf("%c-->", vertexList[st.pop()].value);
-            }
+        	while(!st.isEmpty()) {
+        		System.out.printf("%c-->",vertexList[st.pop()].value);
+        	}
             System.out.println();
+        }
+    }
+
+    public void floyd() {
+        // 初始化
+        System.out.println("初始化的值：");
+        for (int i = 0; i < vertexList.length; i++) {
+            for (int j = 0; j < vertexList.length; j++) {
+                dist[i][j] = mGraph[i][j]; // 存储的是权值
+                prev[i][j] = j; // i到j一定会经过j
+            }
+        }
+        // 三重循环，最外层的是顶点的个数，中间两层是遍历整个矩阵
+        // 思想是：当k=0时，就借助于第k个顶点，如果i到j的距离可以变小，则更新最小距离
+        // 其实就是借助于前k个顶点，如果i到j的距离可以变小，则更新最小距离
+        for (int k = 0; k < vertexList.length; k++) {
+            for (int i = 0; i < vertexList.length; i++) {
+                for (int j = 0; j < vertexList.length; j++) {
+                    // 如果经过下标为k顶点路径比原两点间路径更短，则更新dist[i][j]和prev[i][j]
+                    int tmp = (dist[i][k] == Integer.MAX_VALUE || dist[k][j] == Integer.MAX_VALUE) ? Integer.MAX_VALUE
+                            : (dist[i][k] + dist[k][j]);
+                    if (dist[i][j] > tmp) {
+                        // "i到j最短路径"对应的值设，为更小的一个(即经过k)
+                        dist[i][j] = tmp;
+                        // "i到j最短路径"对应的路径，经过k
+                        prev[i][j] = prev[i][k];
+                    }
+                }
+            }
+        }
+
+        // 打印floyd最短路径的结果
+        System.out.printf("floyd: \n");
+        for (int i = 0; i < vertexList.length; i++) {
+            for (int j = 0; j < vertexList.length; j++)
+                System.out.printf("%2d  ", dist[i][j]);
+            System.out.printf("\n");
         }
     }
 
     public static void main(String[] args) {
         Graph g = new Graph(7);
+        int INF = Integer.MAX_VALUE;
         g.addVertex('A');
         g.addVertex('B');
         g.addVertex('C');
@@ -229,9 +203,16 @@ public class Graph {
         g.addVertex('F');
         g.addVertex('G');
 
-        // 下面是边的关系，有边的值为权重，无边的值为无穷大
-        // int matrix[][] = {
-        // /*A*//*B*//*C*//*D*//*E*//*F*//*G*/
+        //下面是边的关系，有边的值为权重，无边的值为无穷大
+        int matrix[][] = {
+                {0,4,4,INF},
+                {4,0,INF,4},
+                {4,INF,0,4},
+                {INF,4,4,0};
+                
+
+            
+        //      /*A*//*B*//*C*//*D*//*E*//*F*//*G*/
         // /*A*/ { 0, 12, INF, INF, INF, 16, 14},
         // /*B*/ { 12, 0, 10, INF, INF, 7, INF},
         // /*C*/ { INF, 10, 0, 3, 5, 6, INF},
@@ -239,6 +220,7 @@ public class Graph {
         // /*E*/ { INF, INF, 5, 4, 0, 2, 8},
         // /*F*/ { 16, 7, 6, INF, 2, 0, 9},
         // /*G*/ { 14, INF, INF, INF, 8, 9, 0}};
+        /* 
         g.addEdge(0, 1, 12); // AB相连
         g.addEdge(0, 5, 16); // AF
         g.addEdge(0, 6, 14); // AG
@@ -250,16 +232,7 @@ public class Graph {
         g.addEdge(3, 4, 4); // DE
         g.addEdge(4, 5, 2); // EF
         g.addEdge(4, 6, 8); // EG
-        g.addEdge(5, 6, 9); // FG
-
-        // 深度优先访问
-        System.out.println("深度优先：");
-        g.DFS();
-        System.out.println();
-        // 广度优先搜索
-        System.out.println("广度优先：");
-        g.BFS();
-        System.out.println();
+        g.addEdge(5, 6, 9); // FG*/
 
         // Dijkstra算法
         g.dijkstra(3);
@@ -267,6 +240,10 @@ public class Graph {
         for (int i = 0; i < g.vertexList.length; i++) {
             System.out.print(g.path[i] + " ");
         }
+
+        // Floyd算法
+        System.out.println();
+        g.floyd();
 
     }
 

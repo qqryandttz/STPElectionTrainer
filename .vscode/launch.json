@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "x1",
+            "request": "launch",
+            "mainClass": "x1",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "Graph",
+            "request": "launch",
+            "mainClass": "Graph",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "Graph_2",
             "request": "launch",
             "mainClass": "Graph_2",
