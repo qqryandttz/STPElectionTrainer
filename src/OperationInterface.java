@@ -4,6 +4,7 @@ import java.awt.*;
 class OperationInterface extends JPanel{
 
     InterfaceExecution IE;
+    NetworkTopology net;
     int intExample;
     JLayeredPane LP布局;
     starrySkyPanel starrySkyPanel;
@@ -59,7 +60,7 @@ class OperationInterface extends JPanel{
 
     void ADDPanelassume(){
 
-        panelAssume = new PanelAssume(IE);
+        panelAssume = new PanelAssume(IE,net);
         panelAssume.setBounds(900, 40, 600, 375);
         LP布局.add(panelAssume, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
     }
@@ -67,20 +68,19 @@ class OperationInterface extends JPanel{
     void ADDPanelSwitch(){
 
         if(intExample == 1){
-            PanelSwitch = new PanelSwitchFour1();
+            net = new NetworkTopology(1);
+            PanelSwitch = new PanelSwitchFour1(net); 
 
         } else if (intExample == 2) {
-            PanelSwitch = new PanelSwitchFour2();
+            net = new NetworkTopology(2);
+            PanelSwitch = new PanelSwitchFour2(net);
         }else if(intExample == 3){
-            PanelSwitch = new PanelSwitchFive();
+            net = new NetworkTopology(3);
+            PanelSwitch = new PanelSwitchFive(net);
         }
         PanelSwitch.setBounds(0, 475, 1600, 412);
         LP布局.add(PanelSwitch, new Integer(JLayeredPane.DEFAULT_LAYER + 1));
 
     }
-
-    
-
-
 
 }

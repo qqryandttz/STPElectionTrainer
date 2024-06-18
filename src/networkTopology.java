@@ -12,10 +12,10 @@ class NetworkTopology{
         Example = isExample;
         if(Example == 1){
 
-            switch11 = new Switch(11, "SW11", "54-89-98-1C-75-C0");
-            switch12 = new Switch(12, "SW12", "54-89-98-1C-75-C1");
-            switch13 = new Switch(13, "SW13", "54-89-98-1C-75-C2");
-            switch14 = new Switch(14, "SW14", "54-89-98-1C-75-C3");
+            switch11 = new Switch(11, "SW1-1", "54-89-98-1C-75-C0");
+            switch12 = new Switch(12, "SW1-2", "54-89-98-1C-75-C1");
+            switch13 = new Switch(13, "SW1-3", "54-89-98-1C-75-C2");
+            switch14 = new Switch(14, "SW1-4", "54-89-98-1C-75-C3");
             networkTopology = new int[][]{
                 {0,4,4,inf},
                 {4,0,inf,4},
@@ -25,10 +25,10 @@ class NetworkTopology{
 
         }else if(Example == 2){
 
-            switch21 = new Switch(21, "SW21", "54-89-98-1C-75-C0");
-            switch22 = new Switch(22, "SW22", "54-89-98-1C-75-C1");
-            switch23 = new Switch(23, "SW23", "54-89-98-1C-75-C2");
-            switch24 = new Switch(24, "SW24", "54-89-98-1C-75-C3");
+            switch21 = new Switch(21, "SW2-1", "54-89-98-1C-75-C0");
+            switch22 = new Switch(22, "SW2-2", "54-89-98-1C-75-C1");
+            switch23 = new Switch(23, "SW2-3", "54-89-98-1C-75-C2");
+            switch24 = new Switch(24, "SW2-4", "54-89-98-1C-75-C3");
             networkTopology = new int[][] {
                     { 0, 4, 4, 4 },
                     { 4, 0, 4, 4 },
@@ -39,11 +39,11 @@ class NetworkTopology{
 
         }else if(Example == 3){
 
-            switch31 = new Switch(31, "SW31", "54-89-98-1C-75-C0");
-            switch32 = new Switch(32, "SW32", "54-89-98-1C-75-C1");
-            switch33 = new Switch(33, "SW33", "54-89-98-1C-75-C2");
-            switch34 = new Switch(34, "SW34", "54-89-98-1C-75-C3");
-            switch35 = new Switch(35, "SW35", "54-89-98-1C-75-C4");
+            switch31 = new Switch(31, "SW3-1", "54-89-98-1C-75-C0");
+            switch32 = new Switch(32, "SW3-2", "54-89-98-1C-75-C1");
+            switch33 = new Switch(33, "SW3-3", "54-89-98-1C-75-C2");
+            switch34 = new Switch(34, "SW3-4", "54-89-98-1C-75-C3");
+            switch35 = new Switch(35, "SW3-5", "54-89-98-1C-75-C4");
             networkTopology = new int[][] {
                     { 0, inf, 4, 4 ,inf},
                     { inf, 0, inf, 4, inf },
@@ -161,6 +161,7 @@ class Interface{
     int cost;
     Boolean state = true;
     Long pri;
+    String identity; //可以为DR或BDR或
 
     Interface(int acode){
 

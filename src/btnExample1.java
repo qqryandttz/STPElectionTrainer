@@ -136,7 +136,7 @@ class btnExample3 extends JButton {
 
         g2d.setStroke(new BasicStroke(LINE_WIDTH));
         g.setColor(new Color(0xf5, 0xf5, 0xf5));
-        g2d.drawLine(x, y - 10, x + 310, y - 10);
+        g2d.drawLine(x, y - 10, x + 310, y + 80);
         g2d.drawLine(x, y - 10, x , y + 80);
 
         g2d.drawLine(x, y+80, x+310, y + 80);

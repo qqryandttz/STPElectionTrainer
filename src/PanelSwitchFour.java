@@ -16,9 +16,9 @@ class PanelSwitchFour1 extends JPanel {
     PanelSwitch ps1, ps2, ps3, ps4;
     NetworkTopology neT;
 
-    PanelSwitchFour1() {
+    PanelSwitchFour1(NetworkTopology anet) {
 
-        neT = new NetworkTopology(1);
+        neT = anet;
         setLayout(null); 
         setOpaque(false);
         ADDPanelSwitch();
@@ -31,14 +31,11 @@ class PanelSwitchFour1 extends JPanel {
         ps3 = new PanelSwitch(neT.switch13.name, neT.switch13.mac, 32768L, neT.switch13.intNumber, neT);
         ps4 = new PanelSwitch(neT.switch14.name, neT.switch14.mac, 32768L, neT.switch14.intNumber, neT);
 
-        JScrollPane scrollPane = new JScrollPane(ps1);
-
         ps1.setBounds(60, 0, 337, 337);
         ps2.setBounds(435, 0, 337, 337);
         ps3.setBounds(810, 0, 337, 337);
         ps4.setBounds(1185, 0, 337, 337);
 
-        add(scrollPane);
         add(ps1);
         add(ps2);
         add(ps3);
@@ -54,9 +51,9 @@ class PanelSwitchFour2 extends JPanel {
     PanelSwitch ps1, ps2, ps3, ps4;
     NetworkTopology neT;
 
-    PanelSwitchFour2() {
+    PanelSwitchFour2(NetworkTopology anet) {
 
-        neT = new NetworkTopology(2);
+        neT = anet;
         setLayout(null);
         setOpaque(false);
         ADDPanelSwitch();
@@ -89,9 +86,9 @@ class PanelSwitchFive extends JPanel {
     PanelSwitch ps1, ps2, ps3, ps4, ps5;
     NetworkTopology neT;
 
-    PanelSwitchFive() {
+    PanelSwitchFive(NetworkTopology anet) {
 
-        neT = new NetworkTopology(3);
+        neT = anet;
         setLayout(null); 
         setOpaque(false);
         ADDPanelSwitch();
@@ -163,22 +160,45 @@ class PanelSwitch extends JPanel {
         theMAC = aMAC;
         thePri = aPri;
         intfNumber = intNumber;
+        setOpaque(false); 
+        setBackground(new Color(0, 0, 0, 0)); 
         panel = new JPanel();
-        if(intfNumber == 3 ||intNumber == 4)
-        panel = new JPanel() {
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(300, 500);
-            }
-        };
+
+        if((intfNumber == 3 ||intNumber == 4) && (anet.Example == 1 || anet.Example == 2)){
+            panel = new JPanel() {
+                @Override
+                public Dimension getPreferredSize() {
+                    return new Dimension(300, 500);
+                }
+            };
+        }else if((intfNumber == 3 || intNumber == 4) && (anet.Example == 3)) {
+            panel = new JPanel() {
+                @Override
+                public Dimension getPreferredSize() {
+                    return new Dimension(273, 500);
+                }
+            };
+        } else if ((intfNumber == 1 || intNumber == 2) && (anet.Example == 3)) {
+            panel = new JPanel() {
+                @Override
+                public Dimension getPreferredSize() {
+                    return new Dimension(273, 300);
+                }
+            };
+        }
         panel.setLayout(null);
         Init();
         ADDLabel();
         ADDTextField();
         ADDintf();
-        panel.setBackground(new Color(0xd5, 0xd5, 0xd5));
+        panel.setBackground(new Color(0xe5, 0xe5, 0xe5));
         scrollPane = new JScrollPane(panel);
-        scrollPane.setPreferredSize(new Dimension(337, 337));
+        if (anet.Example == 1 || anet.Example == 2) {
+            scrollPane.setPreferredSize(new Dimension(337, 337));
+        } else if (anet.Example == 3) {
+            scrollPane.setPreferredSize(new Dimension(262, 337));
+        }
+        
         add(scrollPane, BorderLayout.CENTER);
 
     }
@@ -190,7 +210,7 @@ class PanelSwitch extends JPanel {
         FontWhiteColor = new Color(0xf5,0xf5,0xf5);
         FontBlackColor = new Color(0x22, 0x26, 0x29);
         BackgroundColor = new Color(0x86, 0xc2, 0x32);
-        BackgroundWhiteColor = new Color(0xd5, 0xd5, 0xd5);
+        BackgroundWhiteColor = new Color(0xe5, 0xe5, 0xe5);
         Border = new EmptyBorder(0,0,0,0);
     }
 
@@ -224,7 +244,7 @@ class PanelSwitch extends JPanel {
         name = new JTextField(theName);
         name.setFont(TextFieldFont);
         name.setForeground(FontWhiteColor);
-        name.setBounds( 70, 22, 200, 20);
+        name.setBounds( 70, 22, 170, 20);
         name.setBackground(BackgroundColor);
         name.setBorder(Border);
         panel.add(name);
@@ -232,7 +252,7 @@ class PanelSwitch extends JPanel {
         MAC = new JTextField(theMAC);
         MAC.setFont(TextFieldFont);
         MAC.setForeground(FontWhiteColor);
-        MAC.setBounds(70, 52, 200, 20);
+        MAC.setBounds(70, 52, 170, 20);
         MAC.setBackground(BackgroundColor);
         MAC.setBorder(Border);
         panel.add(MAC);
@@ -240,7 +260,7 @@ class PanelSwitch extends JPanel {
         Pri = new JTextField("32768");
         Pri.setFont(TextFieldFont);
         Pri.setForeground(FontWhiteColor);
-        Pri.setBounds(70, 82, 200, 20);
+        Pri.setBounds(70, 82, 170, 20);
         Pri.setBackground(BackgroundColor);
         Pri.setBorder(Border);
         panel.add(Pri);
@@ -313,7 +333,7 @@ class PanelSwitch extends JPanel {
             intPri1 = new JTextField("32768");
             intPri1.setFont(TextFieldFont);
             intPri1.setForeground(FontWhiteColor);
-            intPri1.setBounds(75, 167, 200, 20);
+            intPri1.setBounds(75, 167, 140, 20);
             intPri1.setBackground(BackgroundColor);
             intPri1.setBorder(Border);
             panel.add(intPri1);
@@ -380,7 +400,7 @@ class PanelSwitch extends JPanel {
                 intPri2 = new JTextField("32768");
                 intPri2.setFont(TextFieldFont);
                 intPri2.setForeground(FontWhiteColor);
-                intPri2.setBounds(75, 167 + zhenzhang, 200, 20);
+                intPri2.setBounds(75, 167 + zhenzhang, 140, 20);
                 intPri2.setBackground(BackgroundColor);
                 intPri2.setBorder(Border);
                 panel.add(intPri2);
@@ -447,7 +467,7 @@ class PanelSwitch extends JPanel {
                     intPri3 = new JTextField("32768");
                     intPri3.setFont(TextFieldFont);
                     intPri3.setForeground(FontWhiteColor);
-                    intPri3.setBounds(75, 167 + zhenzhang * 2, 200, 20);
+                    intPri3.setBounds(75, 167 + zhenzhang * 2, 140, 20);
                     intPri3.setBackground(BackgroundColor);
                     intPri3.setBorder(Border);
                     panel.add(intPri3);
@@ -514,10 +534,10 @@ class PanelSwitch extends JPanel {
                         intPri4 = new JTextField("32768");
                         intPri4.setFont(TextFieldFont);
                         intPri4.setForeground(FontWhiteColor);
-                        intPri4.setBounds(75, 167 + zhenzhang * 3, 200, 20);
+                        intPri4.setBounds(75, 167 + zhenzhang * 3, 140, 20);
                         intPri4.setBackground(BackgroundColor);
                         intPri4.setBorder(Border);
-                        add(intPri4);
+                        panel.add(intPri4);
 
                     }
                 }
