@@ -53,12 +53,10 @@ legacy（华为的私有计算方法）
 
 
 本次教程采用dot1d-1998的开销计算方法，并且接口为全双工
-100M 19
-1G 4
 
 FastEthernet0/0/1【快速以太网端口，100Mbit/s】 19
 GigabitEthernet0/0/1【千兆以太网端口，1000Mbit/s】 4
-	
+
 
 
 说明

@@ -6,16 +6,18 @@ import java.util.Map;
 import java.util.Set;  
 
 public class x1 {  
-    private int [][] graph;
-    private int start;
+    private int [][] graph;//加权有向图    
+    private int start;//源点编号 从 0开始  
     private int dimention;  
     static int INF  = Integer.MAX_VALUE /100 ;  
-    //用于标记顶点是否已经计算
+    //用于标记顶点是否已经计算  
     private Set<Integer> vertexSet = new HashSet<Integer>();      
     //存储结果，Map的key对应各终点编号，value对应路径编号列表。  
     private Map<Integer, List<Integer>> pathListMap = new HashMap<Integer, List<Integer>>();  
     /** 
-     * 构造函数，必须初始化路径矩阵和起始点
+     * 构造函数，必须初始化路径矩阵和起始点 
+     * @param graph 
+     * @param start 
      */  
     public x1(int[][] graph, int start) {  
         this.graph = graph;  
@@ -53,7 +55,7 @@ public class x1 {
             }  
             vertexSet.add(bridge);  
         }     
-        //检查，是否桥接的路径都被更新       
+        //检查，是否桥接的路径都被更新          
         for(int end=0; end<dimention; end++){  
             if(end == start){ continue; }  
             List<Integer> pathList =  pathListMap.get(end);     
@@ -70,7 +72,12 @@ public class x1 {
             }             
         }  
     }  
-    
+    /** 
+     * 获取当前指定路径的长度 
+     * @param start 
+     * @param end 
+     * @return 
+     */  
     private int startTo(int end) {   
         int pathLen = 0;           
         List<Integer> pathList = pathListMap.get(end);  
@@ -79,14 +86,23 @@ public class x1 {
         }  
         return pathLen;  
     }  
-    
+    /** 
+     * 直接提取矩阵中的相邻路径。 
+     * @param start 
+     * @param end 
+     * @return 
+     */  
     private int getRawLength(int start, int end) {   
         if(end == start){  
             return 0;  
         }  
         return graph[start][end];  
     }  
-    
+    /** 
+     * 得到指定目标的路劲长度 
+     * @param end 
+     * @return 
+     */  
     public int getLength(int end) {   
         if(end == start){  
             return 0;  
@@ -106,7 +122,10 @@ public class x1 {
     public Map<Integer, List<Integer>> getPathListMap() {  
         return pathListMap;  
     }  
-    
+    /** 
+     * Test out put 
+     * @param args 
+     */  
     public static void main(String[] args) {  
         /*   
         int [][] graph = { 
@@ -116,11 +135,10 @@ public class x1 {
                 { INF, INF,  20, INF,  60}, 
                 { INF, INF, INF, INF, INF}};*/  
         int[][] graph={  
-                { 0, INF, 4, 4, INF },
-                { INF, 0, INF, 4, INF },
-                { 4, INF, 0, 4, 4 },
-                { 4, 4, 4, 0, 4 },
-                { INF, INF, 4, 4, 0 }
+                { 0, 4, 4, INF },
+                { 4, 0, INF, 4 },
+                { 4, INF, 0, 4 },
+                { INF, 4, 4, 0 }
         };  
         int start = 0;  
         int end = 0;  

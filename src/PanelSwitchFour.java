@@ -128,7 +128,7 @@ class PanelSwitch extends JPanel {
     JTextField name, MAC, Pri;
     JLabel namePromptWords, MACPromptWords, PriPromptWords;
     JLabel intPIDPromptWords, intStatePromptWords;
-    Font PromptWordsFont, TextFieldFont;
+    Font PromptWordsFont, TextFieldFont, smallFont;
     Color FontWhiteColor, FontBlackColor, BackgroundColor, BackgroundWhiteColor;
     EmptyBorder Border;
 
@@ -207,6 +207,7 @@ class PanelSwitch extends JPanel {
 
         TextFieldFont = new Font("黑体", Font.PLAIN, 17);
         PromptWordsFont = new Font("黑体", Font.PLAIN , 20);
+        smallFont = new Font("黑体", Font.PLAIN , 15);
         FontWhiteColor = new Color(0xf5,0xf5,0xf5);
         FontBlackColor = new Color(0x22, 0x26, 0x29);
         BackgroundColor = new Color(0x86, 0xc2, 0x32);
@@ -278,29 +279,37 @@ class PanelSwitch extends JPanel {
             intCode1.setBackground(BackgroundColor);
             panel.add(intCode1);
 
-            intStatePromptWords1 = new JLabel("<html><font face='黑体' size='4'>state:</font></html>");
+            intStatePromptWords1 = new JLabel("state:");
             intStatePromptWords1.setForeground(FontBlackColor);
             intStatePromptWords1.setBounds(65, 110, 50, 25);
             intStatePromptWords1.setBackground(BackgroundColor);
+            intStatePromptWords1.setFont(smallFont);
             panel.add(intStatePromptWords1);
             
-            intTypePromptWords1 = new JLabel("<html><font face='黑体' size='4'>type:</font></html>");
+            intTypePromptWords1 = new JLabel("type:");
             intTypePromptWords1.setForeground(FontBlackColor);
             intTypePromptWords1.setBounds(30, 135, 50, 25);
             intTypePromptWords1.setBackground(BackgroundColor);
+            intTypePromptWords1.setFont(smallFont);
             panel.add(intTypePromptWords1);
 
-            intPriPromptWords1 = new JLabel("<html><font face='黑体' size='4'>Pri:</font></html>");
+            intPriPromptWords1 = new JLabel("Pri:");
             intPriPromptWords1.setForeground(FontBlackColor);
             intPriPromptWords1.setBounds(33, 160, 50, 30);
             intPriPromptWords1.setBackground(BackgroundColor);
+            intPriPromptWords1.setFont(smallFont);
             panel.add(intPriPromptWords1);
 
 
-            onButton1 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
-            offButton1 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-            FEButton1 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
-            GEButton1 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
+            onButton1 = new JRadioButton("ON");
+            offButton1 = new JRadioButton("OFF");
+            FEButton1 = new JRadioButton("FE[19]");
+            GEButton1 = new JRadioButton("GE[4]");
+
+            onButton1.setFont(smallFont);
+            offButton1.setFont(smallFont);
+            FEButton1.setFont(smallFont);
+            GEButton1.setFont(smallFont);
 
             onButton1.setBackground(BackgroundWhiteColor);
             offButton1.setBackground(BackgroundWhiteColor);
@@ -328,7 +337,7 @@ class PanelSwitch extends JPanel {
             panel.add(FEButton1);
             panel.add(GEButton1);
             onButton1.setSelected(true);
-            FEButton1.setSelected(true);
+            GEButton1.setSelected(true);
 
             intPri1 = new JTextField("32768");
             intPri1.setFont(TextFieldFont);
@@ -336,6 +345,7 @@ class PanelSwitch extends JPanel {
             intPri1.setBounds(75, 167, 140, 20);
             intPri1.setBackground(BackgroundColor);
             intPri1.setBorder(Border);
+            intPri1.setFont(smallFont);
             panel.add(intPri1);
 
             if (intfNumber > 1) {
@@ -346,28 +356,36 @@ class PanelSwitch extends JPanel {
                 intCode2.setBackground(BackgroundColor);
                 panel.add(intCode2);
 
-                intStatePromptWords2 = new JLabel("<html><font face='黑体' size='4'>state:</font></html>");
+                intStatePromptWords2 = new JLabel("state:");
                 intStatePromptWords2.setForeground(FontBlackColor);
                 intStatePromptWords2.setBounds(65, 110 + zhenzhang, 50, 25);
                 intStatePromptWords2.setBackground(BackgroundColor);
+                intStatePromptWords2.setFont(smallFont);
                 panel.add(intStatePromptWords2);
 
-                intTypePromptWords2 = new JLabel("<html><font face='黑体' size='4'>type:</font></html>");
+                intTypePromptWords2 = new JLabel("type:");
                 intTypePromptWords2.setForeground(FontBlackColor);
                 intTypePromptWords2.setBounds(30, 135 + zhenzhang, 50, 25);
                 intTypePromptWords2.setBackground(BackgroundColor);
+                intTypePromptWords2.setFont(smallFont);
                 panel.add(intTypePromptWords2);
 
-                intPriPromptWords2 = new JLabel("<html><font face='黑体' size='4'>Pri:</font></html>");
+                intPriPromptWords2 = new JLabel("Pri:");
                 intPriPromptWords2.setForeground(FontBlackColor);
                 intPriPromptWords2.setBounds(33, 160 + zhenzhang, 50, 30);
                 intPriPromptWords2.setBackground(BackgroundColor);
+                intPriPromptWords2.setFont(smallFont);
                 panel.add(intPriPromptWords2);
 
-                onButton2 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
-                offButton2 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-                FEButton2 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
-                GEButton2 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
+                onButton2 = new JRadioButton("ON");
+                offButton2 = new JRadioButton("OFF");
+                FEButton2 = new JRadioButton("FE[19]");
+                GEButton2 = new JRadioButton("GE[4]");
+
+                onButton2.setFont(smallFont);
+                offButton2.setFont(smallFont);
+                FEButton2.setFont(smallFont);
+                GEButton2.setFont(smallFont);
 
                 onButton2.setBackground(BackgroundWhiteColor);
                 offButton2.setBackground(BackgroundWhiteColor);
@@ -395,7 +413,7 @@ class PanelSwitch extends JPanel {
                 panel.add(FEButton2);
                 panel.add(GEButton2);
                 onButton2.setSelected(true);
-                FEButton2.setSelected(true);
+                GEButton2.setSelected(true);
 
                 intPri2 = new JTextField("32768");
                 intPri2.setFont(TextFieldFont);
@@ -403,6 +421,7 @@ class PanelSwitch extends JPanel {
                 intPri2.setBounds(75, 167 + zhenzhang, 140, 20);
                 intPri2.setBackground(BackgroundColor);
                 intPri2.setBorder(Border);
+                intPri2.setFont(smallFont);
                 panel.add(intPri2);
 
                 if (intfNumber > 2) {
@@ -413,28 +432,36 @@ class PanelSwitch extends JPanel {
                     intCode3.setBackground(BackgroundColor);
                     panel.add(intCode3);
 
-                    intStatePromptWords3 = new JLabel("<html><font face='黑体' size='4'>state:</font></html>");
+                    intStatePromptWords3 = new JLabel("state:");
                     intStatePromptWords3.setForeground(FontBlackColor);
                     intStatePromptWords3.setBounds(65, 110 + zhenzhang * 2, 50, 25);
                     intStatePromptWords3.setBackground(BackgroundColor);
+                    intStatePromptWords3.setFont(smallFont);
                     panel.add(intStatePromptWords3);
 
-                    intTypePromptWords3 = new JLabel("<html><font face='黑体' size='4'>type:</font></html>");
+                    intTypePromptWords3 = new JLabel("type:");
                     intTypePromptWords3.setForeground(FontBlackColor);
                     intTypePromptWords3.setBounds(30, 135 + zhenzhang * 2, 50, 25);
                     intTypePromptWords3.setBackground(BackgroundColor);
+                    intTypePromptWords3.setFont(smallFont);
                     panel.add(intTypePromptWords3);
 
-                    intPriPromptWords3 = new JLabel("<html><font face='黑体' size='4'>Pri:</font></html>");
+                    intPriPromptWords3 = new JLabel("Pri:");
                     intPriPromptWords3.setForeground(FontBlackColor);
                     intPriPromptWords3.setBounds(33, 160 + zhenzhang * 2, 50, 30);
                     intPriPromptWords3.setBackground(BackgroundColor);
+                    intPriPromptWords3.setFont(smallFont);
                     panel.add(intPriPromptWords3);
 
-                    onButton3 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
-                    offButton3 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-                    FEButton3 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
-                    GEButton3 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
+                    onButton3 = new JRadioButton("ON");
+                    offButton3 = new JRadioButton("OFF");
+                    FEButton3 = new JRadioButton("FE[19]");
+                    GEButton3 = new JRadioButton("GE[4]");
+
+                    onButton3.setFont(smallFont);
+                    offButton3.setFont(smallFont);
+                    FEButton3.setFont(smallFont);
+                    GEButton3.setFont(smallFont);
 
                     onButton3.setBackground(BackgroundWhiteColor);
                     offButton3.setBackground(BackgroundWhiteColor);
@@ -462,7 +489,7 @@ class PanelSwitch extends JPanel {
                     panel.add(FEButton3);
                     panel.add(GEButton3);
                     onButton3.setSelected(true);
-                    FEButton3.setSelected(true);
+                    GEButton3.setSelected(true);
 
                     intPri3 = new JTextField("32768");
                     intPri3.setFont(TextFieldFont);
@@ -470,6 +497,7 @@ class PanelSwitch extends JPanel {
                     intPri3.setBounds(75, 167 + zhenzhang * 2, 140, 20);
                     intPri3.setBackground(BackgroundColor);
                     intPri3.setBorder(Border);
+                    intPri3.setFont(smallFont);
                     panel.add(intPri3);
 
                     if (intfNumber > 3) {
@@ -480,28 +508,36 @@ class PanelSwitch extends JPanel {
                         intCode4.setBackground(BackgroundColor);
                         panel.add(intCode4);
 
-                        intStatePromptWords4 = new JLabel("<html><font face='黑体' size='4'>state:</font></html>");
+                        intStatePromptWords4 = new JLabel("state:");
                         intStatePromptWords4.setForeground(FontBlackColor);
                         intStatePromptWords4.setBounds(65, 110, 50, 25);
                         intStatePromptWords4.setBackground(BackgroundColor);
+                        intStatePromptWords4.setFont(smallFont);
                         panel.add(intStatePromptWords4);
 
-                        intTypePromptWords4 = new JLabel("<html><font face='黑体' size='4'>type:</font></html>");
+                        intTypePromptWords4 = new JLabel("type:");
                         intTypePromptWords4.setForeground(FontBlackColor);
                         intTypePromptWords4.setBounds(30, 135 + zhenzhang * 3, 50, 25);
                         intTypePromptWords4.setBackground(BackgroundColor);
+                        intTypePromptWords4.setFont(smallFont);
                         panel.add(intTypePromptWords4);
 
-                        intPriPromptWords4 = new JLabel("<html><font face='黑体' size='4'>Pri:</font></html>");
+                        intPriPromptWords4 = new JLabel("Pri:");
                         intPriPromptWords4.setForeground(FontBlackColor);
                         intPriPromptWords4.setBounds(33, 160 + zhenzhang * 3, 50, 30);
                         intPriPromptWords4.setBackground(BackgroundColor);
+                        intPriPromptWords4.setFont(smallFont);
                         panel.add(intPriPromptWords4);
 
-                        onButton4 = new JRadioButton("<html><font face='黑体' size='4'>ON</font></html>");
-                        offButton4 = new JRadioButton("<html><font face='黑体' size='4'>OFF</font></html>");
-                        FEButton4 = new JRadioButton("<html><font face='黑体' size='4'>FE[19]</font></html>");
-                        GEButton4 = new JRadioButton("<html><font face='黑体' size='4'>GE[4]</font></html>");
+                        onButton4 = new JRadioButton("ON");
+                        offButton4 = new JRadioButton("OFF");
+                        FEButton4 = new JRadioButton("FE[19]");
+                        GEButton4 = new JRadioButton("GE[4]");
+
+                        onButton4.setFont(smallFont);
+                        offButton4.setFont(smallFont);
+                        FEButton4.setFont(smallFont);
+                        GEButton4.setFont(smallFont);
 
                         onButton4.setBackground(BackgroundWhiteColor);
                         offButton4.setBackground(BackgroundWhiteColor);
@@ -529,7 +565,7 @@ class PanelSwitch extends JPanel {
                         panel.add(FEButton4);
                         panel.add(GEButton4);
                         onButton4.setSelected(true);
-                        FEButton4.setSelected(true);
+                        GEButton4.setSelected(true);
 
                         intPri4 = new JTextField("32768");
                         intPri4.setFont(TextFieldFont);
@@ -537,6 +573,7 @@ class PanelSwitch extends JPanel {
                         intPri4.setBounds(75, 167 + zhenzhang * 3, 140, 20);
                         intPri4.setBackground(BackgroundColor);
                         intPri4.setBorder(Border);
+                        intPri4.setFont(smallFont);
                         panel.add(intPri4);
 
                     }

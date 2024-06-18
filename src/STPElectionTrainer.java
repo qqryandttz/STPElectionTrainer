@@ -19,7 +19,7 @@ class InterfaceExecution{
     JMenuItem[] JMenuItem; 
     playStatus bgMusic;
     int isToggle = 0;  //0代表未进入过操作页面，1代表在主页，2代表在操作页面
-    
+
     void 进行InterfaceExecution(){
 
         CL布局 = new CardLayout();
