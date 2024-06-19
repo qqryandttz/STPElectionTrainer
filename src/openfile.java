@@ -1,11 +1,10 @@
-import java.awt.Desktop;  
-import java.io.File;  
-import java.io.IOException;  
-  
-class openfile {  
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
-    
-    void inputFilePath(String FilePath){
+class openfile {
+
+    void inputFilePath(String FilePath) {
 
         File file = new File(FilePath);
         if (file.exists() && file.isFile()) {

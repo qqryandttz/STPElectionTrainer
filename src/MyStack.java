@@ -1,16 +1,16 @@
 public class MyStack {
-    
+
     private int[] a; // 存储数据
     private int size; // 当前元素的个数
 
     public MyStack(int capacity) {
-		size=-1;
-		a=new int[capacity];
-	}
+        size = -1;
+        a = new int[capacity];
+    }
 
     public MyStack() {
-		this(16);  //默认容量为16
-	}
+        this(16); // 默认容量为16
+    }
 
     // 判空
     public boolean isEmpty() {
@@ -43,11 +43,11 @@ public class MyStack {
 
     // 获取栈顶元素
     public int peek() {
-		if(isEmpty()) {
-			System.out.println("栈空，无法出栈");
-			return -1;
-		}
-		return a[size];
-	}
+        if (isEmpty()) {
+            System.out.println("栈空，无法出栈");
+            return -1;
+        }
+        return a[size];
+    }
 
 }

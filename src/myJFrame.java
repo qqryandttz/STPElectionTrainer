@@ -10,7 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import java.awt.Frame;
 
-class myJFrame extends JFrame{
+class myJFrame extends JFrame {
 
     InterfaceExecution IE;
     JMenuBar myJMenuBar;
@@ -21,7 +21,7 @@ class myJFrame extends JFrame{
     openfile openfile = new openfile();
     playStatus touchButtonSound, pressButtonSound;
 
-    myJFrame(InterfaceExecution interfaceExecution,String Name) {
+    myJFrame(InterfaceExecution interfaceExecution, String Name) {
 
         IE = interfaceExecution;
         setTitle(Name);
@@ -34,8 +34,8 @@ class myJFrame extends JFrame{
 
         setVisible(true);
     }
-    
-    public myJFrame(InterfaceExecution interfaceExecution,String Name, JMenuItem[] menuItems){
+
+    public myJFrame(InterfaceExecution interfaceExecution, String Name, JMenuItem[] menuItems) {
 
         IE = interfaceExecution;
         this.myJMenuItem = menuItems;
@@ -45,7 +45,7 @@ class myJFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.BLACK);
         setLayout(new BorderLayout());
-        this.setResizable(false); 
+        this.setResizable(false);
 
         initJMenu();
         addJMenu();
@@ -53,19 +53,19 @@ class myJFrame extends JFrame{
         setVisible(true);
     }
 
-    void initJMenu(){
+    void initJMenu() {
 
         myJMenuBar = new JMenuBar();
         myJMenu = new JMenu("菜单");
-        menuFont = new Font("黑体", Font.BOLD, 18);  
-        menuFontColor = new Color(0x00,0x14,0x2f);
+        menuFont = new Font("黑体", Font.BOLD, 18);
+        menuFontColor = new Color(0x00, 0x14, 0x2f);
         touchButtonSound = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
         pressButtonSound = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
     }
 
     void addJMenu() {
 
-        for (int i = 0; i < myJMenuItem.length; i++){
+        for (int i = 0; i < myJMenuItem.length; i++) {
             myJMenuItem[i].setFont(menuFont);
             myJMenu.add(myJMenuItem[i]);
         }
@@ -74,7 +74,7 @@ class myJFrame extends JFrame{
         setJMenuBar(myJMenuBar);
     }
 
-    void addJMenuListener(){
+    void addJMenuListener() {
 
         myJMenuItem[1].addActionListener(new ActionListener() {
             @Override
@@ -83,7 +83,8 @@ class myJFrame extends JFrame{
                 openfile.inputFilePath("resources\\_100文档\\基础知识.txt");
                 pressButtonSound.playMusicOnce();
                 JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>已为您打开文件!</font></html>",
-                        "提示", JOptionPane.INFORMATION_MESSAGE);            }
+                        "提示", JOptionPane.INFORMATION_MESSAGE);
+            }
         });
 
         myJMenuItem[2].addActionListener(new ActionListener() {
@@ -110,16 +111,17 @@ class myJFrame extends JFrame{
             }
         });
 
-        myJMenuItem[4].addActionListener(new ActionListener() {  
-            @Override  
-            public void actionPerformed(ActionEvent e) { 
+        myJMenuItem[4].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-                if(IE.isToggle == 0){
+                if (IE.isToggle == 0) {
 
-                    JOptionPane.showMessageDialog(new Frame(), "<html><font face='黑体' size='5'>请先进入一个拓扑图！</font></html>",
+                    JOptionPane.showMessageDialog(new Frame(),
+                            "<html><font face='黑体' size='5'>请先进入一个拓扑图！</font></html>",
                             "提示", JOptionPane.INFORMATION_MESSAGE);
 
-                }else if(IE.isToggle == 1){
+                } else if (IE.isToggle == 1) {
 
                     IE.goToOperationInterface();
                     IE.isToggle = 2;
@@ -133,8 +135,8 @@ class myJFrame extends JFrame{
                     IE.isToggle = 1;
 
                 }
-            }  
+            }
         });
-        
+
     }
 }

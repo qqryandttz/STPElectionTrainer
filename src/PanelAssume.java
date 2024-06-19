@@ -26,7 +26,7 @@ class PanelAssume extends JPanel {
     Color btnActiveFontColor, ButtonActiveBackColor;
 
     roundedButton conzhiButton;
-    JLabel root,genduankou,zhidinduankou;
+    JLabel root, genduankou, zhidinduankou;
     JLabel PromptWords1, PromptWords2, PromptWords3, PromptWords4, PromptWords5;
     JLabel PromptWords2_1, PromptWords2_2, PromptWords2_3, PromptWords2_4, PromptWords2_5;
 
@@ -51,12 +51,12 @@ class PanelAssume extends JPanel {
     JRadioButton ZButton4_1, ZButton4_2, ZButton4_3, ZButton4_4;
     JRadioButton ZButton5_1, ZButton5_2;
 
-    PanelAssume(InterfaceExecution interfaceExecution, NetworkTopology anet){
+    PanelAssume(InterfaceExecution interfaceExecution, NetworkTopology anet) {
 
         IE = interfaceExecution;
         net = anet;
         setLayout(null);
-        
+
         init();
         ADDbotton();
         ADDroot();
@@ -65,9 +65,9 @@ class PanelAssume extends JPanel {
         ADDgroup();
     }
 
-    void init(){
+    void init() {
 
-        BackgroundColor = new Color(0xd5, 0xd5, 0xd5);
+        BackgroundColor = new Color(0xf5, 0xf5, 0xf5);
         setBackground(BackgroundColor);
         font = new Font("黑体", Font.PLAIN, 16);
         touchButtonSound = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
@@ -87,14 +87,14 @@ class PanelAssume extends JPanel {
         conzhiButton.setFont(font);
         add(conzhiButton);
 
-        conzhiButton.addActionListener(new ActionListener() {  
-            @Override  
+        conzhiButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.playMusicOnce();
                 conzhi();
-            }  
-        }); 
+            }
+        });
         conzhiButton.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -108,19 +108,20 @@ class PanelAssume extends JPanel {
             @Override
             public void mouseExited(MouseEvent e) {
 
-                conzhiButton.setBackground(ButtonBackColor);
+                conzhiButton.setForeground(buttonFontColor);
+
             }
         });
     }
 
-    void ADDroot(){
+    void ADDroot() {
 
         root = new JLabel("ROOT");
         root.setFont(font);
         root.setBounds(15, 20, 100, 25);
         root.setBackground(BackgroundColor);
         add(root);
-        
+
         rootGroup = new ButtonGroup();
         root1 = new JRadioButton("SW1");
         root1.setFont(font);
@@ -151,7 +152,7 @@ class PanelAssume extends JPanel {
         add(root4);
         rootGroup.add(root4);
 
-        if(net.Example == 3){
+        if (net.Example == 3) {
 
             root5 = new JRadioButton("SW5");
             root5.setFont(font);
@@ -159,10 +160,10 @@ class PanelAssume extends JPanel {
             root5.setBounds(210, 20, 50, 25);
             add(root5);
             rootGroup.add(root5);
-        }    
+        }
     }
 
-    void ADDgenduankou(){
+    void ADDgenduankou() {
 
         genduankou = new JLabel("<html><根端口></html>");
         genduankou.setFont(font);
@@ -207,7 +208,7 @@ class PanelAssume extends JPanel {
         ADDintgen_Botton();
     }
 
-    void ADDintgen_Botton(){
+    void ADDintgen_Botton() {
 
         Button1_1 = new JRadioButton("接口1");
         Button1_1.setFont(font);
@@ -219,27 +220,34 @@ class PanelAssume extends JPanel {
         Button1_2.setBackground(BackgroundColor);
         Button1_2.setBounds(270, 50, 90, 25);
         add(Button1_2);
-        Button1_3 = new JRadioButton("接口3");
-        Button1_3.setFont(font);
-        Button1_3.setBackground(BackgroundColor);
-        Button1_3.setBounds(370, 50, 90, 25);
-        add(Button1_3);
+
+        if (net.Example == 2) {
+            Button1_3 = new JRadioButton("接口3");
+            Button1_3.setFont(font);
+            Button1_3.setBackground(BackgroundColor);
+            Button1_3.setBounds(370, 50, 90, 25);
+            add(Button1_3);
+        }
 
         Button2_1 = new JRadioButton("接口1");
         Button2_1.setFont(font);
         Button2_1.setBackground(BackgroundColor);
         Button2_1.setBounds(170, 80, 90, 25);
         add(Button2_1);
-        Button2_2 = new JRadioButton("接口2");
-        Button2_2.setFont(font);
-        Button2_2.setBackground(BackgroundColor);
-        Button2_2.setBounds(270, 80, 90, 25);
-        add(Button2_2);
-        Button2_3 = new JRadioButton("接口3");
-        Button2_3.setFont(font);
-        Button2_3.setBackground(BackgroundColor);
-        Button2_3.setBounds(370, 80, 90, 25);
-        add(Button2_3);
+        if (net.Example != 3) {
+            Button2_2 = new JRadioButton("接口2");
+            Button2_2.setFont(font);
+            Button2_2.setBackground(BackgroundColor);
+            Button2_2.setBounds(270, 80, 90, 25);
+            add(Button2_2);
+            if (net.Example == 2) {
+                Button2_3 = new JRadioButton("接口3");
+                Button2_3.setFont(font);
+                Button2_3.setBackground(BackgroundColor);
+                Button2_3.setBounds(370, 80, 90, 25);
+                add(Button2_3);
+            }
+        }
 
         Button3_1 = new JRadioButton("接口1");
         Button3_1.setFont(font);
@@ -278,7 +286,7 @@ class PanelAssume extends JPanel {
         Button4_4.setBounds(470, 140, 90, 25);
         add(Button4_4);
 
-        if (net.Example == 3){
+        if (net.Example == 3) {
             Button5_1 = new JRadioButton("接口1");
             Button5_1.setFont(font);
             Button5_1.setBackground(BackgroundColor);
@@ -294,7 +302,7 @@ class PanelAssume extends JPanel {
 
     }
 
-    void ADDzhidinduankou(){
+    void ADDzhidinduankou() {
 
         int y = 120;
         if (net.Example == 3) {
@@ -343,7 +351,7 @@ class PanelAssume extends JPanel {
         ADDintzhi_Botton();
     }
 
-    void ADDintzhi_Botton(){
+    void ADDintzhi_Botton() {
 
         int y = 120;
         if (net.Example == 3) {
@@ -418,7 +426,7 @@ class PanelAssume extends JPanel {
         ZButton4_4.setBounds(470, y + 140, 90, 25);
         add(ZButton4_4);
 
-        if (net.Example == 3){
+        if (net.Example == 3) {
             ZButton5_1 = new JRadioButton("接口1");
             ZButton5_1.setFont(font);
             ZButton5_1.setBackground(BackgroundColor);
@@ -433,7 +441,7 @@ class PanelAssume extends JPanel {
         }
     }
 
-    void ADDgroup(){
+    void ADDgroup() {
 
         gButton1_1 = new ButtonGroup();
         gButton1_1.add(Button1_1);
@@ -478,19 +486,19 @@ class PanelAssume extends JPanel {
         gButton4_4.add(Button4_4);
         gButton4_4.add(ZButton4_4);
 
-        if(net.Example == 3){
-        gButton5_1 = new ButtonGroup();
-        gButton5_1.add(Button5_1);
-        gButton5_1.add(ZButton5_1);
-        gButton5_2 = new ButtonGroup();
-        gButton5_2.add(Button5_2);
-        gButton5_2.add(ZButton5_2);
+        if (net.Example == 3) {
+            gButton5_1 = new ButtonGroup();
+            gButton5_1.add(Button5_1);
+            gButton5_1.add(ZButton5_1);
+            gButton5_2 = new ButtonGroup();
+            gButton5_2.add(Button5_2);
+            gButton5_2.add(ZButton5_2);
         }
 
         zhidinS1();
     }
 
-    void zhidinS1(){
+    void zhidinS1() {
 
         ZButton1_1.setSelected(true);
         ZButton1_2.setSelected(true);
@@ -525,7 +533,7 @@ class PanelAssume extends JPanel {
         ZButton5_2.setSelected(true);
     }
 
-    void conzhi(){
+    void conzhi() {
 
         gButton1_1.clearSelection();
         gButton1_2.clearSelection();
@@ -540,12 +548,12 @@ class PanelAssume extends JPanel {
         gButton4_2.clearSelection();
         gButton4_3.clearSelection();
         gButton4_4.clearSelection();
-        
+
         ZButton1_1.setSelected(true);
         ZButton1_2.setSelected(true);
         ZButton1_3.setSelected(true);
-        
-        if (net.Example == 3){
+
+        if (net.Example == 3) {
             gButton5_1.clearSelection();
             gButton5_2.clearSelection();
         }
@@ -553,10 +561,9 @@ class PanelAssume extends JPanel {
         root1.setSelected(true);
     }
 
-    
     @Override
     protected void paintComponent(Graphics g) {
-        
+
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
@@ -565,6 +572,4 @@ class PanelAssume extends JPanel {
 
     }
 
-
 }
-

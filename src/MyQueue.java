@@ -1,14 +1,14 @@
 public class MyQueue {
-    
+
     private int[] a;
     private int front;
     private int rear;
 
     public MyQueue(int capacity) {
-		a=new int[capacity+1];  //有一个位置不存储数据，为了区别空和满的状态，牺牲一个空间
-		front=0;
-		rear=0;
-	}
+        a = new int[capacity + 1]; // 有一个位置不存储数据，为了区别空和满的状态，牺牲一个空间
+        front = 0;
+        rear = 0;
+    }
 
     // 判空
     public boolean isEmpty() {

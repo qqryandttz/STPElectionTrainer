@@ -6,7 +6,7 @@ import javazoom.jl.player.advanced.PlaybackListener;
 class musicPlaybackThread extends Thread {
 
     AdvancedPlayer musicPlayer;
-    volatile boolean isPauseMusic = false; 
+    volatile boolean isPauseMusic = false;
 
     public musicPlaybackThread(String path) {
         try {
@@ -17,68 +17,68 @@ class musicPlaybackThread extends Thread {
     }
 
     @Override
-    public void run() { 
-            synchronized (this) { 
-                while (isPauseMusic) {
-                    try {
-                        this.wait(); 
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+    public void run() {
+        synchronized (this) {
+            while (isPauseMusic) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
-            try {
-                musicPlayer.play(); 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        
+        }
+        try {
+            musicPlayer.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void pauseMusic() {
-        synchronized (this) { 
+        synchronized (this) {
             isPauseMusic = true;
             this.notifyAll();
         }
     }
 
     public void replayMusic() {
-        synchronized (this) { 
+        synchronized (this) {
             isPauseMusic = false;
-            this.notifyAll(); 
+            this.notifyAll();
         }
     }
 }
 
-class playStatus{
+class playStatus {
 
     String path;
     musicPlaybackThread loopMusicPlaybackThread;
     musicPlaybackThread onceMusicPlaybackThread;
-    
-    public playStatus(String path) {  
-        this.path = path;  
-    }  
 
-    void playMusicOnce(){
+    public playStatus(String path) {
+        this.path = path;
+    }
+
+    void playMusicOnce() {
 
         onceMusicPlaybackThread = new musicPlaybackThread(path);
         onceMusicPlaybackThread.start();
     }
 
-    void playMusicOnLoop(){
+    void playMusicOnLoop() {
 
         loopMusicPlaybackThread = new musicPlaybackThread(path);
         loopMusicPlaybackThread.start();
         loopMusicPlaybackThread.musicPlayer.setPlayBackListener(new PlaybackListener() {
             @Override
             public void playbackFinished(PlaybackEvent event) {
-            playMusicOnLoop();
+                playMusicOnLoop();
             }
         });
     }
 
-    void stop(){
+    void stop() {
         if (loopMusicPlaybackThread != null) {
             loopMusicPlaybackThread.musicPlayer.stop();
             loopMusicPlaybackThread.musicPlayer.close();
@@ -86,18 +86,16 @@ class playStatus{
         }
     }
 
-    void PauseMusic(){
+    void PauseMusic() {
         loopMusicPlaybackThread.pauseMusic();
     }
 
-    void replayMusic(){
+    void replayMusic() {
         loopMusicPlaybackThread.replayMusic();
     }
 
-    
-
 }
-/* 
+/*
 class x{
     public static void main(String[] args) {
 

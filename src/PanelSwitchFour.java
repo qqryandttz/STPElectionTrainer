@@ -19,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
 //4交换机面板
 class PanelSwitchFour1 extends JPanel {
 
@@ -29,12 +28,12 @@ class PanelSwitchFour1 extends JPanel {
     PanelSwitchFour1(NetworkTopology anet) {
 
         neT = anet;
-        setLayout(null); 
+        setLayout(null);
         setOpaque(false);
         ADDPanelSwitch();
     }
 
-    void ADDPanelSwitch(){
+    void ADDPanelSwitch() {
 
         ps1 = new PanelSwitch(neT.switch11, neT);
         ps2 = new PanelSwitch(neT.switch12, neT);
@@ -54,7 +53,6 @@ class PanelSwitchFour1 extends JPanel {
     }
 
 }
-
 
 class PanelSwitchFour2 extends JPanel {
 
@@ -90,7 +88,7 @@ class PanelSwitchFour2 extends JPanel {
 
 }
 
-//5交换机面板
+// 5交换机面板
 class PanelSwitchFive extends JPanel {
 
     PanelSwitch ps1, ps2, ps3, ps4, ps5;
@@ -99,7 +97,7 @@ class PanelSwitchFive extends JPanel {
     PanelSwitchFive(NetworkTopology anet) {
 
         neT = anet;
-        setLayout(null); 
+        setLayout(null);
         setOpaque(false);
         ADDPanelSwitch();
     }
@@ -164,7 +162,7 @@ class PanelSwitch extends JPanel {
     JRadioButton FEButton4, GEButton4, onButton4, offButton4;
     JTextField intPri4;
 
-    PanelSwitch(Switch aswitch, NetworkTopology anet){
+    PanelSwitch(Switch aswitch, NetworkTopology anet) {
 
         myswitch = aswitch;
         neT = anet;
@@ -172,9 +170,9 @@ class PanelSwitch extends JPanel {
         theMAC = aswitch.mac;
         thePri = aswitch.pri;
         intNumber = aswitch.intNumber;
-        setOpaque(false); 
-        setBackground(new Color(0, 0, 0, 0)); 
-        panel = new JPanel(){
+        setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
+        panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
 
@@ -187,7 +185,7 @@ class PanelSwitch extends JPanel {
             }
         };
 
-        if((intNumber == 3 ||intNumber == 4) && (anet.Example == 1 || anet.Example == 2)){
+        if ((intNumber == 3 || intNumber == 4) && (anet.Example == 1 || anet.Example == 2)) {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
@@ -205,7 +203,7 @@ class PanelSwitch extends JPanel {
 
                 }
             };
-        }else if((intNumber == 3 || intNumber == 4) && (anet.Example == 3)) {
+        } else if ((intNumber == 3 || intNumber == 4) && (anet.Example == 3)) {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
@@ -240,7 +238,7 @@ class PanelSwitch extends JPanel {
 
                 }
             };
-            
+
         }
         panel.setLayout(null);
         Init();
@@ -254,34 +252,33 @@ class PanelSwitch extends JPanel {
         } else if (anet.Example == 3) {
             scrollPane.setPreferredSize(new Dimension(270, 337));
         }
-        
+
         add(scrollPane, BorderLayout.CENTER);
         ADDswitch();
         ADDintLister();
 
     }
 
-    void Init(){
+    void Init() {
 
         TextFieldFont = new Font("黑体", Font.PLAIN, 17);
-        PromptWordsFont = new Font("黑体", Font.PLAIN , 20);
-        smallFont = new Font("黑体", Font.PLAIN , 15);
-        FontWhiteColor = new Color(0xf5,0xf5,0xf5);
+        PromptWordsFont = new Font("黑体", Font.PLAIN, 20);
+        smallFont = new Font("黑体", Font.PLAIN, 15);
+        FontWhiteColor = new Color(0xf5, 0xf5, 0xf5);
         FontBlackColor = new Color(0x22, 0x26, 0x29);
         BackgroundColor = new Color(0x86, 0xc2, 0x32);
         BackgroundWhiteColor = new Color(0xe5, 0xe5, 0xe5);
-        Border = new EmptyBorder(0,0,0,0);
+        Border = new EmptyBorder(0, 0, 0, 0);
     }
 
-    void ADDLabel(){
+    void ADDLabel() {
 
         namePromptWords = new JLabel("<html>name:</html>");
         namePromptWords.setFont(PromptWordsFont);
         namePromptWords.setForeground(FontBlackColor);
-        namePromptWords.setBounds( 15, 20, 50, 25);
+        namePromptWords.setBounds(15, 20, 50, 25);
         namePromptWords.setBackground(BackgroundColor);
         panel.add(namePromptWords);
-
 
         MACPromptWords = new JLabel("<html>Mac :</html>");
         MACPromptWords.setFont(PromptWordsFont);
@@ -297,13 +294,13 @@ class PanelSwitch extends JPanel {
         PriPromptWords.setBackground(BackgroundColor);
         panel.add(PriPromptWords);
     }
- 
-    void ADDTextField(){
+
+    void ADDTextField() {
 
         name = new JTextField(theName);
         name.setFont(TextFieldFont);
         name.setForeground(FontWhiteColor);
-        name.setBounds( 70, 22, 170, 20);
+        name.setBounds(70, 22, 170, 20);
         name.setBackground(BackgroundColor);
         name.setBorder(Border);
         panel.add(name);
@@ -326,14 +323,13 @@ class PanelSwitch extends JPanel {
 
     }
 
-
-    void ADDintf(){
+    void ADDintf() {
 
         if (true) {
 
             intCode1 = new JLabel("<html><font face='黑体' size='4'><接口1></font></html>");
             intCode1.setForeground(FontBlackColor);
-            intCode1.setBounds(15, 110,50, 25);
+            intCode1.setBounds(15, 110, 50, 25);
             intCode1.setBackground(BackgroundColor);
             panel.add(intCode1);
 
@@ -343,7 +339,7 @@ class PanelSwitch extends JPanel {
             intStatePromptWords1.setBackground(BackgroundColor);
             intStatePromptWords1.setFont(smallFont);
             panel.add(intStatePromptWords1);
-            
+
             intTypePromptWords1 = new JLabel("type:");
             intTypePromptWords1.setForeground(FontBlackColor);
             intTypePromptWords1.setBounds(30, 135, 50, 25);
@@ -357,7 +353,6 @@ class PanelSwitch extends JPanel {
             intPriPromptWords1.setBackground(BackgroundColor);
             intPriPromptWords1.setFont(smallFont);
             panel.add(intPriPromptWords1);
-
 
             onButton1 = new JRadioButton("ON");
             offButton1 = new JRadioButton("OFF");
@@ -410,7 +405,7 @@ class PanelSwitch extends JPanel {
 
                 intCode2 = new JLabel("<html><font face='黑体' size='4'><接口2></font></html>");
                 intCode2.setForeground(FontBlackColor);
-                intCode2.setBounds(15, 110+zhenzhang, 50, 25);
+                intCode2.setBounds(15, 110 + zhenzhang, 50, 25);
                 intCode2.setBackground(BackgroundColor);
                 panel.add(intCode2);
 
@@ -486,7 +481,7 @@ class PanelSwitch extends JPanel {
 
                     intCode3 = new JLabel("<html><font face='黑体' size='4'><接口3></font></html>");
                     intCode3.setForeground(FontBlackColor);
-                    intCode3.setBounds(15, 110 + zhenzhang *2, 50, 25);
+                    intCode3.setBounds(15, 110 + zhenzhang * 2, 50, 25);
                     intCode3.setBackground(BackgroundColor);
                     panel.add(intCode3);
 
@@ -562,7 +557,7 @@ class PanelSwitch extends JPanel {
 
                         intCode4 = new JLabel("<html><font face='黑体' size='4'><接口4></font></html>");
                         intCode4.setForeground(FontBlackColor);
-                        intCode4.setBounds(15, 110+ zhenzhang * 3, 50, 25);
+                        intCode4.setBounds(15, 110 + zhenzhang * 3, 50, 25);
                         intCode4.setBackground(BackgroundColor);
                         panel.add(intCode4);
 
@@ -640,8 +635,8 @@ class PanelSwitch extends JPanel {
         }
 
     }
-    
-    void ADDswitch(){
+
+    void ADDswitch() {
 
         name.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -683,7 +678,6 @@ class PanelSwitch extends JPanel {
             }
         });
 
-
         Pri.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -706,9 +700,9 @@ class PanelSwitch extends JPanel {
 
     }
 
-    void ADDintLister(){
+    void ADDintLister() {
 
-        if (true){
+        if (true) {
 
             intPri1.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
@@ -716,11 +710,13 @@ class PanelSwitch extends JPanel {
                     System.out.println("文本被插入: " + intPri1.getText());
                     myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
                 }
+
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     System.out.println("文本被删除: " + intPri1.getText());
                     myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
                 }
+
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     System.out.println("文本内容已更改: " + intPri1.getText());
@@ -754,7 +750,7 @@ class PanelSwitch extends JPanel {
 
         }
 
-        if (intNumber > 1){
+        if (intNumber > 1) {
 
             intPri2.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
@@ -802,7 +798,7 @@ class PanelSwitch extends JPanel {
 
         }
 
-        if (intNumber > 2){
+        if (intNumber > 2) {
 
             intPri3.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
@@ -850,7 +846,7 @@ class PanelSwitch extends JPanel {
 
         }
 
-        if (intNumber > 3){
+        if (intNumber > 3) {
 
             intPri4.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
@@ -899,6 +895,5 @@ class PanelSwitch extends JPanel {
         }
 
     }
-
 
 }

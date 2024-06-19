@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-class Line extends JPanel{
+class Line extends JPanel {
 
-    public Line() {  
+    public Line() {
 
-        setOpaque(false);  
+        setOpaque(false);
     }
 
     @Override
@@ -18,5 +18,5 @@ class Line extends JPanel{
         g2d.drawLine(0, 450, getWidth(), 450);
 
     }
-    
+
 }
