@@ -1,0 +1,10 @@
+class Election {
+
+    /**
+     * 
+     */
+    Election(){
+
+    }
+    
+}

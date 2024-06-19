@@ -7,6 +7,9 @@ import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 
 class PanelMain extends JPanel {
 
@@ -15,6 +18,7 @@ class PanelMain extends JPanel {
     ColoredRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
     ButtonGroup buttonGroup;
     Color BackgroundColor;
+    int isModel = 1;  //1为调参，2为推测，3为运行，4为比较
 
     PanelMain(InterfaceExecution interfaceExecution) {
         IE = interfaceExecution;
@@ -44,9 +48,9 @@ class PanelMain extends JPanel {
     void ADDselectedMode() {
 
         radioButton1 = new ColoredRadioButton("<html><font face='黑体' size='6'>调参模式</font></html>");
-        radioButton2 = new ColoredRadioButton("<html><font face='黑体' size='6'>推测模式</font></html>");
+        radioButton2 = new ColoredRadioButton("<html><font face='黑体' size='6'>保存推测</font></html>");
         radioButton3 = new ColoredRadioButton("<html><font face='黑体' size='6'>运行模式</font></html>");
-        radioButton4 = new ColoredRadioButton("<html><font face='黑体' size='6'>比较模式</font></html>");
+        radioButton4 = new ColoredRadioButton("<html><font face='黑体' size='6'>进行比较</font></html>");
 
         radioButton1.setBackground(BackgroundColor);
         radioButton2.setBackground(BackgroundColor);
@@ -64,10 +68,51 @@ class PanelMain extends JPanel {
         buttonGroup.add(radioButton3);
         buttonGroup.add(radioButton4);
 
-        radioButton1.addActionListener(e -> System.out.println("1"));
-        radioButton2.addActionListener(e -> System.out.println("2"));
-        radioButton3.addActionListener(e -> System.out.println("3"));
-        radioButton4.addActionListener(e -> System.out.println("4"));
+        radioButton1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    
+                }
+            }
+        });
+
+        radioButton2.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+
+                }
+            }
+        });
+
+        radioButton3.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    IE.OI.starrySkyPanel.startFastMove();
+                    // 开始算法
+                    // 调用组件
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+
+                }
+            }
+        });
+
+        radioButton4.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+
+                }
+            }
+        });
 
         add(radioButton1);
         add(radioButton2);

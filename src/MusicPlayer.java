@@ -50,13 +50,13 @@ class musicPlaybackThread extends Thread {
     }
 }
 
-class playStatus {
+class MusicPlayer {
 
     String path;
     musicPlaybackThread loopMusicPlaybackThread;
     musicPlaybackThread onceMusicPlaybackThread;
 
-    public playStatus(String path) {
+    public MusicPlayer(String path) {
         this.path = path;
     }
 

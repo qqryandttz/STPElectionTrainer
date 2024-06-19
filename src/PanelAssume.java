@@ -22,7 +22,7 @@ class PanelAssume extends JPanel {
     NetworkTopology net;
     Color BackgroundColor;
     Font font;
-    playStatus touchButtonSound, pressButtonSound;
+    MusicPlayer touchButtonSound, pressButtonSound;
     Color buttonFontColor, ButtonBackColor;
     Color btnActiveFontColor, ButtonActiveBackColor;
 
@@ -39,7 +39,7 @@ class PanelAssume extends JPanel {
     ButtonGroup gButton4_1, gButton4_2, gButton4_3, gButton4_4;
     ButtonGroup gButton5_1, gButton5_2;
 
-    ColoredRadioButton root1, root2, root3, root4, root5;
+    aColoredRadioButton root1, root2, root3, root4, root5;
     ColoredRadioButton Button1_1, Button1_2, Button1_3;
     ColoredRadioButton Button2_1, Button2_2, Button2_3;
     ColoredRadioButton Button3_1, Button3_2, Button3_3;
@@ -71,8 +71,8 @@ class PanelAssume extends JPanel {
         BackgroundColor = new Color(0xf5, 0xf5, 0xf5);
         setBackground(BackgroundColor);
         font = new Font("黑体", Font.PLAIN, 16);
-        touchButtonSound = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
-        pressButtonSound = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
+        touchButtonSound = new MusicPlayer("resources\\_200音乐\\触碰按钮声.mp3");
+        pressButtonSound = new MusicPlayer("resources\\_200音乐\\按下按钮声.mp3");
         ButtonBackColor = new Color(0x61, 0x89, 0x2f);
         buttonFontColor = new Color(0x22, 0x26, 0x29);
         btnActiveFontColor = new Color(0xee, 0xee, 0xee);
@@ -124,7 +124,7 @@ class PanelAssume extends JPanel {
         add(root);
 
         rootGroup = new ButtonGroup();
-        root1 = new ColoredRadioButton("SW1");
+        root1 = new aColoredRadioButton("SW1");
         root1.setFont(font);
         root1.setBackground(BackgroundColor);
         root1.setBounds(110, 20, 50, 25);
@@ -132,21 +132,21 @@ class PanelAssume extends JPanel {
         rootGroup.add(root1);
         root1.setSelected(true);
 
-        root2 = new ColoredRadioButton("SW2");
+        root2 = new aColoredRadioButton("SW2");
         root2.setFont(font);
         root2.setBackground(BackgroundColor);
         root2.setBounds(210, 20, 50, 25);
         add(root2);
         rootGroup.add(root2);
 
-        root3 = new ColoredRadioButton("SW3");
+        root3 = new aColoredRadioButton("SW3");
         root3.setFont(font);
         root3.setBackground(BackgroundColor);
         root3.setBounds(310, 20, 50, 25);
         add(root3);
         rootGroup.add(root3);
 
-        root4 = new ColoredRadioButton("SW4");
+        root4 = new aColoredRadioButton("SW4");
         root4.setFont(font);
         root4.setBackground(BackgroundColor);
         root4.setBounds(410, 20, 50, 25);
@@ -155,7 +155,7 @@ class PanelAssume extends JPanel {
 
         if (net.Example == 3) {
 
-            root5 = new ColoredRadioButton("SW5");
+            root5 = new aColoredRadioButton("SW5");
             root5.setFont(font);
             root5.setBackground(BackgroundColor);
             root5.setBounds(210, 20, 50, 25);

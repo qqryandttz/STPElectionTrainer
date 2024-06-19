@@ -29,7 +29,7 @@ class homePage extends JPanel {
     Color titleFontColor, subtitleFontColor, buttonFontColor, ButtonBackColor, ButtonBorderColor;
     Color btnActiveFontColor, ButtonActiveBackColor;
     openfile openfile = new openfile();
-    playStatus touchButtonSound, pressButtonSound;
+    MusicPlayer touchButtonSound, pressButtonSound;
 
     homePage(InterfaceExecution interfaceExecution) {
 
@@ -104,8 +104,8 @@ class homePage extends JPanel {
         buttonFontColor = new Color(0x22, 0x26, 0x29);
         btnActiveFontColor = new Color(0xee, 0xee, 0xee);
         ButtonActiveBackColor = new Color(0x86, 0xc2, 0x32);
-        touchButtonSound = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
-        pressButtonSound = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
+        touchButtonSound = new MusicPlayer("resources\\_200音乐\\触碰按钮声.mp3");
+        pressButtonSound = new MusicPlayer("resources\\_200音乐\\按下按钮声.mp3");
 
         基础知识Button.setFont(buttonFont);
         选举规则Button.setFont(buttonFont);

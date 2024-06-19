@@ -25,7 +25,7 @@ public class starrySkyPanel extends JPanel {
             moveStars();
             repaint();
 
-            if (currentSpeed == fastSpeed && System.currentTimeMillis() - fastMoveStartTime > 2000) {
+            if (currentSpeed == fastSpeed && System.currentTimeMillis() - fastMoveStartTime > 1500) {
                 currentSpeed = normalSpeed;
             }
         }).start();
