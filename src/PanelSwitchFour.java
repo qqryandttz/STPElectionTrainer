@@ -14,7 +14,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -144,22 +143,22 @@ class PanelSwitch extends JPanel {
     int intNumber, zhenzhang = 80;
     JLabel intCode1, intTypePromptWords1, intStatePromptWords1, intPriPromptWords1;
     ButtonGroup intcostGroup1, intstateGroup1;
-    JRadioButton FEButton1, GEButton1, onButton1, offButton1;
+    ColoredRadioButton FEButton1, GEButton1, onButton1, offButton1;
     JTextField intPri1;
 
     JLabel intCode2, intTypePromptWords2, intStatePromptWords2, intPriPromptWords2;
     ButtonGroup intcostGroup2, intstateGroup2;
-    JRadioButton FEButton2, GEButton2, onButton2, offButton2;
+    ColoredRadioButton FEButton2, GEButton2, onButton2, offButton2;
     JTextField intPri2;
 
     JLabel intCode3, intTypePromptWords3, intStatePromptWords3, intPriPromptWords3;
     ButtonGroup intcostGroup3, intstateGroup3;
-    JRadioButton FEButton3, GEButton3, onButton3, offButton3;
+    ColoredRadioButton FEButton3, GEButton3, onButton3, offButton3;
     JTextField intPri3;
 
     JLabel intCode4, intTypePromptWords4, intStatePromptWords4, intPriPromptWords4;
     ButtonGroup intcostGroup4, intstateGroup4;
-    JRadioButton FEButton4, GEButton4, onButton4, offButton4;
+    ColoredRadioButton FEButton4, GEButton4, onButton4, offButton4;
     JTextField intPri4;
 
     PanelSwitch(Switch aswitch, NetworkTopology anet) {
@@ -354,10 +353,10 @@ class PanelSwitch extends JPanel {
             intPriPromptWords1.setFont(smallFont);
             panel.add(intPriPromptWords1);
 
-            onButton1 = new JRadioButton("ON");
-            offButton1 = new JRadioButton("OFF");
-            FEButton1 = new JRadioButton("FE[19]");
-            GEButton1 = new JRadioButton("GE[4]");
+            onButton1 = new ColoredRadioButton("ON");
+            offButton1 = new ColoredRadioButton("OFF");
+            FEButton1 = new ColoredRadioButton("FE[19]");
+            GEButton1 = new ColoredRadioButton("GE[4]");
 
             onButton1.setFont(smallFont);
             offButton1.setFont(smallFont);
@@ -430,10 +429,10 @@ class PanelSwitch extends JPanel {
                 intPriPromptWords2.setFont(smallFont);
                 panel.add(intPriPromptWords2);
 
-                onButton2 = new JRadioButton("ON");
-                offButton2 = new JRadioButton("OFF");
-                FEButton2 = new JRadioButton("FE[19]");
-                GEButton2 = new JRadioButton("GE[4]");
+                onButton2 = new ColoredRadioButton("ON");
+                offButton2 = new ColoredRadioButton("OFF");
+                FEButton2 = new ColoredRadioButton("FE[19]");
+                GEButton2 = new ColoredRadioButton("GE[4]");
 
                 onButton2.setFont(smallFont);
                 offButton2.setFont(smallFont);
@@ -506,10 +505,10 @@ class PanelSwitch extends JPanel {
                     intPriPromptWords3.setFont(smallFont);
                     panel.add(intPriPromptWords3);
 
-                    onButton3 = new JRadioButton("ON");
-                    offButton3 = new JRadioButton("OFF");
-                    FEButton3 = new JRadioButton("FE[19]");
-                    GEButton3 = new JRadioButton("GE[4]");
+                    onButton3 = new ColoredRadioButton("ON");
+                    offButton3 = new ColoredRadioButton("OFF");
+                    FEButton3 = new ColoredRadioButton("FE[19]");
+                    GEButton3 = new ColoredRadioButton("GE[4]");
 
                     onButton3.setFont(smallFont);
                     offButton3.setFont(smallFont);
@@ -582,10 +581,10 @@ class PanelSwitch extends JPanel {
                         intPriPromptWords4.setFont(smallFont);
                         panel.add(intPriPromptWords4);
 
-                        onButton4 = new JRadioButton("ON");
-                        offButton4 = new JRadioButton("OFF");
-                        FEButton4 = new JRadioButton("FE[19]");
-                        GEButton4 = new JRadioButton("GE[4]");
+                        onButton4 = new ColoredRadioButton("ON");
+                        offButton4 = new ColoredRadioButton("OFF");
+                        FEButton4 = new ColoredRadioButton("FE[19]");
+                        GEButton4 = new ColoredRadioButton("GE[4]");
 
                         onButton4.setFont(smallFont);
                         offButton4.setFont(smallFont);
@@ -728,9 +727,11 @@ class PanelSwitch extends JPanel {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
+                        System.out.println("选中");
                         myswitch.Interface1.state = true;
 
                     } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        System.out.println("未选中");
                         myswitch.Interface1.state = false;
                     }
                 }

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CustomRadioButtonExample",
+            "request": "launch",
+            "mainClass": "CustomRadioButtonExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "t",
             "request": "launch",
             "mainClass": "t",

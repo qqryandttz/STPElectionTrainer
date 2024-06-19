@@ -6,12 +6,13 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import java.awt.event.MouseEvent;
 
 //推测面板
@@ -38,18 +39,18 @@ class PanelAssume extends JPanel {
     ButtonGroup gButton4_1, gButton4_2, gButton4_3, gButton4_4;
     ButtonGroup gButton5_1, gButton5_2;
 
-    JRadioButton root1, root2, root3, root4, root5;
-    JRadioButton Button1_1, Button1_2, Button1_3;
-    JRadioButton Button2_1, Button2_2, Button2_3;
-    JRadioButton Button3_1, Button3_2, Button3_3;
-    JRadioButton Button4_1, Button4_2, Button4_3, Button4_4;
-    JRadioButton Button5_1, Button5_2;
+    ColoredRadioButton root1, root2, root3, root4, root5;
+    ColoredRadioButton Button1_1, Button1_2, Button1_3;
+    ColoredRadioButton Button2_1, Button2_2, Button2_3;
+    ColoredRadioButton Button3_1, Button3_2, Button3_3;
+    ColoredRadioButton Button4_1, Button4_2, Button4_3, Button4_4;
+    ColoredRadioButton Button5_1, Button5_2;
 
-    JRadioButton ZButton1_1, ZButton1_2, ZButton1_3;
-    JRadioButton ZButton2_1, ZButton2_2, ZButton2_3;
-    JRadioButton ZButton3_1, ZButton3_2, ZButton3_3;
-    JRadioButton ZButton4_1, ZButton4_2, ZButton4_3, ZButton4_4;
-    JRadioButton ZButton5_1, ZButton5_2;
+    ColoredRadioButton ZButton1_1, ZButton1_2, ZButton1_3;
+    ColoredRadioButton ZButton2_1, ZButton2_2, ZButton2_3;
+    ColoredRadioButton ZButton3_1, ZButton3_2, ZButton3_3;
+    ColoredRadioButton ZButton4_1, ZButton4_2, ZButton4_3, ZButton4_4;
+    ColoredRadioButton ZButton5_1, ZButton5_2;
 
     PanelAssume(InterfaceExecution interfaceExecution, NetworkTopology anet) {
 
@@ -123,7 +124,7 @@ class PanelAssume extends JPanel {
         add(root);
 
         rootGroup = new ButtonGroup();
-        root1 = new JRadioButton("SW1");
+        root1 = new ColoredRadioButton("SW1");
         root1.setFont(font);
         root1.setBackground(BackgroundColor);
         root1.setBounds(110, 20, 50, 25);
@@ -131,21 +132,21 @@ class PanelAssume extends JPanel {
         rootGroup.add(root1);
         root1.setSelected(true);
 
-        root2 = new JRadioButton("SW2");
+        root2 = new ColoredRadioButton("SW2");
         root2.setFont(font);
         root2.setBackground(BackgroundColor);
         root2.setBounds(210, 20, 50, 25);
         add(root2);
         rootGroup.add(root2);
 
-        root3 = new JRadioButton("SW3");
+        root3 = new ColoredRadioButton("SW3");
         root3.setFont(font);
         root3.setBackground(BackgroundColor);
         root3.setBounds(310, 20, 50, 25);
         add(root3);
         rootGroup.add(root3);
 
-        root4 = new JRadioButton("SW4");
+        root4 = new ColoredRadioButton("SW4");
         root4.setFont(font);
         root4.setBackground(BackgroundColor);
         root4.setBounds(410, 20, 50, 25);
@@ -154,13 +155,66 @@ class PanelAssume extends JPanel {
 
         if (net.Example == 3) {
 
-            root5 = new JRadioButton("SW5");
+            root5 = new ColoredRadioButton("SW5");
             root5.setFont(font);
             root5.setBackground(BackgroundColor);
             root5.setBounds(210, 20, 50, 25);
             add(root5);
             rootGroup.add(root5);
         }
+
+        ADDrootLister();
+    }
+
+    void ADDrootLister() {
+        root1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    net.ROOTnumber = 1;
+                    zhidinS1();
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    OFFzhidinS1();
+                }
+            }
+        });
+
+        root2.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    net.ROOTnumber = 2;
+                    zhidinS2();
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    OFFzhidinS2();
+                }
+            }
+        });
+
+        root3.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    net.ROOTnumber = 3;
+                    zhidinS3();
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    OFFzhidinS3();
+                }
+            }
+        });
+
+        root4.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    net.ROOTnumber = 4;
+                    zhidinS4();
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    OFFzhidinS4();
+                }
+            }
+        });
+
     }
 
     void ADDgenduankou() {
@@ -210,38 +264,38 @@ class PanelAssume extends JPanel {
 
     void ADDintgen_Botton() {
 
-        Button1_1 = new JRadioButton("接口1");
+        Button1_1 = new ColoredRadioButton("接口1");
         Button1_1.setFont(font);
         Button1_1.setBackground(BackgroundColor);
         Button1_1.setBounds(170, 50, 90, 25);
         add(Button1_1);
-        Button1_2 = new JRadioButton("接口2");
+        Button1_2 = new ColoredRadioButton("接口2");
         Button1_2.setFont(font);
         Button1_2.setBackground(BackgroundColor);
         Button1_2.setBounds(270, 50, 90, 25);
         add(Button1_2);
 
         if (net.Example == 2) {
-            Button1_3 = new JRadioButton("接口3");
+            Button1_3 = new ColoredRadioButton("接口3");
             Button1_3.setFont(font);
             Button1_3.setBackground(BackgroundColor);
             Button1_3.setBounds(370, 50, 90, 25);
             add(Button1_3);
         }
 
-        Button2_1 = new JRadioButton("接口1");
+        Button2_1 = new ColoredRadioButton("接口1");
         Button2_1.setFont(font);
         Button2_1.setBackground(BackgroundColor);
         Button2_1.setBounds(170, 80, 90, 25);
         add(Button2_1);
         if (net.Example != 3) {
-            Button2_2 = new JRadioButton("接口2");
+            Button2_2 = new ColoredRadioButton("接口2");
             Button2_2.setFont(font);
             Button2_2.setBackground(BackgroundColor);
             Button2_2.setBounds(270, 80, 90, 25);
             add(Button2_2);
             if (net.Example == 2) {
-                Button2_3 = new JRadioButton("接口3");
+                Button2_3 = new ColoredRadioButton("接口3");
                 Button2_3.setFont(font);
                 Button2_3.setBackground(BackgroundColor);
                 Button2_3.setBounds(370, 80, 90, 25);
@@ -249,51 +303,53 @@ class PanelAssume extends JPanel {
             }
         }
 
-        Button3_1 = new JRadioButton("接口1");
+        Button3_1 = new ColoredRadioButton("接口1");
         Button3_1.setFont(font);
         Button3_1.setBackground(BackgroundColor);
         Button3_1.setBounds(170, 110, 90, 25);
         add(Button3_1);
-        Button3_2 = new JRadioButton("接口2");
+        Button3_2 = new ColoredRadioButton("接口2");
         Button3_2.setFont(font);
         Button3_2.setBackground(BackgroundColor);
         Button3_2.setBounds(270, 110, 90, 25);
         add(Button3_2);
-        Button3_3 = new JRadioButton("接口3");
-        Button3_3.setFont(font);
-        Button3_3.setBackground(BackgroundColor);
-        Button3_3.setBounds(370, 110, 90, 25);
-        add(Button3_3);
+        if (net.Example == 3) {
+            Button3_3 = new ColoredRadioButton("接口3");
+            Button3_3.setFont(font);
+            Button3_3.setBackground(BackgroundColor);
+            Button3_3.setBounds(370, 110, 90, 25);
+            add(Button3_3);
+        }
 
-        Button4_1 = new JRadioButton("接口1");
+        Button4_1 = new ColoredRadioButton("接口1");
         Button4_1.setFont(font);
         Button4_1.setBackground(BackgroundColor);
         Button4_1.setBounds(170, 140, 90, 25);
         add(Button4_1);
-        Button4_2 = new JRadioButton("接口2");
+        Button4_2 = new ColoredRadioButton("接口2");
         Button4_2.setFont(font);
         Button4_2.setBackground(BackgroundColor);
         Button4_2.setBounds(270, 140, 90, 25);
         add(Button4_2);
-        Button4_3 = new JRadioButton("接口3");
-        Button4_3.setFont(font);
-        Button4_3.setBackground(BackgroundColor);
-        Button4_3.setBounds(370, 140, 90, 25);
-        add(Button4_3);
-        Button4_4 = new JRadioButton("接口4");
-        Button4_4.setFont(font);
-        Button4_4.setBackground(BackgroundColor);
-        Button4_4.setBounds(470, 140, 90, 25);
-        add(Button4_4);
 
         if (net.Example == 3) {
-            Button5_1 = new JRadioButton("接口1");
+            Button4_3 = new ColoredRadioButton("接口3");
+            Button4_3.setFont(font);
+            Button4_3.setBackground(BackgroundColor);
+            Button4_3.setBounds(370, 140, 90, 25);
+            add(Button4_3);
+            Button4_4 = new ColoredRadioButton("接口4");
+            Button4_4.setFont(font);
+            Button4_4.setBackground(BackgroundColor);
+            Button4_4.setBounds(470, 140, 90, 25);
+            add(Button4_4);
+            Button5_1 = new ColoredRadioButton("接口1");
             Button5_1.setFont(font);
             Button5_1.setBackground(BackgroundColor);
             Button5_1.setBounds(170, 170, 90, 25);
             add(Button5_1);
 
-            Button5_2 = new JRadioButton("接口2");
+            Button5_2 = new ColoredRadioButton("接口2");
             Button5_2.setFont(font);
             Button5_2.setBackground(BackgroundColor);
             Button5_2.setBounds(270, 170, 90, 25);
@@ -357,83 +413,92 @@ class PanelAssume extends JPanel {
         if (net.Example == 3) {
             y = 150;
         }
-        ZButton1_1 = new JRadioButton("接口1");
+        ZButton1_1 = new ColoredRadioButton("接口1");
         ZButton1_1.setFont(font);
         ZButton1_1.setBackground(BackgroundColor);
         ZButton1_1.setBounds(170, y + 50, 90, 25);
         add(ZButton1_1);
-        ZButton1_2 = new JRadioButton("接口2");
+        ZButton1_2 = new ColoredRadioButton("接口2");
         ZButton1_2.setFont(font);
         ZButton1_2.setBackground(BackgroundColor);
         ZButton1_2.setBounds(270, y + 50, 90, 25);
         add(ZButton1_2);
-        ZButton1_3 = new JRadioButton("接口3");
-        ZButton1_3.setFont(font);
-        ZButton1_3.setBackground(BackgroundColor);
-        ZButton1_3.setBounds(370, y + 50, 90, 25);
-        add(ZButton1_3);
+        if (net.Example == 2) {
+            ZButton1_3 = new ColoredRadioButton("接口3");
+            ZButton1_3.setFont(font);
+            ZButton1_3.setBackground(BackgroundColor);
+            ZButton1_3.setBounds(370, y + 50, 90, 25);
+            add(ZButton1_3);
+        }
 
-        ZButton2_1 = new JRadioButton("接口1");
+        ZButton2_1 = new ColoredRadioButton("接口1");
         ZButton2_1.setFont(font);
         ZButton2_1.setBackground(BackgroundColor);
         ZButton2_1.setBounds(170, y + 80, 90, 25);
         add(ZButton2_1);
-        ZButton2_2 = new JRadioButton("接口2");
-        ZButton2_2.setFont(font);
-        ZButton2_2.setBackground(BackgroundColor);
-        ZButton2_2.setBounds(270, y + 80, 90, 25);
-        add(ZButton2_2);
-        ZButton2_3 = new JRadioButton("接口3");
-        ZButton2_3.setFont(font);
-        ZButton2_3.setBackground(BackgroundColor);
-        ZButton2_3.setBounds(370, y + 80, 90, 25);
-        add(ZButton2_3);
+        if (net.Example != 3) {
+            ZButton2_2 = new ColoredRadioButton("接口2");
+            ZButton2_2.setFont(font);
+            ZButton2_2.setBackground(BackgroundColor);
+            ZButton2_2.setBounds(270, y + 80, 90, 25);
+            add(ZButton2_2);
+            if (net.Example == 2) {
+                ZButton2_3 = new ColoredRadioButton("接口3");
+                ZButton2_3.setFont(font);
+                ZButton2_3.setBackground(BackgroundColor);
+                ZButton2_3.setBounds(370, y + 80, 90, 25);
+                add(ZButton2_3);
+            }
+        }
 
-        ZButton3_1 = new JRadioButton("接口1");
+        ZButton3_1 = new ColoredRadioButton("接口1");
         ZButton3_1.setFont(font);
         ZButton3_1.setBackground(BackgroundColor);
         ZButton3_1.setBounds(170, y + 110, 90, 25);
         add(ZButton3_1);
-        ZButton3_2 = new JRadioButton("接口2");
+        ZButton3_2 = new ColoredRadioButton("接口2");
         ZButton3_2.setFont(font);
         ZButton3_2.setBackground(BackgroundColor);
         ZButton3_2.setBounds(270, y + 110, 90, 25);
         add(ZButton3_2);
-        ZButton3_3 = new JRadioButton("接口3");
-        ZButton3_3.setFont(font);
-        ZButton3_3.setBackground(BackgroundColor);
-        ZButton3_3.setBounds(370, y + 110, 90, 25);
-        add(ZButton3_3);
+        if (net.Example == 3) {
+            ZButton3_3 = new ColoredRadioButton("接口3");
+            ZButton3_3.setFont(font);
+            ZButton3_3.setBackground(BackgroundColor);
+            ZButton3_3.setBounds(370, y + 110, 90, 25);
+            add(ZButton3_3);
+        }
 
-        ZButton4_1 = new JRadioButton("接口1");
+        ZButton4_1 = new ColoredRadioButton("接口1");
         ZButton4_1.setFont(font);
         ZButton4_1.setBackground(BackgroundColor);
         ZButton4_1.setBounds(170, y + 140, 90, 25);
         add(ZButton4_1);
-        ZButton4_2 = new JRadioButton("接口2");
+        ZButton4_2 = new ColoredRadioButton("接口2");
         ZButton4_2.setFont(font);
         ZButton4_2.setBackground(BackgroundColor);
         ZButton4_2.setBounds(270, y + 140, 90, 25);
         add(ZButton4_2);
-        ZButton4_3 = new JRadioButton("接口3");
-        ZButton4_3.setFont(font);
-        ZButton4_3.setBackground(BackgroundColor);
-        ZButton4_3.setBounds(370, y + 140, 90, 25);
-        add(ZButton4_3);
-        ZButton4_4 = new JRadioButton("接口4");
-        ZButton4_4.setFont(font);
-        ZButton4_4.setBackground(BackgroundColor);
-        ZButton4_4.setBounds(470, y + 140, 90, 25);
-        add(ZButton4_4);
 
         if (net.Example == 3) {
-            ZButton5_1 = new JRadioButton("接口1");
+            ZButton4_3 = new ColoredRadioButton("接口3");
+            ZButton4_3.setFont(font);
+            ZButton4_3.setBackground(BackgroundColor);
+            ZButton4_3.setBounds(370, y + 140, 90, 25);
+            add(ZButton4_3);
+            ZButton4_4 = new ColoredRadioButton("接口4");
+            ZButton4_4.setFont(font);
+            ZButton4_4.setBackground(BackgroundColor);
+            ZButton4_4.setBounds(470, y + 140, 90, 25);
+            add(ZButton4_4);
+
+            ZButton5_1 = new ColoredRadioButton("接口1");
             ZButton5_1.setFont(font);
             ZButton5_1.setBackground(BackgroundColor);
             ZButton5_1.setBounds(170, y + 170, 90, 25);
             add(ZButton5_1);
 
-            ZButton5_2 = new JRadioButton("接口2");
+            ZButton5_2 = new ColoredRadioButton("接口2");
             ZButton5_2.setFont(font);
             ZButton5_2.setBackground(BackgroundColor);
             ZButton5_2.setBounds(270, y + 170, 90, 25);
@@ -502,35 +567,80 @@ class PanelAssume extends JPanel {
 
         ZButton1_1.setSelected(true);
         ZButton1_2.setSelected(true);
-        ZButton1_3.setSelected(true);
+        if (net.Example == 2) {
+            ZButton1_3.setSelected(true);
+        }
+    }
+
+    void OFFzhidinS1() {
+
+        gButton1_1.clearSelection();
+        gButton1_2.clearSelection();
+        gButton1_3.clearSelection();
     }
 
     void zhidinS2() {
 
         ZButton2_1.setSelected(true);
-        ZButton2_2.setSelected(true);
-        ZButton2_3.setSelected(true);
+        if (net.Example != 3) {
+            ZButton2_2.setSelected(true);
+            if (net.Example == 2) {
+                ZButton2_3.setSelected(true);
+            }
+        }
+    }
+
+    void OFFzhidinS2() {
+
+        gButton2_1.clearSelection();
+        gButton2_2.clearSelection();
+        gButton2_3.clearSelection();
     }
 
     void zhidinS3() {
 
         ZButton3_1.setSelected(true);
         ZButton3_2.setSelected(true);
-        ZButton3_3.setSelected(true);
+        if (net.Example == 3) {
+            ZButton3_3.setSelected(true);
+        }
+    }
+
+    void OFFzhidinS3() {
+
+        gButton3_1.clearSelection();
+        gButton3_2.clearSelection();
+        gButton3_3.clearSelection();
     }
 
     void zhidinS4() {
 
         ZButton4_1.setSelected(true);
         ZButton4_2.setSelected(true);
-        ZButton4_3.setSelected(true);
-        ZButton4_4.setSelected(true);
+        if (net.Example == 3) {
+            ZButton4_3.setSelected(true);
+            ZButton4_4.setSelected(true);
+        }
+    }
+
+    void OFFzhidinS4() {
+
+        gButton4_1.clearSelection();
+        gButton4_2.clearSelection();
+        gButton4_3.clearSelection();
+        gButton4_4.clearSelection();
     }
 
     void zhidinS5() {
 
         ZButton5_1.setSelected(true);
         ZButton5_2.setSelected(true);
+    }
+
+    void OFFzhidinS5() {
+
+        gButton5_1.clearSelection();
+        gButton5_2.clearSelection();
     }
 
     void conzhi() {

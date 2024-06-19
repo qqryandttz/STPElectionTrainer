@@ -4,7 +4,7 @@ class NetworkTopology {
     int[][] networkTopology;
     Graph graph;
 
-    int Example;
+    int Example, ROOTnumber;  //1表示第一台交换机，2为第二台，以此类推
     private int INF = 65535;
     Switch switch11, switch12, switch13, switch14;
     Switch switch21, switch22, switch23, switch24;

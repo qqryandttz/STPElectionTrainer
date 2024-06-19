@@ -7,13 +7,12 @@ import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
 class PanelMain extends JPanel {
 
     InterfaceExecution IE;
     JPanel panelExample;
-    JRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
+    ColoredRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
     ButtonGroup buttonGroup;
     Color BackgroundColor;
 
@@ -44,10 +43,10 @@ class PanelMain extends JPanel {
 
     void ADDselectedMode() {
 
-        radioButton1 = new JRadioButton("<html><font face='黑体' size='6'>调参模式</font></html>");
-        radioButton2 = new JRadioButton("<html><font face='黑体' size='6'>推测模式</font></html>");
-        radioButton3 = new JRadioButton("<html><font face='黑体' size='6'>运行模式</font></html>");
-        radioButton4 = new JRadioButton("<html><font face='黑体' size='6'>比较模式</font></html>");
+        radioButton1 = new ColoredRadioButton("<html><font face='黑体' size='6'>调参模式</font></html>");
+        radioButton2 = new ColoredRadioButton("<html><font face='黑体' size='6'>推测模式</font></html>");
+        radioButton3 = new ColoredRadioButton("<html><font face='黑体' size='6'>运行模式</font></html>");
+        radioButton4 = new ColoredRadioButton("<html><font face='黑体' size='6'>比较模式</font></html>");
 
         radioButton1.setBackground(BackgroundColor);
         radioButton2.setBackground(BackgroundColor);
