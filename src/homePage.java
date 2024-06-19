@@ -286,8 +286,8 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.playMusicOnce();
-                if(IE.isToggle == 1){
-
+                // 0代表未进入过操作页面，1代表在主页，2代表在操作页面
+                if(IE.isToggle == 1 && (IE.OI.intExample == 2 || IE.OI.intExample == 3)){
 
                     int option = JOptionPane.showOptionDialog(
                             null, 
@@ -303,14 +303,17 @@ class homePage extends JPanel{
                     if (option == JOptionPane.YES_OPTION) {
                         
                         IE.isToggle = 2;
-                        IE.goToOperationInterface(1);
+                        IE.goToNewOperationInterface(1);
                     } else if (option == JOptionPane.NO_OPTION) {
                        
                     }
 
-                }else{
+                }else if (IE.isToggle == 1 && IE.OI.intExample == 1){
                     IE.isToggle = 2;
-                    IE.goToOperationInterface(1);
+                    IE.goToOperationInterface();
+                }else if(IE.isToggle == 0){
+                    IE.isToggle = 2;
+                    IE.goToNewOperationInterface(1);
                 }
             }
             
@@ -346,8 +349,34 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.playMusicOnce();
-                IE.isToggle = 2;
-                IE.goToOperationInterface(2);
+                // 0代表未进入过操作页面，1代表在主页，2代表在操作页面
+                if (IE.isToggle == 1 && (IE.OI.intExample == 1 || IE.OI.intExample == 3)) {
+
+                    int option = JOptionPane.showOptionDialog(
+                            null,
+                            "<html><font face='黑体' size='5'>您确定要进入一个新的拓扑图吗？</font></html>",
+                            "提示",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.INFORMATION_MESSAGE,
+                            null,
+                            new String[] { "确定", "取消" },
+                            "确定");
+
+                    if (option == JOptionPane.YES_OPTION) {
+
+                        IE.isToggle = 2;
+                        IE.goToNewOperationInterface(2);
+                    } else if (option == JOptionPane.NO_OPTION) {
+
+                    }
+
+                } else if (IE.isToggle == 1 && IE.OI.intExample == 2) {
+                    IE.isToggle = 2;
+                    IE.goToOperationInterface();
+                } else if (IE.isToggle == 0) {
+                    IE.isToggle = 2;
+                    IE.goToNewOperationInterface(2);
+                }
             }
             
 
@@ -384,8 +413,34 @@ class homePage extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 pressButtonSound.playMusicOnce();
-                IE.isToggle = 2;
-                IE.goToOperationInterface(3);
+                // 0代表未进入过操作页面，1代表在主页，2代表在操作页面
+                if (IE.isToggle == 1 && (IE.OI.intExample == 1 || IE.OI.intExample == 2)) {
+
+                    int option = JOptionPane.showOptionDialog(
+                            null,
+                            "<html><font face='黑体' size='5'>您确定要进入一个新的拓扑图吗？</font></html>",
+                            "提示",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.INFORMATION_MESSAGE,
+                            null,
+                            new String[] { "确定", "取消" },
+                            "确定");
+
+                    if (option == JOptionPane.YES_OPTION) {
+
+                        IE.isToggle = 2;
+                        IE.goToNewOperationInterface(3);
+                    } else if (option == JOptionPane.NO_OPTION) {
+
+                    }
+
+                } else if (IE.isToggle == 1 && IE.OI.intExample == 3) {
+                    IE.isToggle = 2;
+                    IE.goToOperationInterface();
+                } else if (IE.isToggle == 0) {
+                    IE.isToggle = 2;
+                    IE.goToNewOperationInterface(3);
+                }
             }
             
 

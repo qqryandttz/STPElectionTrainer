@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "t",
+            "request": "launch",
+            "mainClass": "t",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "x1",
             "request": "launch",
             "mainClass": "x1",

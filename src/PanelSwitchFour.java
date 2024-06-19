@@ -2,6 +2,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.geom.RoundRectangle2D;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +18,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
 
 //4交换机面板
 class PanelSwitchFour1 extends JPanel {
@@ -26,10 +36,10 @@ class PanelSwitchFour1 extends JPanel {
 
     void ADDPanelSwitch(){
 
-        ps1 = new PanelSwitch(neT.switch11.name, neT.switch11.mac, 32768L, neT.switch11.intNumber, neT);
-        ps2 = new PanelSwitch(neT.switch12.name, neT.switch12.mac, 32768L, neT.switch12.intNumber, neT);
-        ps3 = new PanelSwitch(neT.switch13.name, neT.switch13.mac, 32768L, neT.switch13.intNumber, neT);
-        ps4 = new PanelSwitch(neT.switch14.name, neT.switch14.mac, 32768L, neT.switch14.intNumber, neT);
+        ps1 = new PanelSwitch(neT.switch11, neT);
+        ps2 = new PanelSwitch(neT.switch12, neT);
+        ps3 = new PanelSwitch(neT.switch13, neT);
+        ps4 = new PanelSwitch(neT.switch14, neT);
 
         ps1.setBounds(60, 0, 337, 337);
         ps2.setBounds(435, 0, 337, 337);
@@ -61,10 +71,10 @@ class PanelSwitchFour2 extends JPanel {
 
     void ADDPanelSwitch() {
 
-        ps1 = new PanelSwitch(neT.switch21.name, neT.switch21.mac, 32768L, neT.switch21.intNumber, neT);
-        ps2 = new PanelSwitch(neT.switch22.name, neT.switch22.mac, 32768L, neT.switch22.intNumber, neT);
-        ps3 = new PanelSwitch(neT.switch23.name, neT.switch23.mac, 32768L, neT.switch23.intNumber, neT);
-        ps4 = new PanelSwitch(neT.switch24.name, neT.switch24.mac, 32768L, neT.switch24.intNumber, neT);
+        ps1 = new PanelSwitch(neT.switch21, neT);
+        ps2 = new PanelSwitch(neT.switch22, neT);
+        ps3 = new PanelSwitch(neT.switch23, neT);
+        ps4 = new PanelSwitch(neT.switch24, neT);
 
         ps1.setBounds(60, 0, 337, 337);
         ps2.setBounds(435, 0, 337, 337);
@@ -96,11 +106,11 @@ class PanelSwitchFive extends JPanel {
 
     void ADDPanelSwitch() {
 
-        ps1 = new PanelSwitch(neT.switch31.name, neT.switch31.mac, 32768L, neT.switch31.intNumber, neT);
-        ps2 = new PanelSwitch(neT.switch32.name, neT.switch32.mac, 32768L, neT.switch32.intNumber, neT);
-        ps3 = new PanelSwitch(neT.switch33.name, neT.switch33.mac, 32768L, neT.switch33.intNumber, neT);
-        ps4 = new PanelSwitch(neT.switch34.name, neT.switch34.mac, 32768L, neT.switch34.intNumber, neT);
-        ps5 = new PanelSwitch(neT.switch35.name, neT.switch35.mac, 32768L, neT.switch35.intNumber, neT);
+        ps1 = new PanelSwitch(neT.switch31, neT);
+        ps2 = new PanelSwitch(neT.switch32, neT);
+        ps3 = new PanelSwitch(neT.switch33, neT);
+        ps4 = new PanelSwitch(neT.switch34, neT);
+        ps5 = new PanelSwitch(neT.switch35, neT);
 
         ps1.setBounds(45, 0, 262, 337);
         ps2.setBounds(345, 0, 262, 337);
@@ -119,6 +129,7 @@ class PanelSwitchFive extends JPanel {
 
 class PanelSwitch extends JPanel {
 
+    Switch myswitch;
     NetworkTopology neT;
     JScrollPane scrollPane;
     JPanel panel;
@@ -132,7 +143,7 @@ class PanelSwitch extends JPanel {
     Color FontWhiteColor, FontBlackColor, BackgroundColor, BackgroundWhiteColor;
     EmptyBorder Border;
 
-    int intfNumber, zhenzhang = 80;
+    int intNumber, zhenzhang = 80;
     JLabel intCode1, intTypePromptWords1, intStatePromptWords1, intPriPromptWords1;
     ButtonGroup intcostGroup1, intstateGroup1;
     JRadioButton FEButton1, GEButton1, onButton1, offButton1;
@@ -153,38 +164,83 @@ class PanelSwitch extends JPanel {
     JRadioButton FEButton4, GEButton4, onButton4, offButton4;
     JTextField intPri4;
 
-    PanelSwitch(String aName, String aMAC, long aPri, int intNumber, NetworkTopology anet){
+    PanelSwitch(Switch aswitch, NetworkTopology anet){
 
+        myswitch = aswitch;
         neT = anet;
-        theName = aName;
-        theMAC = aMAC;
-        thePri = aPri;
-        intfNumber = intNumber;
+        theName = aswitch.name;
+        theMAC = aswitch.mac;
+        thePri = aswitch.pri;
+        intNumber = aswitch.intNumber;
         setOpaque(false); 
         setBackground(new Color(0, 0, 0, 0)); 
-        panel = new JPanel();
+        panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
 
-        if((intfNumber == 3 ||intNumber == 4) && (anet.Example == 1 || anet.Example == 2)){
+                Graphics2D g2d = (Graphics2D) g;
+                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
+                g2d.setColor(getBackground());
+                g2d.fill(roundedRectangle);
+
+            }
+        };
+
+        if((intNumber == 3 ||intNumber == 4) && (anet.Example == 1 || anet.Example == 2)){
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
                     return new Dimension(300, 450);
                 }
+
+                @Override
+                protected void paintComponent(Graphics g) {
+
+                    Graphics2D g2d = (Graphics2D) g;
+                    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                    Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
+                    g2d.setColor(getBackground());
+                    g2d.fill(roundedRectangle);
+
+                }
             };
-        }else if((intfNumber == 3 || intNumber == 4) && (anet.Example == 3)) {
+        }else if((intNumber == 3 || intNumber == 4) && (anet.Example == 3)) {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
                     return new Dimension(250, 450);
                 }
+
+                @Override
+                protected void paintComponent(Graphics g) {
+
+                    Graphics2D g2d = (Graphics2D) g;
+                    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                    Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
+                    g2d.setColor(getBackground());
+                    g2d.fill(roundedRectangle);
+                }
             };
-        } else if ((intfNumber == 1 || intNumber == 2) && (anet.Example == 3)) {
+        } else if ((intNumber == 1 || intNumber == 2) && (anet.Example == 3)) {
             panel = new JPanel() {
                 @Override
                 public Dimension getPreferredSize() {
                     return new Dimension(250, 300);
                 }
+
+                @Override
+                protected void paintComponent(Graphics g) {
+
+                    Graphics2D g2d = (Graphics2D) g;
+                    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                    Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
+                    g2d.setColor(getBackground());
+                    g2d.fill(roundedRectangle);
+
+                }
             };
+            
         }
         panel.setLayout(null);
         Init();
@@ -200,6 +256,8 @@ class PanelSwitch extends JPanel {
         }
         
         add(scrollPane, BorderLayout.CENTER);
+        ADDswitch();
+        ADDintLister();
 
     }
 
@@ -348,7 +406,7 @@ class PanelSwitch extends JPanel {
             intPri1.setFont(smallFont);
             panel.add(intPri1);
 
-            if (intfNumber > 1) {
+            if (intNumber > 1) {
 
                 intCode2 = new JLabel("<html><font face='黑体' size='4'><接口2></font></html>");
                 intCode2.setForeground(FontBlackColor);
@@ -424,7 +482,7 @@ class PanelSwitch extends JPanel {
                 intPri2.setFont(smallFont);
                 panel.add(intPri2);
 
-                if (intfNumber > 2) {
+                if (intNumber > 2) {
 
                     intCode3 = new JLabel("<html><font face='黑体' size='4'><接口3></font></html>");
                     intCode3.setForeground(FontBlackColor);
@@ -500,7 +558,7 @@ class PanelSwitch extends JPanel {
                     intPri3.setFont(smallFont);
                     panel.add(intPri3);
 
-                    if (intfNumber > 3) {
+                    if (intNumber > 3) {
 
                         intCode4 = new JLabel("<html><font face='黑体' size='4'><接口4></font></html>");
                         intCode4.setForeground(FontBlackColor);
@@ -582,5 +640,265 @@ class PanelSwitch extends JPanel {
         }
 
     }
+    
+    void ADDswitch(){
+
+        name.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                System.out.println("文本被插入: " + name.getText());
+                myswitch.name = name.getText();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                System.out.println("文本被删除: " + name.getText());
+                myswitch.name = name.getText();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                System.out.println("文本内容已更改: " + name.getText());
+                myswitch.name = name.getText();
+            }
+        });
+
+        MAC.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                System.out.println("文本被插入: " + MAC.getText());
+                myswitch.mac = MAC.getText();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                System.out.println("文本被删除: " + MAC.getText());
+                myswitch.mac = MAC.getText();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                System.out.println("文本内容已更改: " + MAC.getText());
+                myswitch.mac = MAC.getText();
+            }
+        });
+
+
+        Pri.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                System.out.println("文本被插入: " + Pri.getText());
+                myswitch.pri = Long.parseLong(Pri.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                System.out.println("文本被删除: " + Pri.getText());
+                myswitch.pri = Long.parseLong(Pri.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                System.out.println("文本内容已更改: " + Pri.getText());
+                myswitch.pri = Long.parseLong(Pri.getText());
+            }
+        });
+
+    }
+
+    void ADDintLister(){
+
+        if (true){
+
+            intPri1.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    System.out.println("文本被插入: " + intPri1.getText());
+                    myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    System.out.println("文本被删除: " + intPri1.getText());
+                    myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    System.out.println("文本内容已更改: " + intPri1.getText());
+                    myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
+                }
+            });
+
+            onButton1.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface1.state = true;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface1.state = false;
+                    }
+                }
+            });
+
+            FEButton1.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface1.cost = 19;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface1.cost = 4;
+                    }
+                }
+            });
+
+        }
+
+        if (intNumber > 1){
+
+            intPri2.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    System.out.println("文本被插入: " + intPri2.getText());
+                    myswitch.Interface2.pri = Long.parseLong(intPri2.getText());
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    System.out.println("文本被删除: " + intPri2.getText());
+                    myswitch.Interface2.pri = Long.parseLong(intPri2.getText());
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    System.out.println("文本内容已更改: " + intPri2.getText());
+                    myswitch.Interface2.pri = Long.parseLong(intPri2.getText());
+                }
+            });
+
+            onButton2.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface2.state = true;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface2.state = false;
+                    }
+                }
+            });
+
+            FEButton2.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface2.cost = 19;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface2.cost = 4;
+                    }
+                }
+            });
+
+        }
+
+        if (intNumber > 2){
+
+            intPri3.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    System.out.println("文本被插入: " + intPri3.getText());
+                    myswitch.Interface3.pri = Long.parseLong(intPri3.getText());
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    System.out.println("文本被删除: " + intPri3.getText());
+                    myswitch.Interface3.pri = Long.parseLong(intPri3.getText());
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    System.out.println("文本内容已更改: " + intPri3.getText());
+                    myswitch.Interface3.pri = Long.parseLong(intPri3.getText());
+                }
+            });
+
+            onButton3.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface3.state = true;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface3.state = false;
+                    }
+                }
+            });
+
+            FEButton3.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface3.cost = 19;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface3.cost = 4;
+                    }
+                }
+            });
+
+        }
+
+        if (intNumber > 3){
+
+            intPri4.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    System.out.println("文本被插入: " + intPri4.getText());
+                    myswitch.Interface4.pri = Long.parseLong(intPri4.getText());
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    System.out.println("文本被删除: " + intPri4.getText());
+                    myswitch.Interface4.pri = Long.parseLong(intPri4.getText());
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    System.out.println("文本内容已更改: " + intPri4.getText());
+                    myswitch.Interface4.pri = Long.parseLong(intPri4.getText());
+                }
+            });
+
+            onButton4.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface4.state = true;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface4.state = false;
+                    }
+                }
+            });
+
+            FEButton4.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        myswitch.Interface4.cost = 19;
+
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        myswitch.Interface4.cost = 4;
+                    }
+                }
+            });
+
+        }
+
+    }
+
 
 }

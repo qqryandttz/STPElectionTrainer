@@ -54,10 +54,13 @@ class InterfaceExecution{
         CL布局.show(myJFrame.getContentPane(), "主页");
     }
 
-    void goToOperationInterface(int x){
+    void goToNewOperationInterface(int x){
 
-        CL布局.show(myJFrame.getContentPane(), "操作界面");
+        OI = new OperationInterface(this);
+        myJFrame.getContentPane().add(OI, "操作界面");
         OI.ComponentsOI(x);
+        CL布局.show(myJFrame.getContentPane(), "操作界面");
+        
     }
 
     void goToOperationInterface() {
