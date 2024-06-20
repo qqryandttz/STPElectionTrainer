@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AdjMatrix",
+            "request": "launch",
+            "mainClass": "AdjMatrix",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "CustomRadioButtonExample",
             "request": "launch",
             "mainClass": "CustomRadioButtonExample",

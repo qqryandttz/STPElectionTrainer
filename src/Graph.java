@@ -5,17 +5,18 @@ class t {
         char[] vertex = { 'A', 'B', 'C', 'D' };
         int INF = 65535;
         int[][] matrix = new int[][] {
-                { 0, 4, 19, INF },
-                { 19, 0, INF, 4 },
-                { 19, INF, 0, 19 },
-                { INF, 4, 4, 0 },
+                { 0, 4, 4, 4 },
+                { 4, 0, 4, 4 },
+                { 4, INF, 0, INF },
+                { 19, 4, INF, 0 }
         };
         Graph graph = new Graph(vertex, matrix);
         graph.showGraph();
-        graph.dsj(0);
+        graph.dsj(1);
         graph.showDsj();
     }
 }
+ 
 
 class Graph {
     char[] vertex;
@@ -172,6 +173,7 @@ class VisitedVertex {
         for (int i : dis) {
             System.out.print(i + " ");
         }
+        System.err.println();
 
     }
 }
