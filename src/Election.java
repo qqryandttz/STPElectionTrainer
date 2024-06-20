@@ -114,7 +114,6 @@ class Election {
             if (x == 1) {
                 root = y;
             }
-
             if (root == 1) {
                 IE.OI.panelAssume.root1.setSelected(true);
             } else if (root == 2) {
@@ -333,6 +332,135 @@ class Election {
         net.graph.showGraph();
         net.graph.dsj(root - 1);
         net.graph.showDsj();
+
+        if (net.Example == 1) {
+            if (root != 1) {
+
+                int gen = net.graph.vv.pre_visited[0] + 1;
+                if (gen == 2) {
+                    IE.OI.panelAssume.Button1_1.setSelected(true);
+                } else if (gen == 3) {
+                    IE.OI.panelAssume.Button1_2.setSelected(true);
+                }
+
+            }
+            if (root != 2) {
+
+                int gen = net.graph.vv.pre_visited[1] + 1;
+                if (gen == 1) {
+                    IE.OI.panelAssume.Button2_1.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button2_2.setSelected(true);
+                }
+
+            }
+            if (root != 3) {
+
+                int gen = net.graph.vv.pre_visited[2] + 1;
+                if (gen == 1) {
+                    IE.OI.panelAssume.Button3_1.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button3_2.setSelected(true);
+                } 
+            }
+            if (root != 4) {
+
+                int gen = net.graph.vv.pre_visited[3] + 1;
+                if (gen == 2) {
+                    IE.OI.panelAssume.Button4_1.setSelected(true);
+                } else if (gen == 3) {
+                    IE.OI.panelAssume.Button4_2.setSelected(true);
+                }
+
+            }
+        }else if(net.Example == 2){
+
+            if (root != 1) {
+
+                int gen = net.graph.vv.pre_visited[0] + 1;
+                if (gen == 2) {
+                    IE.OI.panelAssume.Button1_1.setSelected(true);
+                } else if (gen == 3) {
+                    IE.OI.panelAssume.Button1_2.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button1_2.setSelected(true);
+                }
+
+            }
+            if (root != 2) {
+
+                int gen = net.graph.vv.pre_visited[1] + 1;
+                if (gen == 1) {
+                    IE.OI.panelAssume.Button2_1.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button2_2.setSelected(true);
+                }
+
+            }
+            if (root != 3) {
+
+                int gen = net.graph.vv.pre_visited[2] + 1;
+                if (gen == 1) {
+                    IE.OI.panelAssume.Button3_1.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button3_2.setSelected(true);
+                }
+            }
+            if (root != 4) {
+
+                int gen = net.graph.vv.pre_visited[3] + 1;
+                if (gen == 2) {
+                    IE.OI.panelAssume.Button4_1.setSelected(true);
+                } else if (gen == 3) {
+                    IE.OI.panelAssume.Button4_2.setSelected(true);
+                }
+
+            }
+
+        } else if (net.Example == 3) {
+
+            if (root != 1) {
+
+                int gen = net.graph.vv.pre_visited[0] + 1;
+                if (gen == 2) {
+                    IE.OI.panelAssume.Button1_1.setSelected(true);
+                } else if (gen == 3) {
+                    IE.OI.panelAssume.Button1_2.setSelected(true);
+                }
+
+            }
+            if (root != 2) {
+
+                int gen = net.graph.vv.pre_visited[1] + 1;
+                if (gen == 1) {
+                    IE.OI.panelAssume.Button2_1.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button2_2.setSelected(true);
+                }
+
+            }
+            if (root != 3) {
+
+                int gen = net.graph.vv.pre_visited[2] + 1;
+                if (gen == 1) {
+                    IE.OI.panelAssume.Button3_1.setSelected(true);
+                } else if (gen == 4) {
+                    IE.OI.panelAssume.Button3_2.setSelected(true);
+                }
+            }
+            if (root != 4) {
+
+                int gen = net.graph.vv.pre_visited[3] + 1;
+                if (gen == 2) {
+                    IE.OI.panelAssume.Button4_1.setSelected(true);
+                } else if (gen == 3) {
+                    IE.OI.panelAssume.Button4_2.setSelected(true);
+                }
+
+            }
+
+        }
+
     }
 
     /**
@@ -342,6 +470,9 @@ class Election {
 
     }
 
+    /**
+     * 比较mac地址
+     */
     int compareMacAddresses(String mac1, String mac2) {
         byte[] bytes1 = convertMacStringToByteArray(mac1);
         byte[] bytes2 = convertMacStringToByteArray(mac2);

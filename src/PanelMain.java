@@ -105,6 +105,7 @@ class PanelMain extends JPanel {
                     radioButton1.setEnabled(false);
                     radioButton2.setEnabled(false);
                     IE.OI.starrySkyPanel.startFastMove();
+                    net.updateGraph();
                     election = new Election(net, IE);
                     // 开始算法
                     // 调用组件

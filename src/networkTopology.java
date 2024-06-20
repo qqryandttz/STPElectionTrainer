@@ -77,7 +77,7 @@ class NetworkTopology {
             networkTopology = new int[4][];
             networkTopology[0] = new int[] { 0, switch21.Interface1.getCost(), switch21.Interface2.getCost(), switch21.Interface3.getCost() };
             networkTopology[1] = new int[] { switch22.Interface1.getCost(), 0, switch22.Interface2.getCost(), switch22.Interface3.getCost() };
-            networkTopology[2] = new int[] { switch23.Interface1.getCost(), switch23.Interface3.getCost(), 0, INF };
+            networkTopology[2] = new int[] { switch23.Interface1.getCost(), switch23.Interface2.getCost(), 0, INF };
             networkTopology[3] = new int[] { switch24.Interface1.getCost(), switch24.Interface2.getCost(), INF, 0 };
 
         } else if (Example == 3) {
