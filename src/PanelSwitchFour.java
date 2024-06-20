@@ -640,19 +640,19 @@ class PanelSwitch extends JPanel {
         name.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                System.out.println("文本被插入: " + name.getText());
+                // System.out.println("文本被插入: " + name.getText());
                 myswitch.name = name.getText();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                System.out.println("文本被删除: " + name.getText());
+                // System.out.println("文本被删除: " + name.getText());
                 myswitch.name = name.getText();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                System.out.println("文本内容已更改: " + name.getText());
+                // System.out.println("文本内容已更改: " + name.getText());
                 myswitch.name = name.getText();
             }
         });
@@ -660,19 +660,19 @@ class PanelSwitch extends JPanel {
         MAC.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                System.out.println("文本被插入: " + MAC.getText());
+                // System.out.println("文本被插入: " + MAC.getText());
                 myswitch.mac = MAC.getText();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                System.out.println("文本被删除: " + MAC.getText());
+                // System.out.println("文本被删除: " + MAC.getText());
                 myswitch.mac = MAC.getText();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                System.out.println("文本内容已更改: " + MAC.getText());
+                // System.out.println("文本内容已更改: " + MAC.getText());
                 myswitch.mac = MAC.getText();
             }
         });
@@ -680,19 +680,19 @@ class PanelSwitch extends JPanel {
         Pri.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                System.out.println("文本被插入: " + Pri.getText());
+                // System.out.println("文本被插入: " + Pri.getText());
                 myswitch.pri = Long.parseLong(Pri.getText());
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                System.out.println("文本被删除: " + Pri.getText());
+                // System.out.println("文本被删除: " + Pri.getText());
                 myswitch.pri = Long.parseLong(Pri.getText());
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                System.out.println("文本内容已更改: " + Pri.getText());
+                // System.out.println("文本内容已更改: " + Pri.getText());
                 myswitch.pri = Long.parseLong(Pri.getText());
             }
         });
@@ -706,19 +706,19 @@ class PanelSwitch extends JPanel {
             intPri1.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    System.out.println("文本被插入: " + intPri1.getText());
+                    // System.out.println("文本被插入: " + intPri1.getText());
                     myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    System.out.println("文本被删除: " + intPri1.getText());
+                    // System.out.println("文本被删除: " + intPri1.getText());
                     myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
                 }
 
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    System.out.println("文本内容已更改: " + intPri1.getText());
+                    // System.out.println("文本内容已更改: " + intPri1.getText());
                     myswitch.Interface1.pri = Long.parseLong(intPri1.getText());
                 }
             });
@@ -727,11 +727,11 @@ class PanelSwitch extends JPanel {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
-                        System.out.println("选中");
+                        // System.out.println("选中");
                         myswitch.Interface1.state = true;
 
                     } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                        System.out.println("未选中");
+                        // System.out.println("未选中");
                         myswitch.Interface1.state = false;
                     }
                 }
@@ -756,19 +756,19 @@ class PanelSwitch extends JPanel {
             intPri2.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    System.out.println("文本被插入: " + intPri2.getText());
+                    // System.out.println("文本被插入: " + intPri2.getText());
                     myswitch.Interface2.pri = Long.parseLong(intPri2.getText());
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    System.out.println("文本被删除: " + intPri2.getText());
+                    // System.out.println("文本被删除: " + intPri2.getText());
                     myswitch.Interface2.pri = Long.parseLong(intPri2.getText());
                 }
 
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    System.out.println("文本内容已更改: " + intPri2.getText());
+                    // System.out.println("文本内容已更改: " + intPri2.getText());
                     myswitch.Interface2.pri = Long.parseLong(intPri2.getText());
                 }
             });
@@ -804,19 +804,19 @@ class PanelSwitch extends JPanel {
             intPri3.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    System.out.println("文本被插入: " + intPri3.getText());
+                    // System.out.println("文本被插入: " + intPri3.getText());
                     myswitch.Interface3.pri = Long.parseLong(intPri3.getText());
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    System.out.println("文本被删除: " + intPri3.getText());
+                    // System.out.println("文本被删除: " + intPri3.getText());
                     myswitch.Interface3.pri = Long.parseLong(intPri3.getText());
                 }
 
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    System.out.println("文本内容已更改: " + intPri3.getText());
+                    // System.out.println("文本内容已更改: " + intPri3.getText());
                     myswitch.Interface3.pri = Long.parseLong(intPri3.getText());
                 }
             });
@@ -852,19 +852,19 @@ class PanelSwitch extends JPanel {
             intPri4.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    System.out.println("文本被插入: " + intPri4.getText());
+                    // System.out.println("文本被插入: " + intPri4.getText());
                     myswitch.Interface4.pri = Long.parseLong(intPri4.getText());
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    System.out.println("文本被删除: " + intPri4.getText());
+                    // System.out.println("文本被删除: " + intPri4.getText());
                     myswitch.Interface4.pri = Long.parseLong(intPri4.getText());
                 }
 
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    System.out.println("文本内容已更改: " + intPri4.getText());
+                    // System.out.println("文本内容已更改: " + intPri4.getText());
                     myswitch.Interface4.pri = Long.parseLong(intPri4.getText());
                 }
             });

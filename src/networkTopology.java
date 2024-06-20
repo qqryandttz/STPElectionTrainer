@@ -4,7 +4,7 @@ class NetworkTopology {
     int[][] networkTopology;
     Graph graph;
 
-    int Example, ROOTnumber;  //1表示第一台交换机，2为第二台，以此类推
+    int Example, ROOTnumber; // 1表示第一台交换机，2为第二台，以此类推
     private int INF = 65535;
     Switch switch11, switch12, switch13, switch14;
     Switch switch21, switch22, switch23, switch24;
@@ -58,8 +58,37 @@ class NetworkTopology {
             };
 
         }
+    }
+
+    void updateGraph() {
+
         graph = new Graph(vertexSwitch, networkTopology);
-        graph.showGraph();
+
+        if (Example == 1) {
+
+            networkTopology = new int[4][];
+            networkTopology[0] = new int[] { 0, switch11.Interface1.getCost(), switch11.Interface2.getCost(), INF };
+            networkTopology[1] = new int[] { switch12.Interface1.getCost(), 0, INF, switch12.Interface2.getCost() };
+            networkTopology[2] = new int[] { switch13.Interface1.getCost(), INF, 0, switch13.Interface2.getCost() };
+            networkTopology[3] = new int[] { INF, switch14.Interface1.getCost(), switch14.Interface2.getCost(), 0 };
+
+        } else if (Example == 2) {
+
+            networkTopology = new int[4][];
+            networkTopology[0] = new int[] { 0, switch21.Interface1.getCost(), switch21.Interface2.getCost(), switch21.Interface3.getCost() };
+            networkTopology[1] = new int[] { switch22.Interface1.getCost(), 0, switch22.Interface2.getCost(), switch22.Interface3.getCost() };
+            networkTopology[2] = new int[] { switch23.Interface1.getCost(), switch23.Interface3.getCost(), 0, INF };
+            networkTopology[3] = new int[] { switch24.Interface1.getCost(), switch24.Interface2.getCost(), INF, 0 };
+
+        } else if (Example == 3) {
+
+            networkTopology = new int[5][];
+            networkTopology[0] = new int[] { 0, INF, switch31.Interface1.getCost(), switch31.Interface2.getCost(), INF };
+            networkTopology[1] = new int[] { INF, 0, INF, switch32.Interface1.getCost(), INF };
+            networkTopology[2] = new int[] { switch33.Interface1.getCost(), INF, 0, switch33.Interface2.getCost(), switch33.Interface3.getCost() };
+            networkTopology[3] = new int[] { switch34.Interface1.getCost(), switch34.Interface2.getCost(), switch34.Interface3.getCost(), 0, switch34.Interface4.getCost() };
+            networkTopology[4] = new int[] { INF, INF, switch35.Interface1.getCost(), switch35.Interface2.getCost(), 0 };
+        }
 
     }
 
@@ -172,6 +201,14 @@ class Switch {
             code = acode;
             pri = 32768L;
             cost = 4;
+        }
+
+        int getCost() {
+            if (state == true) {
+                return cost;
+            } else {
+                return 65535;
+            }
         }
 
     }

@@ -84,7 +84,7 @@ class PanelAssume extends JPanel {
         conzhiButton = new roundedButton("重置", 20);
         conzhiButton.setBackground(ButtonBackColor);
         conzhiButton.setForeground(buttonFontColor);
-        conzhiButton.setBounds(500, 20, 70, 40);
+        conzhiButton.setBounds(15, 300, 70, 40);
         conzhiButton.setFont(font);
         add(conzhiButton);
 
@@ -119,7 +119,7 @@ class PanelAssume extends JPanel {
 
         root = new JLabel("ROOT");
         root.setFont(font);
-        root.setBounds(15, 20, 100, 25);
+        root.setBounds(20, 20, 100, 25);
         root.setBackground(BackgroundColor);
         add(root);
 
@@ -135,21 +135,21 @@ class PanelAssume extends JPanel {
         root2 = new aColoredRadioButton("SW2");
         root2.setFont(font);
         root2.setBackground(BackgroundColor);
-        root2.setBounds(210, 20, 50, 25);
+        root2.setBounds(200, 20, 50, 25);
         add(root2);
         rootGroup.add(root2);
 
         root3 = new aColoredRadioButton("SW3");
         root3.setFont(font);
         root3.setBackground(BackgroundColor);
-        root3.setBounds(310, 20, 50, 25);
+        root3.setBounds(290, 20, 50, 25);
         add(root3);
         rootGroup.add(root3);
 
         root4 = new aColoredRadioButton("SW4");
         root4.setFont(font);
         root4.setBackground(BackgroundColor);
-        root4.setBounds(410, 20, 50, 25);
+        root4.setBounds(380, 20, 50, 25);
         add(root4);
         rootGroup.add(root4);
 
@@ -158,7 +158,7 @@ class PanelAssume extends JPanel {
             root5 = new aColoredRadioButton("SW5");
             root5.setFont(font);
             root5.setBackground(BackgroundColor);
-            root5.setBounds(210, 20, 50, 25);
+            root5.setBounds(470, 20, 50, 25);
             add(root5);
             rootGroup.add(root5);
         }
@@ -214,6 +214,20 @@ class PanelAssume extends JPanel {
                 }
             }
         });
+
+        if (net.Example == 3) {
+            root5.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        net.ROOTnumber = 5;
+                        zhidinS5();
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        OFFzhidinS5();
+                    }
+                }
+            });
+        }
 
     }
 
@@ -661,7 +675,9 @@ class PanelAssume extends JPanel {
 
         ZButton1_1.setSelected(true);
         ZButton1_2.setSelected(true);
-        ZButton1_3.setSelected(true);
+        if (net.Example == 2) {
+            ZButton1_3.setSelected(true);
+        }
 
         if (net.Example == 3) {
             gButton5_1.clearSelection();

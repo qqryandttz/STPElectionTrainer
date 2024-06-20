@@ -10,18 +10,20 @@ import javax.swing.JPanel;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-
 class PanelMain extends JPanel {
 
     InterfaceExecution IE;
+    NetworkTopology net;
+    Election election;
     JPanel panelExample;
     ColoredRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
     ButtonGroup buttonGroup;
     Color BackgroundColor;
-    int isModel = 1;  //1为调参，2为推测，3为运行，4为比较
+    int isModel = 1; // 1为调参，2为推测，3为运行，4为比较
 
-    PanelMain(InterfaceExecution interfaceExecution) {
+    PanelMain(InterfaceExecution interfaceExecution, NetworkTopology Net) {
         IE = interfaceExecution;
+        net = Net;
         setLayout(null);
         BackgroundColor = new Color(0xf5, 0xf5, 0xf5);
         setBackground(BackgroundColor);
@@ -72,9 +74,13 @@ class PanelMain extends JPanel {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    
+                    isModel = 1;
+                    radioButton3.setEnabled(false);
+                    radioButton4.setEnabled(false);
+
                 } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                    
+                    radioButton3.setEnabled(true);
+                    radioButton4.setEnabled(true);
                 }
             }
         });
@@ -83,9 +89,10 @@ class PanelMain extends JPanel {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-
+                    isModel = 2;
+                    radioButton4.setEnabled(false);
                 } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-
+                    radioButton4.setEnabled(true);
                 }
             }
         });
@@ -94,10 +101,16 @@ class PanelMain extends JPanel {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
+                    isModel = 3;
+                    radioButton1.setEnabled(false);
+                    radioButton2.setEnabled(false);
                     IE.OI.starrySkyPanel.startFastMove();
+                    election = new Election(net, IE);
                     // 开始算法
                     // 调用组件
                 } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    radioButton1.setEnabled(true);
+                    radioButton2.setEnabled(true);
 
                 }
             }
@@ -107,8 +120,13 @@ class PanelMain extends JPanel {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
+                    isModel = 4;
+                    radioButton2.setEnabled(false);
+                    radioButton3.setEnabled(false);
 
                 } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    radioButton2.setEnabled(true);
+                    radioButton3.setEnabled(true);
 
                 }
             }
