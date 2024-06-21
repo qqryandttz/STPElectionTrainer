@@ -19,7 +19,7 @@ class myJFrame extends JFrame{
     Font menuFont;
     Color menuFontColor;
     openfile openfile = new openfile();
-    playStatus touchButtonSound, pressButtonSound;
+    MusicPlayer touchButtonSound, pressButtonSound;
 
     myJFrame(InterfaceExecution interfaceExecution,String Name) {
 
@@ -59,8 +59,8 @@ class myJFrame extends JFrame{
         myJMenu = new JMenu("菜单");
         menuFont = new Font("黑体", Font.BOLD, 18);  
         menuFontColor = new Color(0x00,0x14,0x2f);
-        touchButtonSound = new playStatus("resources\\_200音乐\\触碰按钮声.mp3");
-        pressButtonSound = new playStatus("resources\\_200音乐\\按下按钮声.mp3");
+        touchButtonSound = new MusicPlayer("resources\\_200音乐\\触碰按钮声.mp3");
+        pressButtonSound = new MusicPlayer("resources\\_200音乐\\按下按钮声.mp3");
     }
 
     void addJMenu() {

@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AdjMatrix",
+            "request": "launch",
+            "mainClass": "AdjMatrix",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "CustomRadioButtonExample",
+            "request": "launch",
+            "mainClass": "CustomRadioButtonExample",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "t",
+            "request": "launch",
+            "mainClass": "t",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "x1",
+            "request": "launch",
+            "mainClass": "x1",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "Graph",
+            "request": "launch",
+            "mainClass": "Graph",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
+            "name": "Graph_2",
+            "request": "launch",
+            "mainClass": "Graph_2",
+            "projectName": "STPElectionTrainer_9bc5ed4"
+        },
+        {
+            "type": "java",
             "name": "playStatus",
             "request": "launch",
             "mainClass": "playStatus",

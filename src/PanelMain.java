@@ -5,29 +5,35 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-class PanelMain extends JPanel{
+class PanelMain extends JPanel {
 
     InterfaceExecution IE;
+    NetworkTopology net;
+    Election election;
     JPanel panelExample;
-    JRadioButton radioButton1,radioButton2,radioButton3,radioButton4;
+    ColoredRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
     ButtonGroup buttonGroup;
+    Color BackgroundColor;
+    int isModel = 1; // 1为调参，2为推测，3为运行，4为比较
 
-    PanelMain(InterfaceExecution interfaceExecution){
+    PanelMain(InterfaceExecution interfaceExecution, NetworkTopology Net) {
         IE = interfaceExecution;
+        net = Net;
         setLayout(null);
-
+        BackgroundColor = new Color(0xf5, 0xf5, 0xf5);
+        setBackground(BackgroundColor);
 
         ADDpanelExample();
         ADDselectedMode();
 
     }
 
-    void ADDpanelExample(){
+    void ADDpanelExample() {
 
         if (IE.OI.intExample == 1) {
             panelExample = new PanelMainOne();
@@ -35,18 +41,23 @@ class PanelMain extends JPanel{
             panelExample = new PanelMainTwo();
         } else if (IE.OI.intExample == 3) {
             panelExample = new PanelMainThree();
-        } 
+        }
         panelExample.setBounds(30, 38, 480, 300);
         add(panelExample);
 
     }
 
-    void ADDselectedMode(){
+    void ADDselectedMode() {
 
-        radioButton1 = new JRadioButton("<html><font face='黑体' size='6'>调参模式</font></html>");
-        radioButton2 = new JRadioButton("<html><font face='黑体' size='6'>推测模式</font></html>");
-        radioButton3 = new JRadioButton("<html><font face='黑体' size='6'>运行模式</font></html>");
-        radioButton4 = new JRadioButton("<html><font face='黑体' size='6'>比较模式</font></html>");
+        radioButton1 = new ColoredRadioButton("<html><font face='黑体' size='6'>调参模式</font></html>");
+        radioButton2 = new ColoredRadioButton("<html><font face='黑体' size='6'>保存推测</font></html>");
+        radioButton3 = new ColoredRadioButton("<html><font face='黑体' size='6'>运行模式</font></html>");
+        radioButton4 = new ColoredRadioButton("<html><font face='黑体' size='6'>进行比较</font></html>");
+
+        radioButton1.setBackground(BackgroundColor);
+        radioButton2.setBackground(BackgroundColor);
+        radioButton3.setBackground(BackgroundColor);
+        radioButton4.setBackground(BackgroundColor);
 
         radioButton1.setBounds(550, 52, 187, 37);
         radioButton2.setBounds(550, 127, 187, 37);
@@ -59,32 +70,90 @@ class PanelMain extends JPanel{
         buttonGroup.add(radioButton3);
         buttonGroup.add(radioButton4);
 
-        radioButton1.addActionListener(e -> System.out.println("1"));
-        radioButton2.addActionListener(e -> System.out.println("2"));
-        radioButton3.addActionListener(e -> System.out.println("3"));
-        radioButton4.addActionListener(e -> System.out.println("4"));
+        radioButton1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    isModel = 1;
+                    radioButton3.setEnabled(false);
+                    radioButton4.setEnabled(false);
+
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    radioButton3.setEnabled(true);
+                    radioButton4.setEnabled(true);
+                }
+            }
+        });
+
+        radioButton2.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    isModel = 2;
+                    radioButton4.setEnabled(false);
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    radioButton4.setEnabled(true);
+                }
+            }
+        });
+
+        radioButton3.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    isModel = 3;
+                    radioButton1.setEnabled(false);
+                    radioButton2.setEnabled(false);
+                    IE.OI.starrySkyPanel.startFastMove();
+                    net.updateGraph();
+                    election = new Election(net, IE);
+                    // 开始算法
+                    // 调用组件
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    radioButton1.setEnabled(true);
+                    radioButton2.setEnabled(true);
+
+                }
+            }
+        });
+
+        radioButton4.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    isModel = 4;
+                    radioButton2.setEnabled(false);
+                    radioButton3.setEnabled(false);
+
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    radioButton2.setEnabled(true);
+                    radioButton3.setEnabled(true);
+
+                }
+            }
+        });
 
         add(radioButton1);
         add(radioButton2);
         add(radioButton3);
         add(radioButton4);
+        radioButton1.setSelected(true);
 
     }
 
-    @Override  
-    protected void paintComponent(Graphics g){
+    @Override
+    protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Shape roundedRectangle = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 30, 30);
         g2d.setColor(getBackground());
         g2d.fill(roundedRectangle);
-        
 
     }
 
 }
 
-class PanelMainOne extends JPanel{
+class PanelMainOne extends JPanel {
 
     private static final int RECT_WIDTH = 310;
     private static final int RECT_HEIGHT = 155;
@@ -92,18 +161,18 @@ class PanelMainOne extends JPanel{
     roundedButton S1, S2, S3, S4;
     Color buttonFontColor, ButtonBackColor;
 
-    PanelMainOne(){
+    PanelMainOne() {
         ADDbtnswitch();
         setLayout(null);
     }
 
-    void ADDbtnswitch(){
+    void ADDbtnswitch() {
 
         int x = 72, y = 72;
-        S1 = new roundedButton("<html><font face='黑体' size='6'>S1 </font></html>",15);
-        S2 = new roundedButton("<html><font face='黑体' size='6'>S2 </font></html>",15);
-        S3 = new roundedButton("<html><font face='黑体' size='6'>S3 </font></html>",15);
-        S4 = new roundedButton("<html><font face='黑体' size='6'>S4 </font></html>",15);
+        S1 = new roundedButton("<html><font face='黑体' size='6'>S1 </font></html>", 15);
+        S2 = new roundedButton("<html><font face='黑体' size='6'>S2 </font></html>", 15);
+        S3 = new roundedButton("<html><font face='黑体' size='6'>S3 </font></html>", 15);
+        S4 = new roundedButton("<html><font face='黑体' size='6'>S4 </font></html>", 15);
         buttonFontColor = new Color(0xf5, 0xf5, 0xf5);
         S1.setForeground(buttonFontColor);
         S2.setForeground(buttonFontColor);
@@ -157,7 +226,7 @@ class PanelMainOne extends JPanel{
 
 }
 
-class PanelMainTwo extends JPanel{
+class PanelMainTwo extends JPanel {
 
     private static final int RECT_WIDTH = 310;
     private static final int RECT_HEIGHT = 155;
@@ -165,7 +234,7 @@ class PanelMainTwo extends JPanel{
     roundedButton S1, S2, S3, S4;
     Color buttonFontColor, ButtonBackColor;
 
-    PanelMainTwo(){
+    PanelMainTwo() {
         ADDbtnswitch();
         setLayout(null);
     }
@@ -235,7 +304,7 @@ class PanelMainTwo extends JPanel{
 
 }
 
-class PanelMainThree extends JPanel{
+class PanelMainThree extends JPanel {
 
     private static final int RECT_WIDTH = 310;
     private static final int RECT_HEIGHT = 155;
@@ -243,7 +312,7 @@ class PanelMainThree extends JPanel{
     roundedButton S1, S2, S3, S4, S5;
     Color buttonFontColor, ButtonBackColor;
 
-    PanelMainThree(){
+    PanelMainThree() {
         ADDbtnswitch();
         setLayout(null);
     }
@@ -277,7 +346,7 @@ class PanelMainThree extends JPanel{
         S3.setBounds(x - 10, y + 80 - 20, 55, 38);
         S4.setBounds(x + 310 - 10, y + 80 - 20, 55, 38);
         S5.setBounds(x + (310 - 10) / 2 - 8, y + 160, 55, 38);
- 
+
         add(S1);
         add(S2);
         add(S3);
@@ -304,7 +373,7 @@ class PanelMainThree extends JPanel{
 
         g2d.setStroke(new BasicStroke(LINE_WIDTH));
         g.setColor(new Color(0xf5, 0xf5, 0xf5));
-        g2d.drawLine(x, y - 10, x + 310, y - 10);
+        g2d.drawLine(x, y - 10, x + 310, y + 80);
         g2d.drawLine(x, y - 10, x, y + 80);
 
         g2d.drawLine(x, y + 80, x + 310, y + 80);
@@ -323,4 +392,3 @@ class PanelMainThree extends JPanel{
     }
 
 }
-
