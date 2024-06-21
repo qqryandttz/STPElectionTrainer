@@ -1,22 +1,22 @@
 import java.util.Arrays;
-
+/*
 class t {
     public static void main(String[] args) {
         char[] vertex = { 'A', 'B', 'C', 'D' };
         int INF = 65535;
         int[][] matrix = new int[][] {
-                { 0, 4, 4, 4 },
-                { 4, 0, 4, 4 },
-                { 4, INF, 0, INF },
-                { 19, 4, INF, 0 }
+                { 0, 1, 2, 3 },
+                { 4, 0, INF, 6 },
+                { 7, INF, 0, INF },
+                { 9, 10, INF, 0 }
         };
         Graph graph = new Graph(vertex, matrix);
         graph.showGraph();
-        graph.dsj(1);
+        graph.dsj(2);
         graph.showDsj();
     }
 }
- 
+ */
 
 class Graph {
     char[] vertex;
@@ -64,9 +64,14 @@ class Graph {
         // 更新matrix[index]行
         for (int j = 0; j < matrix[index].length; j++) {
             // 出发顶点到index顶点的距离 + 从index顶点到j顶点的距离之和
-            len = vv.getDis(index) + matrix[index][j];
+            int x = j + 1;
+            // System.out.println("当前顶点为：" + x);
+            len = vv.getDis(index) + matrix[j][index];
+            // System.out.println(" len为" + len + "=" + vv.getDis(index) + "+" +
+            // matrix[j][index]);
             // 更新的前提：j没有访问过，且我们得到的len小于出发顶点到j的距离
             if (!vv.in(j) && len < vv.getDis(j)) {
+                // System.out.println(" 开始更新了,更新为" + x + "为" + len);
                 vv.updatePre(j, index);
                 vv.updateDis(j, len);
             }

@@ -727,11 +727,11 @@ class PanelSwitch extends JPanel {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
-                         System.out.println("选中");
+                         //System.out.println("选中");
                         myswitch.Interface1.state = true;
 
                     } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                         System.out.println("未选中");
+                         //System.out.println("未选中");
                         myswitch.Interface1.state = false;
                     }
                 }

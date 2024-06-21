@@ -58,6 +58,20 @@ class NetworkTopology {
             };
 
         }
+        updateSymmetricPositions(networkTopology);
+    }
+
+    void updateSymmetricPositions(int[][] topology) {
+        for (int i = 0; i < networkTopology.length; i++) {
+            for (int j = 0; j < networkTopology[i].length; j++) {
+                if (networkTopology[i][j] == INF) {
+                    // 只更新非对角线且值为INF的对称位置
+                   
+                        networkTopology[j][i] = INF;
+
+                }
+            }
+        }
     }
 
     void updateGraph() {
@@ -89,6 +103,7 @@ class NetworkTopology {
             networkTopology[3] = new int[] { switch34.Interface1.getCost(), switch34.Interface2.getCost(), switch34.Interface3.getCost(), 0, switch34.Interface4.getCost() };
             networkTopology[4] = new int[] { INF, INF, switch35.Interface1.getCost(), switch35.Interface2.getCost(), 0 };
         }
+        updateSymmetricPositions(networkTopology);
 
     }
 
